@@ -4,7 +4,7 @@
 
 
 # Install Nautilus (GUI file explorer)
-    ${INSTALL} nautilusœ
+    ${INSTALL} nautilus
 
 # Install ranger (file explorer)
     ${INSTALL} ranger
