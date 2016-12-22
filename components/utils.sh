@@ -24,4 +24,6 @@
 # Delete duplicates files
     ${INSTALL} rmlint
 # System monitor tool
-    ${INSTALL} glances
+    ${install} glances
+# Android metia transfert protocol
+    ${install} jmtpfs
