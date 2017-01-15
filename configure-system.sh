@@ -21,6 +21,7 @@ ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
 ${SOURCE} ${COMPONENTS_PATH}/network-related.sh
 ${SOURCE} ${COMPONENTS_PATH}/core.sh
+${SOURCE} ${COMPONENTS_PATH}/fs-snapshots.sh
 ${SOURCE} ${COMPONENTS_PATH}/dev.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh
 ${SOURCE} ${COMPONENTS_PATH}/x-related.sh
