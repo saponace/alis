@@ -5,7 +5,14 @@ username=$2
 boot_part=$3
 swap_part=$4
 root_part=$5
+chroot_script_to_call="install-core-after-chroot.sh"
 
+
+# Get the current directory
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
+    git_repo_dir_name=$(basename ${git_repo_path})
 
 
 # Format boot partition
@@ -65,9 +72,8 @@ root_part=$5
 
 
 # Move the git repo into the /root of the new system
-    git_repo_path=/root/alis
     mv ${git_repo_path} /mnt/root/
 
 
 # Chroot into the new system
-    arch-chroot /mnt /root/alis/install-core-after-chroot.sh ${hostname} ${username} ${swap_part} ${root_part}
+    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${swap_part} ${root_part}
