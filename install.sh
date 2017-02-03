@@ -1,12 +1,5 @@
 #!/bin/bash
 
-hostname=$1
-username=$2
-boot_part=$3
-swap_part=$4
-root_part=$5
-chroot_script_to_call="install-core-after-chroot.sh"
-
 
 # Get the current directory
 # Leave this block of code at the very beginning of the script (some
@@ -17,16 +10,29 @@ chroot_script_to_call="install-core-after-chroot.sh"
     git_repo_dir_name=$(basename ${git_repo_path})
 
 
+CONFIG_FILE_PATH="./alis.config"
+
+if [ ! -f "${CONFIG_FILE_PATH}" ]
+then
+  echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
+  exit 1
+fi
+source ${CONFIG_FILE_PATH}
+
+chroot_script_to_call="install-core-after-chroot.sh"
+
+
+
 # Format boot partition
-    mkfs.vfat -F 32 ${boot_part}
+    mkfs.vfat -F 32 ${boot_partition}
 # Format swap partition
-    mkswap ${swap_part}
+    mkswap ${swap_partition}
 
 
 # Set encryption on root partition and open encrypted partition
     echo "Encrypting root partition. Please enter passphrase when prompted."
-    cryptsetup --verbose --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 luksFormat ${root_part}
-    cryptsetup luksOpen ${root_part} root
+    cryptsetup --verbose ${root_encryption_options} luksFormat ${root_partition}
+    cryptsetup luksOpen ${root_partition} root
 
 # Format root partition
     mkfs.btrfs /dev/mapper/root
@@ -50,9 +56,9 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 # Mount boot partition
     mkdir /mnt/boot
-    mount ${boot_part} /mnt/boot
+    mount ${boot_partition} /mnt/boot
 # Enable swap
-    swapon ${swap_part}
+    swapon ${swap_partition}
 
 
 # Refresh pacman gpg keys list
@@ -70,4 +76,4 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Chroot into the new system
-    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${swap_part} ${root_part}
+    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call}

@@ -24,7 +24,7 @@ Create partitions boot, swap and root (with fdisk for instance).
 ### Install the new system
 ```
 # cd alis
-# ./install.sh $hostname $username $boot_partition $swap_partition $root_partition
+# ./install.sh
 ```
 
 
@@ -43,3 +43,11 @@ Log in as the user, and
 # cd alis
 # ./configure-system.sh
 ```
+
+### Reboot
+```
+# reboot
+```
+
+### Note
+All the configs are stored in the editable file ./alis.config

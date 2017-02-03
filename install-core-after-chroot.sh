@@ -1,10 +1,5 @@
 #!/bin/bash
 
-hostname=$1
-username=$2
-swap_part=$3
-root_part=$4
-
 
 # Get the current directory
 # Leave this block of code at the very beginning of the script (some
@@ -12,6 +7,17 @@ root_part=$4
     pushd `dirname $0` > /dev/null
     git_repo_path=`pwd`
     popd > /dev/null
+
+
+CONFIG_FILE_PATH="./alis.config"
+
+if [ ! -f "${CONFIG_FILE_PATH}" ]
+then
+    echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
+    exit 1
+fi
+source ${CONFIG_FILE_PATH}
+
 
 
 # Set the hostname
@@ -38,15 +44,15 @@ root_part=$4
 
 # Install and configure boot manager
     pacman -S --noconfirm efibootmgr
-    # mount ${uefi_part} /boot
+    # mount boot partition to /boot
         bootctl --path=/boot install
     # Create menu entry
         echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
     # Configure entry
-        root_part_uuid=$(blkid ${root_part} | cut -f2 -d\")
-        swap_part_uuid=$(blkid ${swap_part} | cut -f2 -d\")
+        root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
+        swap_partition_uuid=$(blkid ${swap_partition} | cut -f2 -d\")
         echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
-        echo -e "options cryptdevice=UUID=${root_part_uuid}:root root=/dev/mapper/root rootflags=subvol=ROOT resume=UUID=${swap_part_uuid} quiet rw" >> /boot/loader/entries/arch.conf
+        echo -e "options cryptdevice=UUID=${root_partition_uuid}:root root=/dev/mapper/root rootflags=subvol=ROOT resume=UUID=${swap_partition_uuid} quiet rw" >> /boot/loader/entries/arch.conf
 
 
 # Set root password
