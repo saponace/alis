@@ -6,6 +6,11 @@ swap_part=$3
 root_part=$4
 
 
+# Get the current directory
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
+
 
 # Set the hostname
     echo  ${hostname} > /etc/hostname
@@ -56,9 +61,6 @@ root_part=$4
 
 
 # Move the git repo into the user's home directory
-    pushd `dirname $0` > /dev/null
-    git_repo_path=`pwd`
-    popd > /dev/null
     mv ${git_repo_path} /home/${username}
     chown -R ${username}:${username} /home/${username}/
 
