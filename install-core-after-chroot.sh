@@ -25,11 +25,9 @@ source ${CONFIG_FILE_PATH}
 
 # Set le locales and the keymap
     # Configure locales
-        echo -e "\nfr_FR.UTF-8 UTF-8\nfr_FR ISO-8859-1\nfr_FR@euro ISO-8859-15\n" >> /etc/locale.gen
-        echo -e "en_US.UTF-8 UTF-8\nen_US ISO-8859-1" >> /etc/locale.gen
+        echo -e "\n${locales_to_enable}" >> /etc/locale.gen
         locale-gen
-    ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
-    echo "KEYMAP=fr-latin1.map.gz" > /etc/vconsole.conf
+        ln -s ${locale_zone_path} /etc/localtime
 
 # Set the clock
     hwclock --systohc --localtime
