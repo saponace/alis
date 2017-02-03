@@ -45,17 +45,6 @@ chroot_script_to_call="install-core-after-chroot.sh"
     btrfs subvolume create opt
     btrfs subvolume create var
     btrfs subvolume create tmp
-    # cd
-    # umount /mnt
-    # mount -o noatime,space_cache,subvol=ROOT ${root_part} /mnt
-    # mkdir /mnt/{root,home,etc,mnt,opt,var,tmp}
-    # mount -o noatime,space_cache,subvol=root ${root_part} /mnt/root
-    # mount -o noatime,space_cache,subvol=home ${root_part} /mnt/home
-    # mount -o noatime,space_cache,subvol=etc ${root_part} /mnt/etc
-    # mount -o noatime,space_cache,subvol=mnt ${root_part} /mnt/mnt
-    # mount -o noatime,space_cache,subvol=opt ${root_part} /mnt/opt
-    # mount -o noatime,space_cache,subvol=var ${root_part} /mnt/var
-    # mount -o noatime,space_cache,subvol=tmp ${root_part} /mnt/tmp
 
 # Mount boot partition
     mkdir /mnt/boot
