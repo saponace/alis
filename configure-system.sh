@@ -6,6 +6,7 @@
 INSTALL="yaourt -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
+CONFIG_FILE_PATH="./alis.config"
 
 
 # Prevent sudo timeout
@@ -15,6 +16,20 @@ while true; do
   kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
 done &
 
+
+if [ ! -f "${CONFIG_FILE_PATH}" ]
+then
+  echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
+  exit 1
+fi
+source ${CONFIG_FILE_PATH}
+
+# Check if the user that calls this script is the same user as defined in the config file
+if [[ ${username} != ${USER} ]];
+then
+  echo "Error: you are not ${username} as defined in the config file. Please execute this script as ${username}."
+  exit 1
+fi
 
 
 ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
