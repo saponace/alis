@@ -5,8 +5,8 @@
 
 
 # Yaourt
-    su -c "echo -e $'[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch' >> /etc/pacman.conf"
-    sudo pacman -Syu yaourt
+    sudo su -c "echo -e $'[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch' >> /etc/pacman.conf"
+    sudo pacman -Syu --noconfirm yaourt
 
 # Yaourt packages tab completion
     ${INSTALL} aurtab

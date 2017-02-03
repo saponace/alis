@@ -30,7 +30,7 @@ root_part=$4
 
 
 # Install and configure boot manager
-    pacman -S efibootmgr
+    pacman -S --noconfirm efibootmgr
     # mount ${uefi_part} /boot
         bootctl --path=/boot install
     # Create menu entry
