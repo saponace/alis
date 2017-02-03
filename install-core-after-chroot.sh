@@ -9,7 +9,7 @@
     popd > /dev/null
 
 
-CONFIG_FILE_PATH="${git_repo_path}./alis.config"
+CONFIG_FILE_PATH="${git_repo_path}/alis.config"
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
 then
