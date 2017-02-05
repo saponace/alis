@@ -32,8 +32,10 @@ then
 fi
 
 
+# These two components are required in order to make all the following work
 ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
+
 ${SOURCE} ${COMPONENTS_PATH}/network-related.sh
 ${SOURCE} ${COMPONENTS_PATH}/core.sh
 ${SOURCE} ${COMPONENTS_PATH}/dev.sh
