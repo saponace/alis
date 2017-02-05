@@ -28,6 +28,8 @@ source ${CONFIG_FILE_PATH}
         echo -e "\n${locales_to_enable}" >> /etc/locale.gen
         locale-gen
         ln -s ${locale_zone_path} /etc/localtime
+        # Set locale and keyboard layout in the terminal and X
+            sudo localectl set-keymap ${keymap}
 
 # Set the clock
     hwclock --systohc --localtime
