@@ -41,7 +41,6 @@ source ${CONFIG_FILE_PATH}
 
 
 # Install and configure boot manager
-    pacman -S --noconfirm efibootmgr
     # mount boot partition to /boot
         bootctl --path=/boot install
     # Create menu entry
