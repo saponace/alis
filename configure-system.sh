@@ -55,3 +55,6 @@ ${SOURCE} ${COMPONENTS_PATH}/cron-jobs.sh
 ${SOURCE} ${COMPONENTS_PATH}/lock-screen-script-dependencies.sh
 ${SOURCE} ${COMPONENTS_PATH}/fs-snapshots.sh
 ${COMPONENTS_PATH}/link-files.sh
+
+sync
+sudo reboot

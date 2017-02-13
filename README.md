@@ -44,10 +44,7 @@ Log in as the user, and
 # ./configure-system.sh
 ```
 
-### Reboot
-```
-# reboot
-```
+The system will reboot into the fresh install.
 
 ### Note
 All the configs are stored in the editable file ./alis.config
