@@ -4,6 +4,7 @@
 
 # Btrfs snapshots manager
     ${INSTALL} snapper
+    ${INSTALL} snapper-gui
 # Call snapper before and after each pacman/yaourt call
     ${INSTALL} snap-pac
 
