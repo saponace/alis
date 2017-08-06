@@ -19,6 +19,7 @@
 
 
 # Configure VPN (auto generate OpenVPN config files for VPN Private Internet Access)
+    ${INSTALL} openvpn
     ${INSTALL} private-internet-access-vpn
     # Write credentials in a file
         echo "Enter VPN login"
