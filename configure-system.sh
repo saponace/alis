@@ -54,27 +54,27 @@ function install_component (){
 
 # These three components are required in order (and in this order) to make all the following work
 source common-functions.sh
-install_component enable-networking.sh
-install_component aur-helper.sh
+install_component enable-networking
+install_component aur-helper
 
-install_component network-related.sh
-install_component core.sh
-install_component dev.sh
-install_component utils.sh
-install_component x-related.sh
-install_component hardware-drivers.sh
-install_component misc.sh
-install_component misc-gui.sh
-install_component virtualbox.sh
-install_component battery-management.sh
-install_component font-and-gtk-theme.sh
-install_component sound-related.sh
-install_component file-manager.sh
-install_component machine-specific.sh
-install_component shell-and-term-related.sh
-install_component cron-jobs.sh
-install_component lock-screen-script-dependencies.sh
-install_component fs-snapshots.sh
+install_component network-related
+install_component core
+install_component dev
+install_component utils
+install_component x-related
+install_component hardware-drivers
+install_component misc
+install_component misc-gui
+install_component virtualbox
+install_component battery-management
+install_component font-and-gtk-theme
+install_component sound-related
+install_component file-manager
+install_component machine-specific
+install_component shell-and-term-related
+install_component cron-jobs
+install_component lock-screen-script-dependencies
+install_component fs-snapshots
 ${COMPONENTS_PATH}/link-files.sh
 
 sync
