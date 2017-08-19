@@ -6,6 +6,7 @@
 INSTALL="yaourt -S --noconfirm"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis.config"
+LOG_FILE="./alis-server.log"
 ADDITIONAL_CONFIG_FILES_DIR="files_to_deploy/config-files/other"
 
 
@@ -15,6 +16,7 @@ while true; do
   sudo -nv; sleep 1m
   kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
 done &
+
 
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
