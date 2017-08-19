@@ -58,6 +58,7 @@ install_component enable-networking
 install_component aur-helper
 
 install_component network-related
+install_component vpn
 install_component core
 install_component dev
 install_component utils
