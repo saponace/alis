@@ -9,3 +9,5 @@
 
 # Install arc gtk theme
     ${INSTALL} arc-gtk-theme
+    # Tell GTK to use arc theme
+        create_link ${ADDITIONAL_CONFIG_FILES_DIR}/gtk-theme/settings.ini /usr/share/gtk-3.0/

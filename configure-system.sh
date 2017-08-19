@@ -7,6 +7,7 @@ INSTALL="yaourt -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis.config"
+ADDITIONAL_CONFIG_FILES_DIR="files_to_deploy/config-files/other"
 
 
 # Prevent sudo timeout
@@ -32,7 +33,8 @@ then
 fi
 
 
-# These two components are required in order to make all the following work
+# These three components are required in order (and in this order) to make all the following work
+${SOURCE} common-functions.sh
 ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
 
