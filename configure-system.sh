@@ -4,7 +4,6 @@
 
 
 INSTALL="yaourt -S --noconfirm"
-SOURCE="source"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis.config"
 ADDITIONAL_CONFIG_FILES_DIR="files_to_deploy/config-files/other"
@@ -33,29 +32,47 @@ then
 fi
 
 
-# These three components are required in order (and in this order) to make all the following work
-${SOURCE} common-functions.sh
-${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
-${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
+# Execute a component file
+# The name of the component (without the ending ".sh")
+function install_component (){
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "Starting installation of component $1" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "" 2>&1 | tee -a ${LOG_FILE}
+}
 
-${SOURCE} ${COMPONENTS_PATH}/network-related.sh
-${SOURCE} ${COMPONENTS_PATH}/core.sh
-${SOURCE} ${COMPONENTS_PATH}/dev.sh
-${SOURCE} ${COMPONENTS_PATH}/utils.sh
-${SOURCE} ${COMPONENTS_PATH}/x-related.sh
-${SOURCE} ${COMPONENTS_PATH}/hardware-drivers.sh
-${SOURCE} ${COMPONENTS_PATH}/misc.sh
-${SOURCE} ${COMPONENTS_PATH}/misc-gui.sh
-${SOURCE} ${COMPONENTS_PATH}/virtualbox.sh
-${SOURCE} ${COMPONENTS_PATH}/battery-management.sh
-${SOURCE} ${COMPONENTS_PATH}/font-and-gtk-theme.sh
-${SOURCE} ${COMPONENTS_PATH}/sound-related.sh
-${SOURCE} ${COMPONENTS_PATH}/file-manager.sh
-${SOURCE} ${COMPONENTS_PATH}/machine-specific.sh
-${SOURCE} ${COMPONENTS_PATH}/shell-and-term-related.sh
-${SOURCE} ${COMPONENTS_PATH}/cron-jobs.sh
-${SOURCE} ${COMPONENTS_PATH}/lock-screen-script-dependencies.sh
-${SOURCE} ${COMPONENTS_PATH}/fs-snapshots.sh
+
+# These three components are required in order (and in this order) to make all the following work
+source common-functions.sh
+install_component enable-networking.sh
+install_component aur-helper.sh
+
+install_component network-related.sh
+install_component core.sh
+install_component dev.sh
+install_component utils.sh
+install_component x-related.sh
+install_component hardware-drivers.sh
+install_component misc.sh
+install_component misc-gui.sh
+install_component virtualbox.sh
+install_component battery-management.sh
+install_component font-and-gtk-theme.sh
+install_component sound-related.sh
+install_component file-manager.sh
+install_component machine-specific.sh
+install_component shell-and-term-related.sh
+install_component cron-jobs.sh
+install_component lock-screen-script-dependencies.sh
+install_component fs-snapshots.sh
 ${COMPONENTS_PATH}/link-files.sh
 
 sync
