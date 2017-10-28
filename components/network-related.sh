@@ -16,3 +16,7 @@
         sudo systemctl enable NetworkManager.service
     # Disable ipv6 in dhcpcd.conf
         su -c "echo -e 'noipv6rs\nnoipv6' >> /etc/dhcpcd.conf"
+    # Disable NetworkManager /etc/resolv.conf DNS IP address dynamic updates
+    # to ISP own DNS servers and manually set Google's DNS servers IPs
+        su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
+        su -c "echo -e 'nameserver 8.8.8.8\nnameserver 8.8.8.4' > /etc/resolv.conf"
