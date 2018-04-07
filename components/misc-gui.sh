@@ -19,3 +19,5 @@
     ${INSTALL} spotify
 # Budget manager
     ${INSTALL} homebank
+# Skype
+    ${INSTALL} ghetto-skype
