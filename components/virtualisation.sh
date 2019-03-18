@@ -1,5 +1,5 @@
 #-------------------------------------------------
-# Install and configure virtualbox
+# Install and configure virtualisation engine virtualbox
 #-------------------------------------------------
 
 

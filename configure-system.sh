@@ -57,24 +57,24 @@ source common-functions.sh
 install_component enable-networking
 install_component aur-helper
 
-install_component network-related
-install_component vpn
+install_component networking
+install_component vpn-client
 install_component core
 install_component dev
 install_component utils
 install_component x-related
 install_component hardware-drivers
 install_component misc
-install_component misc-gui
-install_component virtualbox
+install_component desktop-apps
+install_component virtualisation
 install_component battery-management
 install_component font-and-gtk-theme
-install_component sound-related
+install_component sound
 install_component file-manager
 install_component machine-specific
-install_component shell-and-term-related
+install_component shell-and-term-apps
 install_component cron-jobs
-install_component lock-screen-script-dependencies
+install_component lock-screen
 install_component fs-snapshots
 ${COMPONENTS_PATH}/link-files.sh
 

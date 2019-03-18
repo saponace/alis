@@ -1,5 +1,5 @@
 #-------------------------------------------------
-# Install GUI misc programs
+# Install various desktop programs with GUI
 #-------------------------------------------------
 
 

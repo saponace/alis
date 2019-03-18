@@ -1,5 +1,6 @@
 #-------------------------------------------------
-# Install dependencies for the i3lock lock screen script (blurry background as the i3lock background)
+# Install dependencies for the i3lock lock screen
+# script (blurry background as the i3lock background)
 #-------------------------------------------------
 
 
