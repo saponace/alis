@@ -39,3 +39,5 @@
         ${INSTALL} sshfs
     # Rfkill, to turn on and off wireless interfaces
         ${INSTALL} rfkill
+    # Access X clipboard from shell
+        ${INSTALL} xclip

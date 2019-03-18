@@ -62,7 +62,8 @@ install_component vpn-client
 install_component core
 install_component dev
 install_component utils
-install_component x-related
+install_component display
+install_component window-manager
 install_component hardware-drivers
 install_component desktop-apps
 install_component virtualisation
@@ -73,7 +74,6 @@ install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
 install_component cron-jobs
-install_component lock-screen
 install_component fs-snapshots
 ${COMPONENTS_PATH}/link-files.sh
 

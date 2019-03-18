@@ -1,10 +1,8 @@
 #-------------------------------------------------
-# Install X server, login manager, windows manager, etc. and all their dependencies
+# Install window manager, login manager and lock-screen
 #-------------------------------------------------
 
 
-# X server
-    ${INSTALL} xorg-server xorg-server-utils xorg-xinit
 # Login manager
     ${INSTALL} slim
     sudo systemctl enable slim.service
@@ -24,13 +22,13 @@
         # Fontawesome for the icons in the status bar
             ${INSTALL} otf-font-awesome
 
+# Lock screen (take a screenshot, blur it and put it as the lack screen background)
+    # Lock screen
+    ${INSTALL} i3lock
+    # Screenshot utility (take a screenshot of the active view)
+        ${INSTALL} scrot
+    # Image modifier, used to lock blur the screenshot
+        ${INSTALL} imagemagick
+
 # Notifications daemon
     ${INSTALL} dunst
-# Lock screen
-    ${INSTALL} i3lock
-# Multi-monitor management
-    ${INSTALL} xrandr arandr
-# Color shifter, reduce blue emission
-    ${INSTALL} redshift
-# Access X clipboard
-    ${INSTALL} xclip
