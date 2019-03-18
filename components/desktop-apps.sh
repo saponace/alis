@@ -19,3 +19,6 @@
     ${INSTALL} homebank
 # Skype
     ${INSTALL} ghetto-skype
+# Transmission (torrenting) daemon (and CLI and web-UI)
+    ${INSTALL} transmission-cli
+    transmission-remote-cli --create-config   # Make transmission detect config file

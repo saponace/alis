@@ -64,7 +64,6 @@ install_component dev
 install_component utils
 install_component x-related
 install_component hardware-drivers
-install_component misc
 install_component desktop-apps
 install_component virtualisation
 install_component battery-management
