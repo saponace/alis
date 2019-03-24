@@ -6,7 +6,7 @@
 INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis.config"
-LOG_FILE="./alis-server.log"
+LOG_FILE="./alis.log"
 ADDITIONAL_CONFIG_FILES_DIR="files_to_deploy/config-files/other"
 
 
@@ -35,18 +35,23 @@ fi
 
 
 # Execute a component file
-# The name of the component (without the ending ".sh")
+# $1: The name of the component (without the ending ".sh")
 function install_component (){
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "Starting installation of component $1" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  # Case components/core/core.sh
+  if [ -f "${COMPONENTS_PATH}/$1/$1.sh" ]; then
+      source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  # Case components/core.sh
+  elif [ -f "${COMPONENTS_PATH}/$1.sh" ]; then
+    source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  else
+    echo "Error: Component $1 not found"
+  fi
+  echo "" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
