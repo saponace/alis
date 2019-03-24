@@ -17,6 +17,9 @@
     # Disable ipv6 in dhcpcd.conf
         su -c "echo -e 'noipv6rs\nnoipv6' >> /etc/dhcpcd.conf"
     # Disable NetworkManager /etc/resolv.conf DNS IP address dynamic updates
-    # to ISP own DNS servers and manually set Google's DNS servers IPs
+    # to ISP own DNS servers and manually set custom DNS servers IPs
+    # 192.168.0.20: personal DNS server
+    # 1.1.1.1: CLoudflare DNS server
+    # 8.8.8.8 Google DNS servers
         su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
-        su -c "echo -e 'nameserver 8.8.8.8\nnameserver 8.8.8.4' > /etc/resolv.conf"
+        su -c "echo -e 'nameserver 192.168.0.20\nnameserver 1.1.1.1\nnameserver 8.8.8.8\nnameserver 8.8.8.4' > /etc/resolv.conf"
