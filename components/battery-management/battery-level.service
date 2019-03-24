@@ -1,0 +1,7 @@
+[Unit]
+Description=Check battery level and send a notification if it is too low
+Requires=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/battery-level -n

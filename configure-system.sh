@@ -95,7 +95,7 @@ install_component sound
 install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
-install_component cron-jobs
+install_component wallpaper
 install_component fs-snapshots
 ${COMPONENTS_PATH}/link-files.sh
 

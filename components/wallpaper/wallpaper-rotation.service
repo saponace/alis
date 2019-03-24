@@ -1,0 +1,9 @@
+[Unit]
+Description=Set a random wallpaper grabbed from reddit
+Requires=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/set-random-wallpaper.sh
+User=%USERNAME%
+Environment=DISPLAY=:0
