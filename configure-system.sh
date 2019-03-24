@@ -56,12 +56,29 @@ function install_component (){
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
 
+function enable_networking (){
+  echo "Enabling networking ..."
+  sudo dhcpcd
+  while [ "$var1" != "end" ]
+  do
+      pingtime=$(ping -w 1 google.com | grep ttl)
+      if [ "$pingtime" = "" ]
+      then
+          sleep 2
+      else
+          break
+      fi
+  done
+  echo "Done !"
+}
 
-# These three components are required in order (and in this order) to make all the following work
+
 source common-functions.sh
-install_component enable-networking
-install_component aur-helper
 
+
+enable-networking
+
+install_component aur-helper
 install_component networking
 install_component vpn-client
 install_component core
