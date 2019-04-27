@@ -3,8 +3,9 @@
 #-------------------------------------------------
 
 
-# Web browser and flash extension
+# Web browsers
     ${INSTALL} google-chrome
+    ${INSTALL} brave
 # Media player
     ${INSTALL} vlc
 # Disks management (useful for S.M.A.R.T. tests)
