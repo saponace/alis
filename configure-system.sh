@@ -7,7 +7,6 @@ INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis.config"
 LOG_FILE="./alis.log"
-ADDITIONAL_CONFIG_FILES_DIR="files_to_deploy/config-files/other"
 
 
 # Prevent sudo timeout
@@ -32,6 +31,12 @@ then
   echo "Error: you are not ${username} as defined in the config file. Please execute this script as ${username}."
   exit 1
 fi
+
+ADDITIONAL_CONFIG_FILES_DIR="files_to_deploy/config-files/other"
+HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
+USER_HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
+ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
+SCRIPTS_DIR="files-to-deploy/scripts"
 
 
 # Execute a component file
@@ -97,7 +102,9 @@ install_component machine-specific
 install_component shell-and-term-apps
 install_component wallpaper
 install_component fs-snapshots
-${COMPONENTS_PATH}/link-files.sh
+
+
+sudo_create_link ${SCRIPTS_DIR}/startup /bin
 
 sync
 sudo reboot

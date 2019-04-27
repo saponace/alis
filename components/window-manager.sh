@@ -35,6 +35,10 @@
             ${INSTALL} pacman-contrib
         # Get metrics from internal sensors
             ${INSTALL} lm_sensors
+        # Link py3status configuration files
+            create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+        # Link i3 configuration files
+            create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/i3 ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
 
 
 # Lock screen (take a screenshot, blur it and put it as the lack screen background)
@@ -47,3 +51,8 @@
 
 # Notifications daemon
     ${INSTALL} dunst
+    # Link configuration files
+       create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/dunst ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+
+# System initialisation
+    create_link ${HOMEDIR_DOTFILES_SOURCE}/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
