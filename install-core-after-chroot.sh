@@ -36,8 +36,7 @@ source ${CONFIG_FILE_PATH}
 
 # Create ramdisk
     # Configure mkinitcpio
-    sed -i 's/^BINARIES=""/BINARIES="\/usr\/bin\/btrfsck"/' /etc/mkinitcpio.conf
-    sed -i 's/^HOOKS=".*"/HOOKS="base udev resume autodetect mdconf block encrypt filesystems keyboard keymap image btrfs"/' /etc/mkinitcpio.conf
+    sed -i 's/^HOOKS=".*"/HOOKS="base udev resume autodetect mdconf block encrypt filesystems keyboard keymap image"/' /etc/mkinitcpio.conf
     mkinitcpio -p linux
 
 
@@ -50,7 +49,7 @@ source ${CONFIG_FILE_PATH}
         root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
         swap_partition_uuid=$(blkid ${swap_partition} | cut -f2 -d\")
         echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
-        echo -e "options cryptdevice=UUID=${root_partition_uuid}:root root=/dev/mapper/root rootflags=subvol=ROOT resume=UUID=${swap_partition_uuid} quiet rw" >> /boot/loader/entries/arch.conf
+        echo -e "options cryptdevice=UUID=${root_partition_uuid}:root root=/dev/mapper/root resume=UUID=${swap_partition_uuid} quiet rw" >> /boot/loader/entries/arch.conf
 
 
 # Set root password

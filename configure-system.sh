@@ -101,7 +101,6 @@ install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
 install_component wallpaper
-install_component fs-snapshots
 
 
 sudo_create_link ${SCRIPTS_DIR}/startup /bin

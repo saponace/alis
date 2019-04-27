@@ -35,25 +35,11 @@ chroot_script_to_call="install-core-after-chroot.sh"
     cryptsetup luksOpen ${root_partition} root
 
 # Format root partition
-    mkfs.btrfs /dev/mapper/root
+    mkfs.ext4 /dev/mapper/root
 
 
-# Mount root and create Btrfs subvolumes
+# Mount root partition
     mount /dev/mapper/root /mnt
-    cd /mnt
-    btrfs subvolume create ROOT
-    cd
-    umount /mnt
-    mount -o noatime,space_cache,autodefrag,subvol=ROOT /dev/mapper/root /mnt
-    cd /mnt
-    btrfs subvolume create root
-    btrfs subvolume create home
-    btrfs subvolume create etc
-    btrfs subvolume create mnt
-    btrfs subvolume create opt
-    btrfs subvolume create var
-    btrfs subvolume create tmp
-
 # Mount boot partition
     mkdir /mnt/boot
     mount ${boot_partition} /mnt/boot
@@ -65,7 +51,7 @@ chroot_script_to_call="install-core-after-chroot.sh"
     pacman-key --refresh-key
 
 # Install base components into new system
-    pacstrap /mnt base base-devel btrfs-progs
+    pacstrap /mnt base base-devel
 
 # Generate fstab of new system to automatically mount all the devices at bootup
     genfstab -U -p /mnt >> /mnt/etc/fstab
