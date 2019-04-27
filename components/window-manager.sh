@@ -15,12 +15,27 @@
     # Application launcher (rofi is a program launcher and window selector. Calls dmenu to start programs)
         ${INSTALL} rofi dmenu
     # Status bar
-        ${INSTALL} i3blocks
-    # i3blocks dependencies
-        # Proc stats, for mpstat, proc stats
-            ${INSTALL} sysstat
+        ${INSTALL} py3status
+    # py3status dependencies
         # Fontawesome for the icons in the status bar
             ${INSTALL} otf-font-awesome
+        # Proc stats, for mpstat, proc stats
+            ${INSTALL} sysstat
+        # Communication interprotocoles i3wm, dependence de config py3status
+            ${INSTALL} i3ipc-python
+        # Send notifications via dbus
+            ${INSTALL} python-pydbus
+        # Get metrics for cpu & ram
+            ${INSTALL} conky
+        # Timezones for date
+            ${INSTALL} python-tzlocal
+        # Simple calendar
+            ${INSTALL} gsimplecal
+        # Pacman checkupdates tool
+            ${INSTALL} pacman-contrib
+        # Get metrics from internal sensors
+            ${INSTALL} lm_sensors
+
 
 # Lock screen (take a screenshot, blur it and put it as the lack screen background)
     # Lock screen
