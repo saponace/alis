@@ -32,7 +32,7 @@ then
   exit 1
 fi
 
-ADDITIONAL_CONFIG_FILES_DIR="files_to_deploy/config-files/other"
+ADDITIONAL_CONFIG_FILES_DIR="files-to-deploy/config-files/other"
 HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
 USER_HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
 ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
