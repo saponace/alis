@@ -81,7 +81,7 @@ function enable_networking (){
 source common-functions.sh
 
 
-enable-networking
+enable_networking
 
 install_component aur-helper
 install_component networking
