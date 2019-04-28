@@ -103,7 +103,7 @@ install_component shell-and-term-apps
 install_component wallpaper
 
 
-sudo_create_link ${SCRIPTS_DIR}/startup /bin
+sudo_create_link ${SCRIPTS_DIR}/* /bin
 
 sync
 sudo reboot

@@ -11,7 +11,7 @@
         create_link ${ADDITIONAL_CONFIG_FILES_DIR}/slim/slim-minimal/ /usr/share/slim/themes/
 
 # Windows manager
-    ${INSTALL} i3
+    ${INSTALL} i3-wm
     # Application launcher (rofi is a program launcher and window selector. Calls dmenu to start programs)
         ${INSTALL} rofi dmenu
     # Status bar
