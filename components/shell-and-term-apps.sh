@@ -39,3 +39,7 @@
    # Link configuration files
       create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
       create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
+   # Install nvim plugins
+      echo "Installling neovim plugins ..."
+      nvim -E +PlugInstall +qall > /dev/null
+      echo "Neovim plugins installed !"
