@@ -48,6 +48,8 @@
         ${INSTALL} scrot
     # Image modifier, used to lock blur the screenshot
         ${INSTALL} imagemagick
+    # Custom lock-screen script
+        create_link ${SCRIPTS_DIR}/lock-screen /bin
 
 # Notifications daemon
     ${INSTALL} dunst
@@ -56,3 +58,6 @@
 
 # System initialisation
     create_link ${HOMEDIR_DOTFILES_SOURCE}/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
+
+# Set random wallpaper script
+    create_link ${SCRIPTS_DIR}/set-random-wallpaper /bin

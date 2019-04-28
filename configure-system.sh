@@ -102,8 +102,8 @@ install_component machine-specific
 install_component shell-and-term-apps
 install_component wallpaper
 
-
-sudo_create_link ${SCRIPTS_DIR}/* /bin
+# Script to initialize user session
+  create_link ${SCRIPTS_DIR}/finalize-startup /bin
 
 sync
 sudo reboot

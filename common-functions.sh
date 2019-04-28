@@ -7,5 +7,5 @@
 # $2: The target directory
 function create_link (){
     sudo mkdir -p $2
-    sudo ln -snf $(readlink -f "$1") $2
+    sudo ln -snf $(readlink -f "$1") $2/
 }

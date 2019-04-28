@@ -7,6 +7,8 @@
 # Start and stop charging batteries at given values (preserve batteries health on the long term)
     ${INSTALL} tp-battery-mode
     sudo systemctl enable tp-battery-mode
+# Get battery level script
+    create_link ${SCRIPTS_DIR}/battery-level /bin
 
 # FingerPrint scanner drivers
     ${INSTALL} fprintd
