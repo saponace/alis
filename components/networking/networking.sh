@@ -15,8 +15,8 @@
     # Enable network manager
         sudo systemctl enable NetworkManager.service
     # Disable ipv6 in dhcpcd.conf
-        su -c "echo -e 'noipv6rs\nnoipv6' >> /etc/dhcpcd.conf"
+        sudo su -c "echo -e 'noipv6rs\nnoipv6' >> /etc/dhcpcd.conf"
     # Disable NetworkManager /etc/resolv.conf DNS IP address dynamic updates
     # to ISP own DNS servers and manually set custom DNS servers IPs
-        su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
+        sudo su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
         create_link components/networking/resolv.conf /etc/
