@@ -36,7 +36,7 @@ source ${CONFIG_FILE_PATH}
 
 # Create ramdisk
     # Configure mkinitcpio
-    sed -i 's/^HOOKS=(.*)/HOOKS=(base udev resume autodetect modconf block encrypt filesystems keyboard keymap)/' /etc/mkinitcpio.conf
+    sed -i 's/^HOOKS=(.*)/HOOKS=(base udev resume autodetect modconf block keyboard keymap encrypt filesystems)/' /etc/mkinitcpio.conf
     mkinitcpio -p linux
 
 
