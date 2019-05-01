@@ -23,9 +23,7 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 
-# Format boot partition
-    mkfs.vfat -F 32 ${boot_partition}
-# Format swap partition
+# mkswap swap partition
     mkswap ${swap_partition}
 
 

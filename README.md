@@ -7,7 +7,9 @@
 ```
 
 ### Create partitions
-Create partitions boot, swap and root (with fdisk for instance).
+Create swap and root partitions (with fdisk for instance).
+
+If arch is the first OS to be installed on this system, create a boot partition (ESP system) and format it with `mkfs.vfat -F 32 /dev/sdxY`
 
 
 ### Remount archiso with more space to be able to download and install git
