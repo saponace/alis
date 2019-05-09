@@ -13,6 +13,8 @@
     # Zip
         ${INSTALL} unzip
         ${INSTALL} zip
+    # Rar
+        ${INSTALL} unrar
 
 # Monitoring and discovery
     # Network discovery tool
