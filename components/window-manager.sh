@@ -35,6 +35,8 @@
             ${INSTALL} pacman-contrib
         # Get metrics from internal sensors
             ${INSTALL} lm_sensors
+        # Get WiFi status
+            ${INSTALL} iw
         # Link py3status configuration files
             create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
         # Link i3 configuration files
