@@ -11,7 +11,7 @@
 # Disks management (useful for S.M.A.R.T. tests)
     ${INSTALL} gnome-disk-utility
 # Image viewer
-    ${INSTALL} feh
+    ${INSTALL} sxiv
 # PDF viewer
     ${INSTALL} evince
 # Music streaming

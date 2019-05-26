@@ -41,6 +41,8 @@
             create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
         # Link i3 configuration files
             create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/i3 ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+    # Set background wallpaper
+        ${INSTALL} feh
 
 
 # Lock screen (take a screenshot, blur it and put it as the lack screen background)
