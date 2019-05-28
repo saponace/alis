@@ -12,3 +12,6 @@
     ${INSTALL} maven
 # IDEs
     ${INSTALL} intellij-idea-ultimate-edition
+# Google app script command line client
+    ${INSTALL} npm
+    sudo npm install @google/clasp
