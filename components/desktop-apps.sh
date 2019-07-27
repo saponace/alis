@@ -19,7 +19,7 @@
 # Budget manager
     ${INSTALL} homebank
 # Skype
-    ${INSTALL} ghetto-skype
+    ${INSTALL} skypeforlinux-stable-bin
 # Transmission (torrenting) daemon (and CLI and web-UI)
     ${INSTALL} transmission-cli
     transmission-remote-cli --create-config   # Make transmission detect config file
