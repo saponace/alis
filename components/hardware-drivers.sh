@@ -9,3 +9,5 @@
     ${INSTALL} xf86-input-synaptics
 # Brightness control (backlight)
     ${INSTALL} light
+    # Allow user to set brightness
+    sudo usermod -a -G video ${username}
