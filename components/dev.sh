@@ -15,3 +15,6 @@
 # Google app script command line client
     ${INSTALL} npm
     sudo npm install @google/clasp
+
+# Node Version Manager
+    ${INSTALL} nvm
