@@ -101,6 +101,7 @@ install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
 install_component wallpaper
+install_component backups
 
 # Script to initialize user session
   create_link ${SCRIPTS_DIR}/finalize-startup /bin
