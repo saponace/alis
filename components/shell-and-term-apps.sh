@@ -42,4 +42,5 @@
    # Install nvim plugins
       echo "Installling neovim plugins ..."
       nvim -E +PlugInstall +qall > /dev/null
+      sudo nvim -E +PlugInstall +qall > /dev/null
       echo "Neovim plugins installed !"
