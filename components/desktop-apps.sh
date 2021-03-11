@@ -5,7 +5,6 @@
 
 # Web browsers
     ${INSTALL} google-chrome
-    ${INSTALL} brave-bin
 # Media player
     ${INSTALL} vlc
 # Disks management (useful for S.M.A.R.T. tests)
