@@ -77,6 +77,13 @@ function enable_networking (){
   echo "Done !"
 }
 
+# Fetch lines that are flagged "MANUAL-TODO" in every file of the repository, and copy them in a file
+function compile_manual_actions (){
+  filename="manual-configuration-instructions.txt"
+  echo -e "Follow these instructions to finalize configuration of the system:\n" > ${filename}
+  grep --no-filename -r "^# MANUAL-TODO" . | sed 's/# MANUAL-TODO: \(.*\)/* \1\n/' >> ${filename}
+}
+
 
 source common-functions.sh
 
@@ -103,8 +110,10 @@ install_component shell-and-term-apps
 install_component wallpaper
 install_component backups
 
-# Script to initialize user session
+# Link script to initialize user session
   create_link ${SCRIPTS_DIR}/finalize-startup /bin
+
+compile_manuak_actions
 
 sync
 sudo reboot

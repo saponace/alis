@@ -39,7 +39,7 @@ Umount and swapoff partitions
 # reboot
 ```
 
-### Configure the new system
+### Execute auto-confguration
 Log in as the user, and
 ```
 # cd alis
@@ -47,6 +47,12 @@ Log in as the user, and
 ```
 
 The system will reboot into the fresh install.
+
+### Manually finalize configuration of the system
+Log in as the user, and follow instructions in the file `~/alis/manual-configuration-instructions.txt`.
+
+This file can then safely be removed.
+
 
 ### Note
 All the configs are stored in the editable file ./alis.config
