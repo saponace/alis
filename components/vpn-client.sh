@@ -3,14 +3,8 @@
 #-------------------------------------------------
 
 
-${INSTALL} python3 python-pip
-sudo pip install pypia
+${INSTALL} piavpn-bin
 
-# Install Networkmanager applet and all PIA servers as VPN entries in Networkmanager
-    pypia -i
+sudo systemctl enable piavpn.service
 
-# Prepare NetworkManager connections directory to be readable by all (pypia needs read access to that directory)
-    sudo mkdir -p /etc/NetworkManager/system-connections/
-    sudo chmod a+r /etc/NetworkManager/system-connections/
-
-# WIll then need to manually configure pypia (validate packages installation and input PIA creadentials)
+# MANUAL-TODO: In "Private internet Access" app (accessible via system tray icon), log in with PIA credentials, and enable "General>Connect on Launch"

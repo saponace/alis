@@ -19,4 +19,4 @@
     # Disable NetworkManager /etc/resolv.conf DNS IP address dynamic updates
     # to ISP own DNS servers and manually set custom DNS servers IPs
         sudo su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
-        create_link components/networking/resolv.conf /etc/
+        create_link components/networking/resolv.conf /etc/resolv.conf_static_manual_fallback
