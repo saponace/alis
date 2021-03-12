@@ -37,6 +37,7 @@ HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
 USER_HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
 ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
 SCRIPTS_DIR="files-to-deploy/scripts"
+EXTERNAL_SCRIPTS_DIR="files-to-deploy/scripts/external-scripts"
 
 
 # Execute a component file

@@ -8,7 +8,7 @@
     ${INSTALL} tp-battery-mode
     sudo systemctl enable tp-battery-mode
 # Get battery level script
-    create_link ${SCRIPTS_DIR}/battery-level /bin
+    create_link ${EXTERNAL_SCRIPTS_DIR}/battery-level /bin
 
 # FingerPrint scanner drivers
     ${INSTALL} fprintd
