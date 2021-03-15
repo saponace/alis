@@ -1,2 +1,27 @@
 #! /bin/bash
-/bin/wallgen random 1920 -n /tmp/generated-wallpaper ; /bin/feh --bg-center /tmp/generated-wallpaper.png
+# Genertes a random abstract image with Wallgen and ets it as wallpaper
+# Dependencies:
+#    * https://github.com/SubhrajitPrusty/wallgen
+#    * xdpyinfo
+
+output_image="/tmp/generated-wallpaper"
+
+# Do not allow to generate images bigger than 2000 square pixels (or else, the generation time is too big)
+max_generated_image_size=2000
+
+screen_resolution=$(xdpyinfo | awk '/dimensions:/ { print $2 }')
+screen_width=$(echo ${screen_resolution} | cut -d 'x' -f1)
+screen_height=$(echo ${screen_resolution} | cut -d 'x' -f2)
+
+if [ "${screen_height}" -gt "${screen_width}" ]; then
+    wallpaper_size=${screen_height}
+else
+    wallpaper_size=${screen_width}
+fi
+
+if [ "${wallpaper_size}" -gt "${max_generated_image_size}" ]; then
+    wallpaper_size=${max_generated_image_size}
+fi
+
+
+wallgen random ${wallpaper_size} -n "${output_image}" ; feh --bg-center "${output_image}.png"

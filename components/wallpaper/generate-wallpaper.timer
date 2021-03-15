@@ -1,8 +1,9 @@
 [Unit]
-Description=Set a random wallpaper every 15 min
+Description=Generate an abstract image and set is a wallpaper
 
 [Timer]
-OnUnitActiveSec=15min
+OnBootSec=1min
+OnUnitActiveSec=5min
 
 [Install]
 WantedBy=timers.target

@@ -1,14 +1,19 @@
 #-------------------------------------------------
-# Automatically change wallpaper on a regular basis
+# Generate an abstract image and set is a wallpaper, periodically
 #-------------------------------------------------
 
--# Install cron scheduler if not already installed
--    ${INSTALL} cronie
--# Enable cron
--    sudo systemctl enable cronie.service
+# Install dependencies
+    # Cron scheduler if not already installed
+        ${INSTALL} cronie
+    # Generate-wallpaper script dependency to get the screen resolution
+        ${INSTALL} xdpyinfo
+
+
+# Enable cron
+-   sudo systemctl enable cronie.service
 
 # Install wallpaper generation script
-sudo pip install "git+https://github.com/SubhrajitPrusty/wallgen#egg=wallgen"
+    sudo pip install -e git+https://github.com/SubhrajitPrusty/wallgen#egg=wallgen
 
 # Link script
 create_link components/wallpaper/generate-wallpaper /bin
