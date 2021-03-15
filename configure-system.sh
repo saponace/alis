@@ -113,7 +113,7 @@ install_component wallpaper
 # Link script to initialize user session
   create_link ${SCRIPTS_DIR}/finalize-startup /bin
 
-compile_manuak_actions
+compile_manual_actions
 
 sync
 sudo reboot
