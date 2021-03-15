@@ -2,7 +2,6 @@
 Description=Set a random wallpaper every 15 min
 
 [Timer]
-OnBootSec=2min
 OnUnitActiveSec=15min
 
 [Install]

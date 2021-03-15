@@ -1,0 +1,2 @@
+#! /bin/bash
+/bin/wallgen random 1920 -n /tmp/generated-wallpaper ; /bin/feh --bg-center /tmp/generated-wallpaper.png

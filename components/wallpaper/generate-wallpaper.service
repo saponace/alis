@@ -1,0 +1,8 @@
+[Unit]
+Description=Set as background a randomly generated image
+
+[Service]
+Type=simple
+ExecStart= /bin/generate-wallpaper
+User=%USERNAME%
+Environment=DISPLAY=:0

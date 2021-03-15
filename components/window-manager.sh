@@ -62,6 +62,3 @@
 
 # System initialisation
     create_link ${HOMEDIR_DOTFILES_SOURCE}/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
-
-# Set random wallpaper script
-    create_link ${EXTERNAL_SCRIPTS_DIR}/set-random-wallpaper /bin
