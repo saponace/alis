@@ -5,9 +5,10 @@
 
 # Java Development Kit
     ${INSTALL} jdk8-openjdk openjdk8-doc openjdk8-src
-    ${INSTALL} jdk10-openjdk openjdk10-doc openjdk10-src
-    # Make JRE8 the default JRE
-        sudo su -c "echo 'JAVA_HOME=/usr/lib/jvm/java-8-openjdk' >> /etc/environment"
+    ${INSTALL} jdk11-openjdk openjdk11-doc openjdk11-src
+    ${INSTALL} jdk-openjdk openjdk-doc openjdk-src
+    # Make JRE17 the default JRE
+        sudo archlinux-java set java-17-openjdk
 # Java build tools
     ${INSTALL} maven
 # IDEs
