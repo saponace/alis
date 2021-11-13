@@ -14,6 +14,7 @@
     ${INSTALL} i3-wm
     # Application launcher (rofi is a program launcher and window selector. Calls dmenu to start programs)
         ${INSTALL} rofi dmenu
+        create_link components/window-manager/config/rofi/config.rasi ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config/rofi
     # Status bar
         ${INSTALL} py3status
     # py3status dependencies
