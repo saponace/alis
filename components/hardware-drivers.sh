@@ -10,4 +10,4 @@
 # Brightness control (backlight)
     ${INSTALL} light
     # Allow user to set brightness
-    sudo usermod -a -G video ${username}
+    sudo usermod -a -G video ${USERNAME}

@@ -25,16 +25,10 @@ then
 fi
 source ${CONFIG_FILE_PATH}
 
-# Check if the user that calls this script is the same user as defined in the config file
-if [[ ${username} != ${USER} ]];
-then
-  echo "Error: you are not ${username} as defined in the config file. Please execute this script as ${username}."
-  exit 1
-fi
-
+USERNAME=$(whoami)
 ADDITIONAL_CONFIG_FILES_DIR="files-to-deploy/config-files/other"
 HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
-USER_HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
+USER_HOMEDIR_DOTFILES_DESTINATION="/home/${USERNAME}"
 ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
 SCRIPTS_DIR="files-to-deploy/scripts"
 EXTERNAL_SCRIPTS_DIR="files-to-deploy/scripts/external-scripts"
