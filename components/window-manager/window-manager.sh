@@ -54,7 +54,7 @@
     # Image modifier, used to lock blur the screenshot
         ${INSTALL} imagemagick
     # Custom lock-screen script
-        create_link ${EXTERNAL_SCRIPTS_DIR}/lock-screen /bin
+        create_link components/window-manager/scripts/lock-screen /usr/local/bin
 
 # Notifications daemon
     ${INSTALL} dunst
@@ -63,6 +63,8 @@
 
 # System initialisation
     create_link components/window-manager/config/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
+    # Link script to initialize user session (called from .xinitrc)
+        create_link components/window-manager/scripts/finalize-startup /usr/local/bin
 
 # Basic system appearance
     create_link components/window-manager/config/.Xresources ${USER_HOMEDIR_DOTFILES_DESTINATION}

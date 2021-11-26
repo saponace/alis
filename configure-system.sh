@@ -29,8 +29,6 @@ USERNAME=$(whoami)
 HOMEDIR_DOTFILES_SOURCE="dotfiles/homedir"
 USER_HOMEDIR_DOTFILES_DESTINATION="/home/${USERNAME}"
 ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
-SCRIPTS_DIR="files-to-deploy/scripts"
-EXTERNAL_SCRIPTS_DIR="files-to-deploy/scripts/external-scripts"
 
 
 # Execute a component file
@@ -102,9 +100,6 @@ install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
 install_component wallpaper
-
-# Link script to initialize user session
-  create_link ${SCRIPTS_DIR}/finalize-startup /bin
 
 compile_manual_actions
 
