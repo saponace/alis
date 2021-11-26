@@ -26,8 +26,7 @@ fi
 source ${CONFIG_FILE_PATH}
 
 USERNAME=$(whoami)
-ADDITIONAL_CONFIG_FILES_DIR="files-to-deploy/config-files/other"
-HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
+HOMEDIR_DOTFILES_SOURCE="dotfiles/homedir"
 USER_HOMEDIR_DOTFILES_DESTINATION="/home/${USERNAME}"
 ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
 SCRIPTS_DIR="files-to-deploy/scripts"

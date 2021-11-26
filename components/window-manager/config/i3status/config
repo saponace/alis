@@ -1,0 +1,215 @@
+general {
+  interval = 1
+}
+
+order += "static_string i3lock"
+order += "static_string screenshot"
+order += "static_string wallpaper"
+order += "hueshift"
+order += "rate_counter"
+order += 'net_rate'
+order += 'group diskdata'
+order += 'group cpu'
+order += 'lm_sensors'
+order += 'group ram'
+order += 'xrandr'
+order += 'group wifi'
+order += 'whatismyip'
+order += 'arch_updates'
+order += 'backlight'
+order += 'volume_status'
+order += 'do_not_disturb'
+order += 'battery_level'
+order += 'external_script date'
+order += 'clock'
+order += 'keyboard_locks'
+
+
+static_string wallpaper {
+  format = ""
+  on_click 1 = "exec generate-wallpaper"
+}
+static_string screenshot {
+  format = ""
+  on_click 1 = "exec --no-startup-id echo /tmp/screenshot-$(date +%Y-%m-%d)-${RANDOM}.png | xargs -I '{}' scrot '{}' && notify-send 'Screenshot' 'Screenshot taken'"
+}
+
+static_string i3lock {
+  format = ""
+  on_click 1 = "exec --no-startup-id lock-screen"
+}
+
+hueshift {
+  format = ""
+}
+
+rate_counter {
+  color_running = darkorange
+  color_stopped = darkorange
+  icon2 = ''
+  format = '{icon2} {hours}h{mins}min{secs}s'
+}
+
+net_rate {
+  color = palegreen
+  icon_up = ''
+  icon_down = ''
+  format = "{icon_down}{up} - {icon_up}{down}"
+  precision = 0
+}
+
+group diskdata {
+  button_prev = 0
+  button_next = 1
+  color = orchid
+  diskdata space {
+    icon2 = ''
+    disk = '/dev/mapper/root'
+    format = '{icon2}  {free}/{total_space} GB'
+    format_space = '{value:.0f}'
+  }
+  diskdata IO {
+    icon2 = ''
+    disk = '/dev/mapper/root'
+    format = '{icon2}  read:{read} - write:{write}'
+  }
+}
+
+group cpu {
+  color = springgreen
+  button_prev = 0
+  button_next = 1
+  sysdata {
+    cache_timeout = 1
+    icon2 = ''
+    format = '{icon2}  {cpu_usage:.0f}%'
+  }
+  conky {
+    format = '{top name 1} {top cpu 1}%'
+  }
+}
+
+lm_sensors {
+    color = bisque
+    format_chip = '{format_sensor}'
+    format_sensor = '[\?if=name=core_0 CPU1: ]'
+    format_sensor += '[\?if=name=core_1   CPU2: ]'
+    format_sensor += '[\?color=auto.input {input}°C]'
+    sensors = ['core*']
+s}
+
+group ram {
+  color = salmon
+  button_next = 1
+  button_prev = 0
+  sysdata {
+    icon2 = ''
+    cache_timeout = 1
+    format = '{icon2}  {mem_used_percent:.0f}%'
+  }
+  conky {
+    format = '{top_mem name 1} {top_mem mem 1}%'
+  }
+}
+
+xrandr {
+  color_good = yellowgreen
+  color_degraded = yellowgreen
+  color_bad = yellowgreen
+  color = yellowgreen
+}
+
+group wifi {
+  color_good = deeppink
+  color_degraded = deeppink
+  color_bad = deeppink
+  button_next = 1
+  button_prev = 0
+
+  wifi brief {
+    icon2 = ''
+    cache_timeout = -1
+    signal_bad = 0
+    bitrate_bad = 0
+    bitrate_degraded = 0
+    format = '{icon2}  {ssid}'
+  }
+  wifi detailed {
+    icon2 = ''
+    cache_timeout = -1
+    signal_bad = 0
+    bitrate_bad = 0
+    bitrate_degraded = 0
+    format = '{icon2}  {signal_percent}  -  {ip}'
+  }
+}
+
+whatismyip {
+  button_toggle = false
+  color_good = rebeccapurple
+  color_degraded = rebeccapurple
+  color_bad = rebeccapurple
+  icon2 = ''
+  format = '{icon2}  {ip}'
+  url_geo = 'https://ifconfig.co/json'
+}
+
+arch_updates {
+  color = thistle
+  icon2 = ''
+  format = '{icon2} {pacman} (AUR: {aur})'
+}
+
+backlight {
+  color = orchid
+  icon2 = '☼'
+  brightness_delta = 10
+  low_tune_threshold = 10
+  command = 'light'
+  format = '\?color=#ef9bd5 {icon2}  {level}%'
+  on_udev_backlight = 'refresh_and_freeze'
+}
+
+volume_status {
+  icon_volume = ''
+  icon_mute = ''
+  command = 'pactl'
+  format = '{icon_volume} {percentage}%'
+  format_muted = '{icon_mute} 0%'
+  thresholds = [(0, 'bad'), (1, 'good'), (101, 'degraded')]
+  on_udev_sound = 'refresh'
+}
+
+do_not_disturb {
+  color = lightgreen
+  format = 'Notifications [\?if=state  ON|OFF]'
+}
+
+battery_level{
+  color = orange
+  blocks = ""
+  charging_character = ""
+  format = " {percent} {icon} {time_remaining}"
+  measurement_mode = 'acpi'
+  cache_timeout = 5
+}
+
+external_script date {
+  color = skyblue
+  icon2 = ''
+  cache_timeout = 60
+  script_path = 'date +"%a, %d %b"'
+  format = '{icon2}  {output}'
+  on_click 1 = 'exec gsimplecal'
+}
+
+clock {
+  color = slateblue
+  icon2 = ''
+  format_time = '{icon2}  {name} - %H:%M   '
+}
+
+keyboard_locks {
+  color = blue
+  format = '[\?if=num_lock&color=yellowgreen NUM|\?color=firebrick NUM]'
+}

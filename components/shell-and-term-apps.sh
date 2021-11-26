@@ -5,9 +5,6 @@
 
 # Terminal emulator
     ${INSTALL} xterm
-   # Link configuration files
-       create_link ${HOMEDIR_DOTFILES_SOURCE}/.Xresources ${USER_HOMEDIR_DOTFILES_DESTINATION}
-       create_link ${HOMEDIR_DOTFILES_SOURCE}/.Xresources ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
 
 # Shell
     ${INSTALL} zsh

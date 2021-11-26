@@ -7,14 +7,14 @@
     ${INSTALL} slim
     sudo systemctl enable slim.service
     # Link config files
-        create_link ${ADDITIONAL_CONFIG_FILES_DIR}/slim/slim.conf /etc/
-        create_link ${ADDITIONAL_CONFIG_FILES_DIR}/slim/slim-minimal/ /usr/share/slim/themes/
+        create_link components/window-manager/config/slim/slim.conf /etc/
+        create_link components/window-manager/config/slim/slim-minimal/ /usr/share/slim/themes/
 
 # Windows manager
     ${INSTALL} i3-wm
     # Application launcher (rofi is a program launcher and window selector. Calls dmenu to start programs)
         ${INSTALL} rofi dmenu
-        create_link components/window-manager/config/rofi/config.rasi ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config/rofi
+        create_link components/window-manager/config/rofi ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
     # Status bar
         ${INSTALL} py3status
     # py3status dependencies
@@ -39,9 +39,9 @@
         # Get WiFi status
             ${INSTALL} iw
         # Link py3status configuration files
-            create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+            create_link components/window-manager/config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
         # Link i3 configuration files
-            create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/i3 ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+            create_link components/window-manager/config/i3 ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
     # Set background wallpaper
         ${INSTALL} feh
 
@@ -59,7 +59,11 @@
 # Notifications daemon
     ${INSTALL} dunst
     # Link configuration files
-       create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/dunst ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+        create_link components/window-manager/config/dunst ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
 
 # System initialisation
-    create_link ${HOMEDIR_DOTFILES_SOURCE}/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
+    create_link components/window-manager/config/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
+
+# Basic system appearance
+    create_link components/window-manager/config/.Xresources ${USER_HOMEDIR_DOTFILES_DESTINATION}
+    create_link components/window-manager/config/.Xresources ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
