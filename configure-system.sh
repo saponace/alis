@@ -55,7 +55,7 @@ function compile_manual_actions (){
 source common-functions.sh
 
 
-install_component aur-helper
+install_component package-manager
 install_component networking
 install_component vpn-client
 install_component core
