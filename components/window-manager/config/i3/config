@@ -23,7 +23,7 @@
 
     # Start rofi (Program launcher and windows selector)
         bindsym $mod+w exec --no-startup-id rofi -show window
-        bindsym $mod+space exec --no-startup-id rofi -drun
+        bindsym $mod+space exec --no-startup-id rofi -show drun
 
     # Open dropdown terminal
        exec uxterm -name scratchpad
