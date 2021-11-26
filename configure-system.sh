@@ -44,22 +44,6 @@ function install_component (){
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
 
-function enable_networking (){
-  echo "Enabling networking ..."
-  sudo dhcpcd
-  while [ "$var1" != "end" ]
-  do
-      pingtime=$(ping -w 1 google.com | grep ttl)
-      if [ "$pingtime" = "" ]
-      then
-          sleep 2
-      else
-          break
-      fi
-  done
-  echo "Done !"
-}
-
 # Fetch lines that are flagged "MANUAL-TODO" in every file of the repository, and copy them in a file
 function compile_manual_actions (){
   filename="manual-configuration-instructions.txt"
@@ -70,8 +54,6 @@ function compile_manual_actions (){
 
 source common-functions.sh
 
-
-enable_networking
 
 install_component aur-helper
 install_component networking

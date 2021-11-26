@@ -11,6 +11,8 @@ TODO: installation steps
 ```
 
 ### Execute auto-confguration
+
+Make sure the machine is connected to the internet via a wired connection, and run the following:
 ```
 # cd alis
 # ./configure-system.sh
