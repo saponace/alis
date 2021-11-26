@@ -14,18 +14,18 @@
     # For root
         sudo chsh -s /bin/zsh root
    # Link configuration files
-      create_link ${HOMEDIR_DOTFILES_SOURCE}/.zshrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
-      create_link ${HOMEDIR_DOTFILES_SOURCE}/.zshrc ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
-      create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/zsh ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
-      create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/zsh ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
+      create_link ${DOTFILES_SOURCE}/homedir/.zshrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
+      create_link ${DOTFILES_SOURCE}/homedir/.zshrc ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
+      create_link ${DOTFILES_SOURCE}/homedir/.config/zsh ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+      create_link ${DOTFILES_SOURCE}/homedir/.config/zsh ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
 
 # ls improved
    ${INSTALL} lsd
 # Terminal multiplexer
     ${INSTALL} tmux
     # Link configuration files
-       create_link ${HOMEDIR_DOTFILES_SOURCE}/.tmux.conf ${USER_HOMEDIR_DOTFILES_DESTINATION}
-       create_link ${HOMEDIR_DOTFILES_SOURCE}/.tmux.conf ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
+       create_link ${DOTFILES_SOURCE}/homedir/.tmux.conf ${USER_HOMEDIR_DOTFILES_DESTINATION}
+       create_link ${DOTFILES_SOURCE}/homedir/.tmux.conf ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
 # Text editor
     ${INSTALL} vim
 # Neovim, improved version of vim
@@ -34,8 +34,8 @@
     # Ctags, tags index generating. Used by nvim plugin Tagbar
         ${INSTALL} tagbar
    # Link configuration files
-      create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
-      create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
+      create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+      create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
    # Install nvim plugins
       echo "Installling neovim plugins ..."
       nvim -E +PlugInstall +qall > /dev/null
