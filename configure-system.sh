@@ -5,7 +5,6 @@
 
 INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
-CONFIG_FILE_PATH="./alis.config"
 LOG_FILE="./alis.log"
 
 
@@ -16,14 +15,6 @@ while true; do
   kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
 done &
 
-
-
-if [ ! -f "${CONFIG_FILE_PATH}" ]
-then
-  echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
-  exit 1
-fi
-source ${CONFIG_FILE_PATH}
 
 USERNAME=$(whoami)
 HOMEDIR_DOTFILES_SOURCE="dotfiles/homedir"
