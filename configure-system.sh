@@ -58,7 +58,6 @@ source common-functions.sh
 install_component package-manager
 install_component networking
 install_component vpn-client
-install_component core
 install_component dev
 install_component utils
 install_component display
