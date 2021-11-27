@@ -53,7 +53,7 @@
 
 
     # Lockscreen
-        bindsym Control+Mod1+l exec lock-screen
+        bindsym Control+Mod1+l exec i3exit lock
 
 
 #----- Volume control (killall force reloading the status bar)

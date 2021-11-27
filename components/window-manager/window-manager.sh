@@ -1,5 +1,5 @@
 #-------------------------------------------------
-# Install window manager, login manager and lock-screen
+# configure window manager and desktop environment
 #-------------------------------------------------
 
 
@@ -38,16 +38,6 @@
     # Set background wallpaper
         ${INSTALL} feh
 
-
-# Lock screen (take a screenshot, blur it and put it as the lock screen background)
-    # Lock screen
-    ${INSTALL} i3lock
-    # Screenshot utility (take a screenshot of the active view)
-        ${INSTALL} scrot
-    # Image modifier, used to lock blur the screenshot
-        ${INSTALL} imagemagick
-    # Custom lock-screen script
-        create_link components/window-manager/scripts/lock-screen /usr/local/bin
 
 # System initialisation
     create_link components/window-manager/config/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
