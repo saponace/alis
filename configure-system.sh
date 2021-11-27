@@ -59,7 +59,7 @@ install_component package-manager
 install_component networking
 install_component vpn-client
 install_component dev
-install_component utils
+install_component cli-utils
 install_component display
 install_component window-manager
 install_component hardware-drivers
