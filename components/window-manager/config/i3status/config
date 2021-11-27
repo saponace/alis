@@ -33,10 +33,6 @@ static_string screenshot {
   on_click 1 = "exec --no-startup-id echo /tmp/screenshot-$(date +%Y-%m-%d)-${RANDOM}.png | xargs -I '{}' scrot '{}' && notify-send 'Screenshot' 'Screenshot taken'"
 }
 
-hueshift {
-  format = ""
-}
-
 rate_counter {
   color_running = darkorange
   color_stopped = darkorange
