@@ -2,7 +2,6 @@ general {
   interval = 1
 }
 
-order += "static_string i3lock"
 order += "static_string screenshot"
 order += "static_string wallpaper"
 order += "hueshift"
@@ -32,11 +31,6 @@ static_string wallpaper {
 static_string screenshot {
   format = ""
   on_click 1 = "exec --no-startup-id echo /tmp/screenshot-$(date +%Y-%m-%d)-${RANDOM}.png | xargs -I '{}' scrot '{}' && notify-send 'Screenshot' 'Screenshot taken'"
-}
-
-static_string i3lock {
-  format = ""
-  on_click 1 = "exec --no-startup-id lock-screen"
 }
 
 hueshift {
