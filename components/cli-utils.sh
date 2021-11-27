@@ -1,5 +1,5 @@
 #-------------------------------------------------
-# Install utilities
+# Command line utilities
 #-------------------------------------------------
 
 
@@ -22,7 +22,7 @@
     # List open files by given process
         ${INSTALL} lsof
     # System monitor tool
-        ${install} glances
+        ${install} bashtop
 
 # Filesystems and mounting
     # Android metia transfert protocol
@@ -39,7 +39,5 @@
         ${INSTALL} ssh
     # Mount distant directories over ssh
         ${INSTALL} sshfs
-    # Rfkill, to turn on and off wireless interfaces
-        ${INSTALL} rfkill
     # Access X clipboard from shell
         ${INSTALL} xclip
