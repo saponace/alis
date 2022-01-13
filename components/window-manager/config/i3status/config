@@ -63,7 +63,7 @@ whatismyip {
 
 arch_updates {
   color = thistle
-  icon2 = ''
+  icon2 = ''
   format = '{icon2} {pacman} (AUR: {aur})'
 }
 
