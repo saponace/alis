@@ -4,102 +4,13 @@
 #----- Font
     font pango:Inconsolata-g, Sans Mono 8
 
-# Hide titlebars when windows created, but allow toogling titlebars
+# Hide titlebars and windows borders
     for_window [class="^.*"] border pixel 0
-    bindsym $mod+a [class="^.*"] border toggle
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier $mod
 
-
-#----- Open apps
-    # Start a terminal
-        bindsym $mod+Return exec uxterm
-    # Start chrome
-        bindsym $mod+x exec google-chrome-stable
-
-    # Start rofi (Program launcher and windows selector)
-        bindsym $mod+w exec --no-startup-id rofi -show window
-        bindsym $mod+space exec --no-startup-id rofi -show drun
-
-    # Open dropdown terminal
-       exec uxterm -name scratchpad
-       #for_window [instance="scratchpad"] floating enable; resize grow left 300; resize grow right 300; resize grow down 150; resize grow up 100; move scratchpad;
-       #for_window [instance="scratchpad"] floating enable; move scratchpad;  floating_minimum_size 100 x 100; floating_maximum 100 x 100;
-       for_window [instance="scratchpad"] floating enable;
-       for_window [instance="scratchpad"] floating_minimum_size 100 x 100
-       for_window [instance="scratchpad"] floating_maximum 100 x 100;
-       for_window [instance="scratchpad"] move scratchpad;
-       bindsym $mod+z scratchpad show
-
-
-
-
-
-
-
-
-
-
-#----- Exiting, restarting, reloading
-    # reload the configuration file
-        bindsym $mod+Shift+c reload
-    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-        bindsym $mod+Shift+r restart
-
-
-
-    # Lockscreen
-        bindsym Control+Mod1+l exec i3exit lock
-
-
-#----- Volume control (killall force reloading the status bar)
-    bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute && killall -SIGUSR1 py3status"
-    bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute && killall -SIGUSR1 py3status"
-    bindsym XF86AudioMute exec "amixer -q set Master toggle && killall -SIGUSR1 py3status"
-
-#----- Brightness control (killall force reloading the status bar)
-    bindsym XF86MonBrightnessUp exec "light -A 10 && killall -SIGUSR1 py3status"
-    bindsym XF86MonBrightnessDown exec "light -U 10 && killall -SIGUSR1 py3status"
-
-#----- Send signal to status bar when hitting keys
-    bindsym --release Num_Lock exec killall -SIGUSR1 py3status
-    bindsym --release Caps_Lock exec killall -SIGUSR1 py3status
-
-
-#----- Colors
-    client.focused          #3F8AC2 #096BAA #999999 #00DA8E
-    client.focused_inactive #333333 #5F676A #ffffff #484e50
-    client.unfocused        #333333 #424242 #888888 #292d2e
-    client.urgent           #C10004 #900000 #ffffff #900000
-
-
-
-
-#----- Windows Resising
-    # Resize focused window
-        bindsym $mod+r mode "resize"
-
-    mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-    }
-
-
-
-
-
-
-
-
-
-# py3status to display i3status content
+# Configure status bar
     bar {
         font pango:Inconsolata-g, sans-mono, FontAwesome 8
         status_command py3status --dbus-notify
@@ -113,7 +24,67 @@
 
 
 
-#----- Windows navigation
+#----- Apps shortcuts
+    # Start a terminal
+        bindsym $mod+Return exec i3-sensible-terminal
+    # Start chrome
+        bindsym $mod+x exec google-chrome-stable
+
+    # Show application launcher
+        bindsym $mod+w exec --no-startup-id rofi -show window
+    # Show window switcher
+        bindsym $mod+space exec --no-startup-id rofi -show drun
+
+
+
+#----- i3 management
+    # restart i3
+        bindsym $mod+Shift+r restart
+    # Lockscreen
+        bindsym Control+Mod1+l exec i3exit lock
+
+
+
+#----- Send signals
+    # Volume control (killall force reloading the status bar)
+        bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute && killall -SIGUSR1 py3status"
+        bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute && killall -SIGUSR1 py3status"
+        bindsym XF86AudioMute exec "amixer -q set Master toggle && killall -SIGUSR1 py3status"
+    # Brightness control (killall force reloading the status bar)
+        bindsym XF86MonBrightnessUp exec "light -A 10 && killall -SIGUSR1 py3status"
+        bindsym XF86MonBrightnessDown exec "light -U 10 && killall -SIGUSR1 py3status"
+    # Caps lock and verr num
+        bindsym --release Num_Lock exec killall -SIGUSR1 py3status
+        bindsym --release Caps_Lock exec killall -SIGUSR1 py3status
+
+
+
+#----- Colors
+    client.focused          #3F8AC2 #096BAA #999999 #00DA8E
+    client.focused_inactive #333333 #5F676A #ffffff #484e50
+    client.unfocused        #333333 #424242 #888888 #292d2e
+    client.urgent           #C10004 #900000 #ffffff #900000
+
+
+
+#----- Window resising
+    # Resize focused window
+    bindsym $mod+r mode "resize"
+
+    mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # Exit resize mode
+            bindsym Return mode "default"
+            bindsym Escape mode "default"
+    }
+
+
+
+#----- Window navigation
     # Change windows focus
         bindsym $mod+h focus left
         bindsym $mod+j focus down
@@ -140,7 +111,6 @@
         bindsym $mod+f fullscreen
     # Toggle tiling / floating
         bindsym $mod+Shift+space floating toggle
-
 
 
 
