@@ -39,6 +39,7 @@
         ${INSTALL} feh
 
 
+
 # System initialisation
     create_link components/window-manager/config/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
     # Link script to initialize user session (called from .xinitrc)

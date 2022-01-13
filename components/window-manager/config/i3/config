@@ -51,8 +51,8 @@
         bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute && killall -SIGUSR1 py3status"
         bindsym XF86AudioMute exec "amixer -q set Master toggle && killall -SIGUSR1 py3status"
     # Brightness control (killall force reloading the status bar)
-        bindsym XF86MonBrightnessUp exec "light -A 10 && killall -SIGUSR1 py3status"
-        bindsym XF86MonBrightnessDown exec "light -U 10 && killall -SIGUSR1 py3status"
+        bindsym XF86MonBrightnessUp exec "brightnessctl --exponent=5 set +10% && killall -SIGUSR1 py3status"
+        bindsym XF86MonBrightnessDown exec "brightnessctl --exponent=5 set 10%- && killall -SIGUSR1 py3status"
     # Caps lock and verr num
         bindsym --release Num_Lock exec killall -SIGUSR1 py3status
         bindsym --release Caps_Lock exec killall -SIGUSR1 py3status

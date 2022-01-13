@@ -8,6 +8,9 @@
 # Touchpad drivers
     ${INSTALL} xf86-input-synaptics
 # Brightness control (backlight)
-    ${INSTALL} light
+    # Used to get brightness percenage from i3status
+        ${INSTALL} light
+    # Used to set brightness percenage from i3 key binding
+        ${INSTALL} brightnessctl
     # Allow user to set brightness
-    sudo usermod -a -G video ${USERNAME}
+        sudo usermod -a -G video ${USERNAME}
