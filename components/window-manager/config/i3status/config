@@ -99,6 +99,7 @@ battery_level{
   format = " {percent} {icon} {time_remaining}"
   measurement_mode = 'acpi'
   cache_timeout = 5
+  battery_id = 'all'
 }
 
 external_script date {
