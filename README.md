@@ -1,8 +1,10 @@
 # Follow these steps to install a new Manjaro linux system
 
-## Download and install Manjaro-i3
+## Install Manjaro-i3
+Boot from a Manjaro live drive and run the installer.
 
-TODO: installation steps
+It is recommended to use BTRFS and enable filesystem encryption
+
 
 ## Install git and clone this repo
 ```
@@ -10,8 +12,8 @@ TODO: installation steps
 # git clone --recursive https://github.com/saponace/alis.git
 ```
 
-### Execute auto-confguration
 
+### Execute auto-confguration
 Make sure the machine is connected to the internet via a wired connection, and run the following:
 ```
 # cd alis
@@ -20,8 +22,9 @@ Make sure the machine is connected to the internet via a wired connection, and r
 
 The system will reboot into the fresh install.
 
+
 ### Manually finalize configuration of the system
-Log in as the user, and follow instructions in the file `~/alis/manual-configuration-instructions.txt`.
+Log in, and follow instructions in the file `~/alis/manual-configuration-instructions.txt`.
 
 This file can then safely be removed.
 
