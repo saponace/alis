@@ -52,7 +52,7 @@ function compile_manual_actions (){
 }
 
 
-source common-functions.sh
+source ./common-functions.sh
 
 
 install_component package-manager
