@@ -23,7 +23,7 @@ static_string wallpaper {
 
 static_string screenshot {
   format = ""
-  on_click 1 = "exec --no-startup-id echo /tmp/screenshot-$(date +%Y-%m-%d)-${RANDOM}.png | xargs -I '{}' scrot '{}' && notify-send 'Screenshot' 'Screenshot taken'"
+  on_click 1 = "exec --no-startup-id screenshot_path=/tmp/screenshot-$(date +%Y-%m-%d)-${RANDOM}.png && echo ${screenshot_path} | xargs -I '{}' scrot '{}' && notify-send 'Screenshot saved' ${screenshot_path} && unset screenshot_path"
 }
 
 group wifi {
