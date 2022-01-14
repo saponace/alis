@@ -13,6 +13,10 @@
         (sleep 10 ; pulseaudio --start) &
     # Notifications daemon
         (sleep 15 ; dunst) &
+    # Redshift
+        # Redshift needs a running geoclue agent to be able to query geoclue
+            /usr/lib/geoclue-2.0/demos/agent &
+        redshift-gtk &
 
 #----- Tray icons
     # Network manager with tray icon
