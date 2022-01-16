@@ -20,6 +20,7 @@ USERNAME=$(whoami)
 DOTFILES_SOURCE="dotfiles"
 USER_HOMEDIR_DOTFILES_DESTINATION="/home/${USERNAME}"
 ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
+SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
 
 
 # Execute a component file

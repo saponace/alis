@@ -12,8 +12,7 @@
     sudo systemctl enable laptop-mode.service
 
 # Link systemd service and timer units
-    systemd_units_directory=/etc/systemd/system/
-    create_link components/battery-management/battery-level.service ${systemd_units_directory}
-    create_link components/battery-management/battery-level.timer ${systemd_units_directory}
+    create_link components/battery-management/battery-level.service ${SYSTEMD_UNITS_DIRECTORY}
+    create_link components/battery-management/battery-level.timer ${SYSTEMD_UNITS_DIRECTORY}
 # Enable the timer
     sudo systemctl enable battery-level.timer

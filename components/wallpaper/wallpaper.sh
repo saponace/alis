@@ -20,9 +20,8 @@ create_link components/wallpaper/generate-wallpaper /bin
 
 
 # Link systemd service and timer units
-    systemd_units_directory=/etc/systemd/system/
-    sudo cp components/wallpaper/generate-wallpaper.service ${systemd_units_directory}
-    create_link components/wallpaper/generate-wallpaper.timer ${systemd_units_directory}
+    sudo cp components/wallpaper/generate-wallpaper.service ${SYSTEMD_UNITS_DIRECTORY}
+    create_link components/wallpaper/generate-wallpaper.timer ${SYSTEMD_UNITS_DIRECTORY}
     # Set username in the service
         sudo sed -i 's/%USERNAME%/'${USERNAME}'/g' ${systemd_units_directory}/generate-wallpaper.service
 # Enable the timer
