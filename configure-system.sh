@@ -72,6 +72,7 @@ install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
 install_component wallpaper
+install_component gdrive-sync
 
 compile_manual_actions
 
