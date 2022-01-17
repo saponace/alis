@@ -2,6 +2,8 @@
 # Display management
 #-------------------------------------------------
 
+# Arrange monitors layout
+    ${INSTALL} arandr autorandr
 
 # Color shifter, reduce blue emission
     ${INSTALL} redshift
