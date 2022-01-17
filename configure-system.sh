@@ -68,12 +68,13 @@ install_component desktop-apps
 install_component virtualisation
 install_component battery-management
 install_component font-and-gtk-theme
-install_component sound
+install_component audio
 install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
 install_component wallpaper
 install_component gdrive-sync
+install_component music-production
 
 compile_manual_actions
 
