@@ -17,8 +17,11 @@ It is recommended to use BTRFS and enable filesystem encryption
 Make sure the machine is connected to the internet via a wired connection, and run the following:
 ```
 # cd alis
-# ./configure-system.sh
+# ./configure-system.sh HARDWARE
 ```
+Where `HARDWARE` is one of the following:
+* `generic` (default value): does not configure anything specific
+* `t550`: Thinkpad T550 laptop
 
 The system will reboot into the fresh install.
 
