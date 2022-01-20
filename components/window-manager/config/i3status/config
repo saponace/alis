@@ -3,7 +3,6 @@ general {
 }
 
 order += "static_string screenshot"
-order += "static_string wallpaper"
 order += 'group wifi'
 order += 'whatismyip'
 order += 'arch_updates'
@@ -15,11 +14,6 @@ order += 'external_script date'
 order += 'clock'
 order += 'keyboard_locks'
 
-
-static_string wallpaper {
-  format = ""
-  on_click 1 = "exec generate-wallpaper"
-}
 
 static_string screenshot {
   format = ""
