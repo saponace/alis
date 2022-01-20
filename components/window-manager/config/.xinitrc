@@ -3,4 +3,4 @@
 # Load Xterm config file
     xrdb .Xresources
 # Window manager
-    exec i3 
+    exec i3
