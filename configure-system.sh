@@ -72,7 +72,6 @@ install_component audio
 install_component file-manager
 install_component machine-specific
 install_component shell-and-term-apps
-install_component wallpaper
 install_component gdrive-sync
 install_component music-production
 
