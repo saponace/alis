@@ -3,14 +3,7 @@
 #-------------------------------------------------
 
 
-# Graphic drivers
+# Video drivers
+    # TODO: Check if xf86-video-vesa is reauired, and if other open source drivers should be installed on a
+    # per-target-hardware basis
     ${INSTALL} mesa xf86-video-vesa
-# Touchpad drivers
-    ${INSTALL} xf86-input-synaptics
-# Brightness control (backlight)
-    # Used to get brightness percenage from i3status
-        ${INSTALL} light
-    # Used to set brightness percenage from i3 key binding
-        ${INSTALL} brightnessctl
-    # Allow user to set brightness
-        sudo usermod -a -G video ${USERNAME}
