@@ -5,6 +5,8 @@
 
 # Install DAW and dependencies
     ${INSTALL} bitwig-studio
+    # MANUAL-TODO: Dev: Log in with Bitwig account in app "Bitwig Studio"
+
 
 # Add user to audio group
     sudo usermod -a -G audio ${USERNAME}

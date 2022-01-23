@@ -15,10 +15,12 @@
     ${INSTALL} evince
 # Music streaming
     ${INSTALL} spotify
+    # MANUAL-TODO: Desktop-apps: Log in with Spotify account in app "Spotify"
 # Budget manager
     ${INSTALL} homebank
 # Skype
     ${INSTALL} skypeforlinux-stable-bin
+    # MANUAL-TODO: Desktop apps: Log in with Skype account in app "Skype"
 # Transmission (torrenting) daemon (and CLI and web-UI)
     ${INSTALL} transmission-cli
     transmission-remote-cli --create-config   # Make transmission detect config file
