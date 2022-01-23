@@ -1,7 +1,7 @@
 # Follow these steps to install a new Manjaro linux system
 
 ## Install Manjaro-i3
-Boot from a Manjaro live drive and run the installer.
+Boot from a Manjaro-i3 live drive and run the installer.
 
 It is recommended to use BTRFS and enable filesystem encryption
 
