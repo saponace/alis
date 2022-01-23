@@ -3,7 +3,7 @@
 
 #----- Daemons
     # Auto USB mounter
-        /usr/bin/udiskie -s &
+        udiskie -s &
     # Disale touchpad while typing on keyboard
         syndaemon -i 0.2 -d &
     # Redshift
