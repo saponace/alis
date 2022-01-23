@@ -68,13 +68,6 @@ function install_component (){
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
 
-# Fetch lines that are flagged "MANUAL-TODO" in every file of the repository, and copy them in a file
-function compile_manual_actions (){
-  filename="manual-configuration-instructions.txt"
-  echo -e "Follow these instructions to finalize configuration of the system:\n" > ${filename}
-  grep --no-filename -r "^# MANUAL-TODO" . | sed 's/# MANUAL-TODO: \(.*\)/* \1\n/' >> ${filename}
-}
-
 
 check_target_hardware_exists
 
@@ -100,8 +93,6 @@ install_component music-production
 if ! is_target_hardware_generic; then
   install_component ${hardware_specific_script_partial_path}
 fi
-
-compile_manual_actions
 
 sync
 sudo reboot

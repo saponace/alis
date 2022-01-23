@@ -12,4 +12,4 @@
     ${INSTALL} maven
 # IDEs
     ${INSTALL} intellij-idea-ultimate-edition
-    # MANUAL-TODO: Dev: Log in with Jetbrains account in app "Intellij IDEA"
+    create_manual_todo 'Development' 'Log in with Jetbrains account in app "Intellij IDEA"'
