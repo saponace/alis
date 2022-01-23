@@ -1,6 +1,3 @@
-[submodule "files-to-deploy/scripts/external-scripts"]
-	path = files-to-deploy/scripts/external-scripts
-	url = https://github.com/saponace/misc-scripts.git
-[submodule "files-to-deploy/config-files"]
-	path = files-to-deploy/config-files
-	url = https://github.com/saponace/dotfiles.git
+[submodule "dotfiles"]
+	path = dotfiles
+	url = git@github.com:saponace/dotfiles.git

@@ -9,8 +9,8 @@
 # Install ranger (file explorer)
     ${INSTALL} ranger
     # Link configuration files
-       create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/ranger ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
-       create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/ranger ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
+       create_link ${DOTFILES_SOURCE}/homedir/.config/ranger ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+       create_link ${DOTFILES_SOURCE}/homedir/.config/ranger ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
     # Install ranger dependencies
         ${INSTALL} libcaca  # ASCII image preview
         ${INSTALL} highlight  # Syntax highlight in preview

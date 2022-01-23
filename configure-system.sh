@@ -1,11 +1,11 @@
 #-------------------------------------------------
-# Main script. Calls all the subscripts
+# Main script. Calls all the subscripts to initialize the system
+# $1: target hardware
 #-------------------------------------------------
 
 
 INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
-CONFIG_FILE_PATH="./alis.config"
 LOG_FILE="./alis.log"
 
 
@@ -17,28 +17,34 @@ while true; do
 done &
 
 
+target_hardware=${1:-"generic"}
+hardware_specific_script_partial_path="hardware-specific/${target_hardware}/${target_hardware}"
 
-if [ ! -f "${CONFIG_FILE_PATH}" ]
-then
-  echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
-  exit 1
-fi
-source ${CONFIG_FILE_PATH}
-
-# Check if the user that calls this script is the same user as defined in the config file
-if [[ ${username} != ${USER} ]];
-then
-  echo "Error: you are not ${username} as defined in the config file. Please execute this script as ${username}."
-  exit 1
-fi
-
-ADDITIONAL_CONFIG_FILES_DIR="files-to-deploy/config-files/other"
-HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
-USER_HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
+USERNAME=$(whoami)
+DOTFILES_SOURCE="dotfiles"
+USER_HOMEDIR_DOTFILES_DESTINATION="/home/${USERNAME}"
 ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
-SCRIPTS_DIR="files-to-deploy/scripts"
-EXTERNAL_SCRIPTS_DIR="files-to-deploy/scripts/external-scripts"
+SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
 
+
+# Check if target hardware is "generic". Retuns true if it is, false otherway
+function is_target_hardware_generic (){
+  if [ "${target_hardware}" == "generic" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+
+
+# Check if the target hardware has a configuration script and exit the script if it does not exist
+function check_target_hardware_exists (){
+  if ! is_target_hardware_generic && [ ! -f "${COMPONENTS_PATH}/${hardware_specific_script_partial_path}.sh" ]; then
+    echo "Specified hardware \"${target_hardware}\" is not handled. Please use one of the hardwares in ${COMPONENTS_PATH}/hardware-specific"
+    exit -1
+  fi
+}
 
 # Execute a component file
 # $1: The name of the component (without the ending ".sh")
@@ -62,58 +68,31 @@ function install_component (){
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
 
-function enable_networking (){
-  echo "Enabling networking ..."
-  sudo dhcpcd
-  while [ "$var1" != "end" ]
-  do
-      pingtime=$(ping -w 1 google.com | grep ttl)
-      if [ "$pingtime" = "" ]
-      then
-          sleep 2
-      else
-          break
-      fi
-  done
-  echo "Done !"
-}
 
-# Fetch lines that are flagged "MANUAL-TODO" in every file of the repository, and copy them in a file
-function compile_manual_actions (){
-  filename="manual-configuration-instructions.txt"
-  echo -e "Follow these instructions to finalize configuration of the system:\n" > ${filename}
-  grep --no-filename -r "^# MANUAL-TODO" . | sed 's/# MANUAL-TODO: \(.*\)/* \1\n/' >> ${filename}
-}
+check_target_hardware_exists
 
+source ./common-functions.sh
 
-source common-functions.sh
-
-
-enable_networking
-
-install_component aur-helper
+install_component package-manager
 install_component networking
 install_component vpn-client
-install_component core
 install_component dev
-install_component utils
+install_component cli-utils
 install_component display
 install_component window-manager
 install_component hardware-drivers
 install_component desktop-apps
 install_component virtualisation
-install_component battery-management
 install_component font-and-gtk-theme
-install_component sound
+install_component audio
 install_component file-manager
-install_component machine-specific
 install_component shell-and-term-apps
-install_component wallpaper
+install_component gdrive-sync
+install_component music-production
 
-# Link script to initialize user session
-  create_link ${SCRIPTS_DIR}/finalize-startup /bin
-
-compile_manual_actions
+if ! is_target_hardware_generic; then
+  install_component ${hardware_specific_script_partial_path}
+fi
 
 sync
 sudo reboot

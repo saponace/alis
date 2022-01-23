@@ -1,5 +1,5 @@
-files-to-deploy/config-files/homedir/.config/ranger/*
-files-to-deploy/!config-files/homedir/.config/ranger/rc.conf
+dotfiles/homedir/.config/ranger/*
+!dotfiles/homedir/.config/ranger/rc.conf
 
-files-to-deploy/config-files/homedir/.config/nvim/plugged
-files-to-deploy/config-files/homedir/.config/nvim/.netrwhist
+dotfiles/homedir/.config/nvim/plugged
+dotfiles/homedir/.config/nvim/.netrwhist

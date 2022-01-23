@@ -1,18 +1,17 @@
 #!/bin/bash
-
-
-# Startup script to call at OS startup
-
+# Execute all commands and daemons after X session started
 
 #----- Daemons
     # Auto USB mounter
-        /usr/bin/udiskie -s &
+        udiskie -s &
     # Disale touchpad while typing on keyboard
         syndaemon -i 0.2 -d &
-    # Start pulseaudio
-        (sleep 10 ; pulseaudio --start) &
-    # Notifications daemon
-        (sleep 15 ; dunst) &
+    # Redshift
+        # Redshift needs a running geoclue agent to be able to query geoclue
+            /usr/lib/geoclue-2.0/demos/agent &
+        redshift-gtk &
+    # Start VPN client and open VPN connection
+        (sleep 10 ; /opt/piavpn/bin/pia-client) &
 
 #----- Tray icons
     # Network manager with tray icon
@@ -26,5 +25,3 @@
     # Disable screen blanking when inactive
         xset -dpms & xset s noblank & xset s off
 
-# Initiate VPN connection
-    (sleep 20 ; /opt/piavpn/bin/pia-client) &
