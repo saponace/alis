@@ -13,6 +13,6 @@
     sudo systemctl enable gdrive-sync.service
 
 
-# MANUAL-TODO: Create a connection to Google drive: `rclone config`. Name the remote "gdrive"
+# MANUAL-TODO: Google Drive sync: Create a connection to Google drive: `rclone config`. Name the remote "gdrive"
 
 # TODO: When rclone version 1.58 is released, use `rclone bisync` instead of `rclone mount`
