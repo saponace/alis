@@ -1,3 +1,4 @@
+_Warning: This branch (dedicated to archlinux) has been abandoned. The most up to date developments are branch master_
 
 # Follow these steps to install a new arch linux system
 
