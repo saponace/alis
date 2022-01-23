@@ -5,7 +5,7 @@
 
 # Install DAW and dependencies
     ${INSTALL} bitwig-studio
-    # MANUAL-TODO: Dev: Log in with Bitwig account in app "Bitwig Studio"
+    create_manual_todo 'Music production' 'Log in with Bitwig account in app "Bitwig Studio"'
 
 
 # Add user to audio group

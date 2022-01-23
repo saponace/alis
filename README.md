@@ -27,7 +27,7 @@ The system will reboot into the fresh install.
 
 
 ### Manually finalize configuration of the system
-Log in, and follow instructions in the file `~/alis/manual-configuration-instructions.txt`.
+Log in, and follow instructions in `~/alis/manual-configuration-instructions.txt`.
 
 This file can then safely be removed.
 
