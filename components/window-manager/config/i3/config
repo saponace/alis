@@ -28,7 +28,7 @@
     # Start a terminal
         bindsym $mod+Return exec i3-sensible-terminal
     # Start chrome
-        bindsym $mod+x exec google-chrome-stable
+        bindsym $mod+x exec brave
 
     # Show application launcher
         bindsym $mod+w exec --no-startup-id rofi -show window
