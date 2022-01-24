@@ -83,7 +83,7 @@ volume_status {
 
 do_not_disturb {
   color = lightgreen
-  format = '[\?if=state |]'
+  format = '[\?if=state&color=firebrick |]'
 }
 
 battery_level{
