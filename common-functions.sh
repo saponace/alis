@@ -2,6 +2,12 @@
 # Common functions
 #-------------------------------------------------
 
+
+function install_package() {
+    echo "Installing package(s): $@"
+    yay -S --noconfirm --needed $@
+}
+
 # Link a file and make sur the directory of the link exists
 # $1: The source file/directory
 # $2: The target directory

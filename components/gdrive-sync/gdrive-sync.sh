@@ -6,7 +6,7 @@
 
 
 # Install sync utility
-    ${INSTALL} rclone
+    install_package rclone
 
 # Auto-mount the distant directrory at startup
     sudo chown ${USERNAME}:${USERNAME} /mnt

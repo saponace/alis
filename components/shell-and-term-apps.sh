@@ -4,10 +4,10 @@
 
 
 # Terminal emulator
-    ${INSTALL} xterm
+    install_package xterm
 
 # Shell
-    ${INSTALL} zsh
+    install_package zsh
 # Set default shell
     # For the user
         sudo chsh -s /bin/zsh ${USER}
@@ -20,19 +20,19 @@
       create_link ${DOTFILES_SOURCE}/homedir/.config/zsh ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
 
 # ls improved
-   ${INSTALL} lsd
+   install_package lsd
 # Terminal multiplexer
-    ${INSTALL} tmux
+    install_package tmux
     # Link configuration files
        create_link ${DOTFILES_SOURCE}/homedir/.tmux.conf ${USER_HOMEDIR_DOTFILES_DESTINATION}
        create_link ${DOTFILES_SOURCE}/homedir/.tmux.conf ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
 # Text editor
-    ${INSTALL} vim
+    install_package vim
 # Neovim, improved version of vim
-    ${INSTALL} neovim
-    ${INSTALL} python-neovim
+    install_package neovim
+    install_package python-neovim
     # Ctags, tags index generating. Used by nvim plugin Tagbar
-        ${INSTALL} tagbar
+        install_package tagbar
    # Link configuration files
       create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
       create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config

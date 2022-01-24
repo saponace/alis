@@ -5,39 +5,38 @@
 
 # Files management
     # Distant and local copy
-        ${INSTALL} rsync
+        install_package rsync
     # Delete duplicates files
-        ${INSTALL} rmlint
+        install_package rmlint
     # Downloads from the web
-        ${INSTALL} wget
+        install_package wget
     # Zip
-        ${INSTALL} unzip
-        ${INSTALL} zip
+        install_package zip unzip
     # Rar
-        ${INSTALL} unrar
+        install_package unrar
 
 # Monitoring and discovery
     # Network discovery tool
-        ${INSTALL} nmap
+        install_package nmap
     # List open files by given process
-        ${INSTALL} lsof
+        install_package lsof
     # System monitor tool
-        ${install} bashtop
+        install_package bashtop
 
 # Filesystems and mounting
     # Android metia transfert protocol
-        ${install} jmtpfs
+        install_package jmtpfs
     # Auto-mounting media disks daemon
-        ${INSTALL} udiskie
+        install_package udiskie
     # NTFS filesystems management
-        ${INSTALL} ntfs-3g
+        install_package ntfs-3g
 
 # Misc
     # Git
-        ${INSTALL} git
+        install_package git
     # SSH client and server
-        ${INSTALL} ssh
+        install_package ssh
     # Mount distant directories over ssh
-        ${INSTALL} sshfs
+        install_package sshfs
     # Access X clipboard from shell
-        ${INSTALL} xclip
+        install_package xclip

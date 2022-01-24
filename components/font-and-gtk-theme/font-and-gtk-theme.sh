@@ -4,11 +4,11 @@
 
 
 # Install fonts
-    ${INSTALL} inconsolata-g     # Default font
-    ${INSTALL} ttf-dejavu     # Fallback font
+    install_package inconsolata-g     # Default font
+    install_package ttf-dejavu     # Fallback font
 
 # Install arc gtk theme
-    ${INSTALL} arc-gtk-theme
+    install_package arc-gtk-theme
 
     # Link GTK configuration files
         create_link components/font-and-gtk-theme/config/gtk-3.0 ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config

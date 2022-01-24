@@ -4,23 +4,23 @@
 
 
 # Web browsers
-    ${INSTALL} brave-bin
+    install_package brave-bin
 # Media player
-    ${INSTALL} vlc
+    install_package vlc
 # Disks management (useful for S.M.A.R.T. tests)
-    ${INSTALL} gnome-disk-utility
+    install_package gnome-disk-utility
 # Image viewer
-    ${INSTALL} sxiv
+    install_package sxiv
 # PDF viewer
-    ${INSTALL} evince
+    install_package evince
 # Music streaming
-    ${INSTALL} spotify
+    install_package spotify
     create_manual_todo 'Music streaming' 'Log in with Spotify account in app "Spotify"'
 # Budget manager
-    ${INSTALL} homebank
+    install_package homebank
 # Skype
-    ${INSTALL} skypeforlinux-stable-bin
+    install_package skypeforlinux-stable-bin
     create_manual_todo 'Skype' 'Log in with Skype account in app "Skype"'
 # Transmission (torrenting) daemon (and CLI and web-UI)
-    ${INSTALL} transmission-cli
+    install_package transmission-cli
     transmission-remote-cli --create-config   # Make transmission detect config file

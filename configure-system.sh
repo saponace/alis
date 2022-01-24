@@ -4,7 +4,6 @@
 #-------------------------------------------------
 
 
-INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
 LOG_FILE="./alis.log"
 

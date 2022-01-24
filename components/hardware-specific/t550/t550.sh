@@ -5,19 +5,19 @@
 
 # Generic to all laptops
     # Battery state indicator
-        ${INSTALL} acpi
+        install_package acpi
     # Suspend tool
-        ${INSTALL} pm-utils
+        install_package pm-utils
     # Change behavior of system depending on AC state
-        ${INSTALL} laptop-mode-tools
+        install_package laptop-mode-tools
         sudo systemctl enable laptop-mode.service
     # Touchpad drivers
-        ${INSTALL} xf86-input-synaptics
+        install_package xf86-input-synaptics
     # Brightness control (backlight)
         # Used to get brightness percenage from i3status
-            ${INSTALL} light
+            install_package light
         # Used to set brightness percenage from i3 key binding
-            ${INSTALL} brightnessctl
+            install_package brightnessctl
         # Allow user to set brightness
             sudo usermod -a -G video ${USERNAME}
     # Enable laptop-only configuration configurations
@@ -26,7 +26,7 @@
 
 # Specific to thinkpads
     # Start and stop charging batteries at given values (preserve batteries health on the long term)
-        ${INSTALL} tp-battery-mode
+        install_package tp-battery-mode
         sudo systemctl enable tp-battery-mode
 
 # Specific to laptops with two batteries (get combined battery level and notify if it is too low)

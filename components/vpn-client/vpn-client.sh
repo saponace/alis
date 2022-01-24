@@ -4,7 +4,7 @@
 
 
 # Install package
-    ${INSTALL} piavpn-bin
+    install_package piavpn-bin
 
 # Configure
     sudo systemctl enable piavpn.service

@@ -4,14 +4,14 @@
 
 
 # Sound server
-    ${INSTALL} pipewire wireplumber
+    install_package pipewire wireplumber
 # GUI patchbay
-    ${INSTALL} helvum
+    install_package helvum
 # Alsa connector
-    ${INSTALL} pipewire-alsa
+    install_package pipewire-alsa
 # Compatibility layer for pulseaudio applications
-    ${INSTALL} pipewire-pulse
+    install_package pipewire-pulse
 # Compatibility layer for JACK applications
-    ${INSTALL} pipewire-jack
+    install_package pipewire-jack
     # Avoid having to explicitely start Jack applications with a specific pipewire flag
-        ${INSTALL} pipewire-jack-dropin
+        install_package pipewire-jack-dropin

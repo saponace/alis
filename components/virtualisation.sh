@@ -4,8 +4,8 @@
 
 
 # Install virtualbox
-    ${INSTALL} virtualbox
+    install_package virtualbox
 # Install required modules for virtualbox
-    ${INSTALL} virtualbox-host-dkms
+    install_package virtualbox-host-dkms
 # Enable virtualbox driver module
     sudo modprobe vboxdrv

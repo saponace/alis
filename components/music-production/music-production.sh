@@ -4,7 +4,7 @@
 
 
 # Install DAW and dependencies
-    ${INSTALL} bitwig-studio
+    install_package bitwig-studio
     create_manual_todo 'Music production' 'Log in with Bitwig account in app "Bitwig Studio"'
 
 

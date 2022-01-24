@@ -7,36 +7,36 @@
     # i3 configuration files
         create_link components/window-manager/config/i3 ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
     # Application launcher (rofi is a program launcher and window selector
-        ${INSTALL} rofi
+        install_package rofi
         create_link components/window-manager/config/rofi ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
     # Status bar
-        ${INSTALL} py3status
+        install_package py3status
     # py3status
         # py3status configuration files
             create_link components/window-manager/config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
         # py3status dependencies
             # Fontawesome for the icons in the status bar
-                ${INSTALL} otf-font-awesome
+                install_package otf-font-awesome
             # Proc stats, for mpstat, proc stats
-                ${INSTALL} sysstat
+                install_package sysstat
             # Communication interprotocoles i3wm, dependence de config py3status
-                ${INSTALL} i3ipc-python
+                install_package i3ipc-python
             # Send notifications via dbus
-                ${INSTALL} python-pydbus
+                install_package python-pydbus
             # Get metrics for cpu & ram
-                ${INSTALL} conky
+                install_package conky
             # Timezones for date
-                ${INSTALL} python-tzlocal
+                install_package python-tzlocal
             # Simple calendar
-                ${INSTALL} gsimplecal
+                install_package gsimplecal
             # Pacman checkupdates tool
-                ${INSTALL} pacman-contrib
+                install_package pacman-contrib
             # Get metrics from internal sensors
-                ${INSTALL} lm_sensors
+                install_package lm_sensors
             # Get WiFi status
-                ${INSTALL} iw
+                install_package iw
     # Set background wallpaper
-        ${INSTALL} feh
+        install_package feh
 
 
 
