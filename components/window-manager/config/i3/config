@@ -12,7 +12,7 @@
 
 # Configure status bar
     bar {
-        font pango:Inconsolata-g, sans-mono, FontAwesome 8
+        font pango:Inconsolata-g, FontAwesome 8
         status_command py3status --dbus-notify
         position top
         modifier $mod
@@ -31,9 +31,9 @@
         bindsym $mod+x exec brave
 
     # Show application launcher
-        bindsym $mod+w exec --no-startup-id rofi -show window
+        bindsym $mod+w exec --no-startup-id rofi -show window -theme window
     # Show window switcher
-        bindsym $mod+space exec --no-startup-id rofi -show drun
+        bindsym $mod+space exec --no-startup-id rofi -show drun -theme drun
 
 
 

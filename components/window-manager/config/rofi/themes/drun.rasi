@@ -1,0 +1,20 @@
+@import "common"
+
+listview {
+    columns:                        5;
+    lines:                          3;
+}
+
+element {
+    orientation:                    vertical;
+    padding:                        2% 0% 2% 0%;
+}
+
+element-icon {
+    size:                           64px;
+}
+
+element-text {
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+}
