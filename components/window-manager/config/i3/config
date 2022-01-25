@@ -5,7 +5,8 @@
     font pango:Inconsolata-g, Sans Mono 8
 
 # Hide titlebars and windows borders
-    for_window [class="^.*"] border pixel 0
+    default_border pixel 1
+    default_floating_border normal
 
 # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier $mod
@@ -20,7 +21,6 @@
             background #111111
         }
     }
-
 
 
 
@@ -83,6 +83,14 @@
             bindsym Return mode "default"
             bindsym Escape mode "default"
     }
+
+
+
+#----- i3-gaps configuration
+    gaps inner 8
+    gaps outer -2
+    smart_gaps on
+    smart_borders on
 
 
 

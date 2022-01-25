@@ -4,6 +4,9 @@
 
 
 # Windows manager
+    # Window manager
+        install_package i3-gaps
+
     # i3 configuration files
         create_link components/window-manager/config/i3 ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
     # Application launcher (rofi is a program launcher and window selector
