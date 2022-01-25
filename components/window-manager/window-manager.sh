@@ -39,6 +39,11 @@
         install_package feh
 
 
+# Handle screen lock after timeout, sleep, hibernate, etc.
+    install_package xss-lock
+
+
+
 
 # System initialisation
     create_link components/window-manager/config/.xinitrc ${USER_HOMEDIR_DOTFILES_DESTINATION}

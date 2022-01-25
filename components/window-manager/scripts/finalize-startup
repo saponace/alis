@@ -12,6 +12,10 @@
         redshift-gtk &
     # Start VPN client and open VPN connection
         (sleep 10 ; /opt/piavpn/bin/pia-client) &
+    # Use i3lock as screen saver
+        xss-lock --transfer-sleep-lock -- i3exit lock &
+    # Turn off screen (and lock screen) after 10 min of inactivity
+        xset dpms 0 0 600
 
 #----- Tray icons
     # Network manager with tray icon
