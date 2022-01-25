@@ -46,4 +46,4 @@
         create_link components/window-manager/scripts/finalize-startup /usr/local/bin
 
 # Enable blur for transparent backgrounds in picom
-    sed -i 's/# blur-background =.*/blur-background = true/g' ${USER_HOMEDIR_DOTFILES_DESTINATION}/picom.conf
+    sed -i 's/# blur-background =.*/blur-background = true/g' ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config/picom.conf
