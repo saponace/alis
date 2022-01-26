@@ -13,12 +13,19 @@
 
 # Configure status bar
     bar {
-        font pango:Inconsolata-g, FontAwesome 8
+        tray_output primary
+        font pango:Inconsolata-g, FontAwesome 9
         status_command py3status --dbus-notify
         position top
         modifier $mod
         colors{
-            background #111111
+            background #222D31
+
+            focused_workspace  #F9FAF9 #16a085 #292F34
+            active_workspace   #595B5B #353836 #FDF6E3
+            inactive_workspace #595B5B #222D31 #EEE8D5
+            binding_mode       #16a085 #2C2C2C #F9FAF9
+            urgent_workspace   #16a085 #FDF6E3 #E5201D
         }
     }
 
@@ -79,11 +86,13 @@
 
 
 #----- Colors
-    client.focused          #3F8AC2 #096BAA #999999 #00DA8E
-    client.focused_inactive #333333 #5F676A #ffffff #484e50
-    client.unfocused        #333333 #424242 #888888 #292d2e
-    client.urgent           #C10004 #900000 #ffffff #900000
+    client.focused          #556064 #556064 #80FFF9 #FDF6E3
+    client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+    client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+    client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+    client.placeholder      #000000 #0c0c0c #ffffff #000000
 
+    client.background       #2B2C2B
 
 
 #----- Window resising
