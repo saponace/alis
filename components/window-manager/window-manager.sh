@@ -43,6 +43,9 @@
     # Windows compositor
         install_package picom
         create_link components/window-manager/config/picom.conf ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+    # Conky: System information on the desktop
+        install_package conky
+        create_link components/window-manager/config/conky ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
 
 
 # Handle screen lock after timeout, sleep, hibernate, etc.
