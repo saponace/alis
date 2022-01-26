@@ -40,6 +40,9 @@
                 install_package iw
     # Set background wallpaper
         install_package nitrogen
+    # Windows compositor
+        install_package picom
+        create_link components/window-manager/config/picom.conf ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
 
 
 # Handle screen lock after timeout, sleep, hibernate, etc.
@@ -53,5 +56,3 @@
     # Link script to initialize user session (called from .xinitrc)
         create_link components/window-manager/scripts/finalize-startup /usr/local/bin
 
-# Enable blur for transparent backgrounds in picom
-    sed -i 's/# blur-background =.*/blur-background = true/g' ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config/picom.conf

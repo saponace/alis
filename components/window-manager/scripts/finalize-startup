@@ -16,8 +16,8 @@
         xss-lock --transfer-sleep-lock -- i3exit lock &
     # Turn off screen (and lock screen) after 10 min of inactivity
         xset dpms 0 0 600
-    # Restore last wallpaper set
-        nitrogen --restore
+    # Restore wallpaper configuration and start windows compositor
+        nitrogen --restore; sleep 1; picom -b
 
 #----- Tray icons
     # Network manager with tray icon
