@@ -18,6 +18,8 @@
         xset dpms 0 0 600
     # Restore wallpaper configuration and start windows compositor
         nitrogen --restore; sleep 1; picom -b
+    # Bluetooth
+        dbus-update-activation-environment DISPLAY; blueman-applet &
 
 #----- Tray icons
     # Network manager with tray icon
