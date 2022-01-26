@@ -39,7 +39,7 @@
             # Get WiFi status
                 install_package iw
     # Set background wallpaper
-        install_package feh
+        install_package nitrogen
 
 
 # Handle screen lock after timeout, sleep, hibernate, etc.

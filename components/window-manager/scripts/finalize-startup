@@ -16,6 +16,8 @@
         xss-lock --transfer-sleep-lock -- i3exit lock &
     # Turn off screen (and lock screen) after 10 min of inactivity
         xset dpms 0 0 600
+    # Restore last wallpaper set
+        nitrogen --restore
 
 #----- Tray icons
     # Network manager with tray icon
