@@ -10,8 +10,6 @@
         # Redshift needs a running geoclue agent to be able to query geoclue
             /usr/lib/geoclue-2.0/demos/agent &
         redshift-gtk &
-    # Start VPN client and open VPN connection
-        (sleep 10 ; /opt/piavpn/bin/pia-client) &
     # Use i3lock as screen saver
         xss-lock --transfer-sleep-lock -- i3exit lock &
     # Turn off screen (and lock screen) after 10 min of inactivity
