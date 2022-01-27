@@ -52,6 +52,10 @@
     install_package xss-lock
 
 
+# Display manager (assume LightDM installed and configured by manjaro-i3)
+    # execute .xinitrc instead of i3 straight
+        install_package xinit-xsession
+        sudo sed -i "s/user-session=i3/user-session=xinitrc/g" /etc/lightdm/lightdm.conf
 
 
 # System initialisation
