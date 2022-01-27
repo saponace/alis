@@ -12,4 +12,5 @@
     install_package bluez blueman
     sudo systemctl enable bluetooth.service
 
-
+# Touchpad drivers (unused on platforms without a touchpad, but cqlled qnywqys in script "finalze-startup")
+    install_package xf86-input-synaptics
