@@ -8,13 +8,14 @@
     background:                     #00000000;
     background-alt:              	#00000000;
     background-bar:                 #f2f2f215;
+    background-window:              #00000088;
     foreground:                     #f2f2f2EE;
     accent:			            	#3DAEE966;
 }
 
 window {
     transparency:                   "real";
-    background-color:               @background;
+    background-color:               @background-window;
     text-color:                     @foreground;
 	border:							0px;
 	border-color:					@border;
