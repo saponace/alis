@@ -22,6 +22,9 @@
         dbus-update-activation-environment DISPLAY; blueman-applet &
     # Conky: System informations on the desktop
         conky &
+    # Restore previously set monitor layout on this hardware. Warning: causes screen to turn black for a second after it
+    # initially turns on, to then set the qppropriqte layout
+        autorandr --change
 
 #----- Tray icons
     # Network manager with tray icon
