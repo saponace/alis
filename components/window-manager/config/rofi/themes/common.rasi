@@ -92,7 +92,7 @@ element-text {
     background-color: 				@background;
     text-color:       				inherit;
     expand:                         true;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
+    margin:                         0.7% 0.5% -0.5% 0.5%;
 }
 
 element selected {
