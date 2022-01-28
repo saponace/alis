@@ -18,22 +18,16 @@
         # py3status configuration files
             create_link components/window-manager/config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
         # py3status dependencies
-            # Proc stats, for mpstat, proc stats
-                install_package sysstat
             # Communication interprotocoles i3wm, dependence de config py3status
                 install_package i3ipc-python
             # Send notifications via dbus
                 install_package python-pydbus
-            # Get metrics for cpu & ram
-                install_package conky
             # Timezones for date
-                install_package python-tzlocal
+                install_package python-tzlocal python-pytz
             # Simple calendar
                 install_package gsimplecal
             # Pacman checkupdates tool
                 install_package pacman-contrib
-            # Get metrics from internal sensors
-                install_package lm_sensors
             # Get WiFi status
                 install_package iw
     # Set background wallpaper
