@@ -33,7 +33,7 @@
 
 #----- Apps shortcuts
     # Start a terminal
-        bindsym $mod+Return exec i3-sensible-terminal
+        bindsym $mod+Return exec uxterm
     # Start chrome
         bindsym $mod+x exec brave
 
