@@ -18,8 +18,6 @@
         # py3status configuration files
             create_link components/window-manager/config/i3status ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
         # py3status dependencies
-            # Fontawesome for icons (in status bar, app launcher, etc.
-                install_package otf-font-awesome
             # Proc stats, for mpstat, proc stats
                 install_package sysstat
             # Communication interprotocoles i3wm, dependence de config py3status

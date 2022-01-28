@@ -2,7 +2,7 @@
     set $mod Mod4
 
 #----- Font
-    font pango:Inconsolata-g, Sans Mono 8
+    font pango:DejaVu Sans 9
 
 # Hide titlebars and windows borders
     default_border pixel 1
@@ -14,7 +14,7 @@
 # Configure status bar
     bar {
         tray_output primary
-        font pango:Inconsolata-g, FontAwesome 9
+        font pango: DejaVu Sans, FontAwesome 9
         status_command py3status --dbus-notify
         position top
         modifier $mod

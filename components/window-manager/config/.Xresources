@@ -3,7 +3,7 @@ Uxterm*dynamicColors: true
 Uxterm*utf8: 1
 Uxterm*locale: true
 Uxterm*saveLines: 4096
-UXTerm*faceName: Inconsolata\-g
+UXTerm*faceName: DejaVu Sans Mono
 UXTerm*faceSize: 9
 
 

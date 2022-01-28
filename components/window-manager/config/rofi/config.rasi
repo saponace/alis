@@ -1,7 +1,7 @@
 @theme "drun"  // Default theme
 
 configuration {
-	font:							"Inconsolata-g 10";
+	font:							"DejaVu Sans 9";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
 

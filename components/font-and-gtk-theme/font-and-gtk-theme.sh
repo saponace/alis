@@ -4,8 +4,8 @@
 
 
 # Install fonts
-    install_package inconsolata-g     # Default font
-    install_package ttf-dejavu     # Fallback font
+    install_package ttf-dejavu
+    install_package otf-font-awesome  # Icons
 
 # Install arc gtk theme
     install_package arc-gtk-theme
