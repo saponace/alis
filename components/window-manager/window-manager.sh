@@ -40,6 +40,9 @@
         create_link components/window-manager/config/conky ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
 
 
+# Used in script finalize-startup to enable numpad at startup
+    install_package numlockx
+
 # Handle screen lock after timeout, sleep, hibernate, etc.
     install_package xss-lock
 
