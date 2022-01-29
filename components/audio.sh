@@ -15,5 +15,3 @@
     install_package pipewire-pulse
 # Compatibility layer for JACK applications
     install_package pipewire-jack
-    # Avoid having to explicitely start Jack applications with a specific pipewire flag
-        install_package pipewire-jack-dropin
