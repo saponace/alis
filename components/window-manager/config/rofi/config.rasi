@@ -1,17 +1,18 @@
 @theme "drun"  // Default theme
 
 configuration {
-	font:							"DejaVu Sans 9";
-    show-icons:                     true;
-	icon-theme: 					"Papirus";
+    font: "DejaVu Sans 9";
+    show-icons: true;
+    icon-theme: "Papirus";
 
-    display-drun: 					"";
-    drun-display-format:            "{name}";
+    display-drun: "";
+    drun-display-format: "{name}";
 
-    display-window: 				"";
-    window-format:					"{c} <span weight='light'>{t}</span>";
+    display-window: "";
+    window-format: "{c} <span weight='light'>{t}</span>";
 
-    disable-history:                false;
-	sidebar-mode: 					false;
-	terminal: "uxterm";
+    disable-history: false;
+    sidebar-mode: false;
+
+    terminal: "uxterm";
 }

@@ -1,15 +1,15 @@
 @import "common"
 
 listview {
-    columns:                        1;
-    lines:                          6;
+    columns: 1;
+    lines: 6;
 }
 
 element {
-    orientation:                    horizontal;
-    padding:                        1% 0% 1% 0%;
+    orientation: horizontal;
+    padding: 1% 0% 1% 0%;
 }
 
 element-icon {
-    size:                           32px;
+    size: 32px;
 }
