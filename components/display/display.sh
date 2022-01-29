@@ -3,7 +3,7 @@
 #-------------------------------------------------
 
 # Multi-monitor layout management
-    install_package xrandr arandr autorandr
+    install_package arandr autorandr
 
 # Color shifter, reduce blue emission
     install_package redshift

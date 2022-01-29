@@ -35,7 +35,7 @@
     # Git
         install_package git
     # SSH client and server
-        install_package ssh
+        install_package openssh
     # Mount distant directories over ssh
         install_package sshfs
     # Access X clipboard from shell

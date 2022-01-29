@@ -32,7 +32,7 @@
     install_package neovim
     install_package python-neovim
     # Ctags, tags index generating. Used by nvim plugin Tagbar
-        install_package tagbar
+        install_package ctags
    # Link configuration files
       create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
       create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
