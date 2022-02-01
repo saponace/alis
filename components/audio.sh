@@ -7,8 +7,11 @@
     install_package pipewire wireplumber
 # GUI patchbay
     install_package helvum
-# Tray icon
-    install_package pasystray
+    # Pulseaudio (used as a controller for pipewire)
+    # Tray icon
+        install_package pasystray
+    # Mixer
+        install_package pavucontrol
 # Alsa connector
     install_package pipewire-alsa
 # Compatibility layer for pulseaudio applications
