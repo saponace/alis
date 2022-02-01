@@ -30,6 +30,8 @@
                 install_package pacman-contrib
             # Get WiFi status
                 install_package iw
+            # Show currnet volume status
+                install_package pamixer
     # Set background wallpaper
         install_package nitrogen
     # Windows compositor

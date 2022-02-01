@@ -71,8 +71,8 @@
 
 #----- Send signals
     # Volume control (killall force reloading the status bar)
-        bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute && killall -SIGUSR1 py3status"
-        bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute && killall -SIGUSR1 py3status"
+        bindsym XF86AudioRaiseVolume exec "amixer -q -D pulse set Master 5%+ unmute && killall -SIGUSR1 py3status"
+        bindsym XF86AudioLowerVolume exec "amixer -q -D pulse set Master 5%- unmute && killall -SIGUSR1 py3status"
         bindsym XF86AudioMute exec "amixer -q set Master toggle && killall -SIGUSR1 py3status"
     # Brightness control (killall force reloading the status bar)
     # These should only be enabled for laptops, but it doesn't hurt to keep them when not on a laptop
