@@ -7,6 +7,9 @@
 # Sync packages and force refresh of package database
     sudo pacman -Syy
 
+# Update all installed packages
+    sudo pacman -Syu
+
 # Configure pacman
     sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
     sudo sed -i 's/#ParallelDownloads.*/ParallelDownloads = 5/g' /etc/pacman.conf
