@@ -4,7 +4,7 @@
 
 
 # Web browsers
-    install_package brave-bin
+    install_package brave-browser
 # Media player
     install_package vlc
 # Disks management (useful for S.M.A.R.T. tests)
