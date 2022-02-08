@@ -14,15 +14,16 @@
         xss-lock --transfer-sleep-lock -- i3exit lock &
     # Turn off screen (and lock screen) after 10 min of inactivity
         xset dpms 0 0 600
+    # Restore previously set monitor layout on this hardware. Warning: causes screen to turn black for a second after it
+    # initially turns on, to then set the appropriate layout
+        autorandr --change
     # Restore wallpaper configuration and start windows compositor
+    # Needs to be after autorandr
         nitrogen --restore; sleep 1; picom -b
     # Bluetooth
         dbus-update-activation-environment DISPLAY; blueman-applet &
     # Conky: System informations on the desktop
         conky &
-    # Restore previously set monitor layout on this hardware. Warning: causes screen to turn black for a second after it
-    # initially turns on, to then set the appropriate layout
-        autorandr --change
 
 #----- Tray icons
     # Network manager with tray icon
