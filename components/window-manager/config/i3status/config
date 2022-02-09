@@ -74,7 +74,7 @@ backlight {
 volume_status {
   icon_volume = ''
   icon_mute = ''
-  command = 'pactl'
+  command = 'pamixer'
   format = '{icon_volume} {percentage}%'
   format_muted = '{icon_mute} 0%'
   thresholds = [(0, 'bad'), (1, 'good'), (101, 'degraded')]
