@@ -89,6 +89,7 @@ install_component file-manager
 install_component shell-and-term-apps
 install_component gdrive-sync
 install_component music-production
+install_component gaming
 
 if ! is_target_hardware_generic; then
   install_component ${hardware_specific_script_partial_path}
