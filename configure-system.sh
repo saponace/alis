@@ -86,7 +86,7 @@ install_component virtualisation
 install_component font-and-gtk-theme
 install_component audio
 install_component file-manager
-install_component shell-and-term-apps
+install_component terminal-and-shell
 install_component gdrive-sync
 install_component music-production
 install_component gaming
