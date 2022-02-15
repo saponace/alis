@@ -72,8 +72,10 @@ check_target_hardware_exists
 
 source ./common-functions.sh
 
-install_component system
 install_component package-manager
+
+install_component system
+install_component filesystem
 install_component networking
 install_component vpn-client
 install_component dev
