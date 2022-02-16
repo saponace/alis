@@ -9,3 +9,6 @@
     # If not disabled; NetworkManager will set arbitrary DNS (notably ISP DNS)
         sudo su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
         create_link components/networking/config/resolv.conf /etc
+
+# Allow DNS resolution by Systemd sevices (or else services wouldn't be able to resolve domain names)
+    sudo systemctl enable systemd-resolved.service
