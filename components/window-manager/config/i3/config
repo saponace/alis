@@ -11,6 +11,9 @@
 # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier $mod
 
+# Focus workspace 1 at session load
+    exec --no-startup-id i3-msg -- workspace 1
+
 # Configure status bar
     bar {
         tray_output primary
