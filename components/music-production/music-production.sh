@@ -9,7 +9,7 @@
 
 # Configue bitwig desktop entry to start with pipewire jack bridge. This desktop file has to have the same name as the
 # one creatd in /usr/share/applications in order to override it
-    create_link components/music-production/config/com.bitwig.BitwigStudio.desktop ${USER_HOMEDIR_DOTFILES_DESTINATION}/.local/share/applications/
+    create_link components/music-production/config/com.bitwig.BitwigStudio.desktop ${USER_HOME}/.local/share/applications/
 
 # Add user to audio group
     sudo usermod -a -G audio ${USERNAME}

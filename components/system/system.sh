@@ -9,4 +9,4 @@
 
 
 # Windows-style international keyboard dead keys
-    create_link components/system/config/.XCompose ${USER_HOMEDIR_DOTFILES_DESTINATION}
+    create_link components/system/config/.XCompose ${USER_HOME}

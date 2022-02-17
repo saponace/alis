@@ -21,8 +21,8 @@
         # Allow user to set brightness
             sudo usermod -a -G video ${USERNAME}
     # Enable laptop-only configuration configurations
-        sed -i "s/# order += 'backlight'.*/order += 'backlight'/g" ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config/i3status/config
-        sed -i "s/# order += 'battery_level'.*/order += 'battery_level'/g" ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config/i3status/config
+        sed -i "s/# order += 'backlight'.*/order += 'backlight'/g" ${USER_HOME}/.config/i3status/config
+        sed -i "s/# order += 'battery_level'.*/order += 'battery_level'/g" ${USER_HOME}/.config/i3status/config
 
 # Specific to thinkpads
     # Start and stop charging batteries at given values (preserve batteries health on the long term)

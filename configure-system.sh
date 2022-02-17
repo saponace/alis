@@ -21,8 +21,8 @@ hardware_specific_script_partial_path="hardware-specific/${target_hardware}/${ta
 
 USERNAME=$(whoami)
 DOTFILES_SOURCE="dotfiles"
-USER_HOMEDIR_DOTFILES_DESTINATION="/home/${USERNAME}"
-ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
+USER_HOME="/home/${USERNAME}"
+ROOT_HOME="/root"
 SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
 
 

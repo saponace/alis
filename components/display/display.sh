@@ -7,4 +7,4 @@
 
 # Color shifter, reduce blue emission
     install_package redshift
-    create_link components/display/config/redshift.conf ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
+    create_link components/display/config/redshift.conf ${USER_HOME}/.config
