@@ -33,7 +33,7 @@
     # Get battery level script
         create_link components/hardware-specific/t550/scripts/battery-level /usr/local/bin
     # Link systemd service and timer units
-        create_link components/hardware-specific/t550/systemd-units/battery-level.service ${SYSTEMD_UNITS_DIRECTORY}
-        create_link components/hardware-specific/t550/systemd-units/battery-level.timer ${SYSTEMD_UNITS_DIRECTORY}
+        sudo cp components/hardware-specific/t550/systemd-units/battery-level.service ${SYSTEMD_UNITS_DIRECTORY}  # Copy instead of link since Systemd cannot read uints which are symbolic links accross partitions at startup
+        sudo cp components/hardware-specific/t550/systemd-units/battery-level.timer ${SYSTEMD_UNITS_DIRECTORY}  # Copy instead of link since Systemd cannot read uints which are symbolic links accross partitions at startup
     # Enable the timer
         sudo systemctl enable battery-level.timer
