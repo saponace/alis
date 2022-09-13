@@ -24,3 +24,5 @@
 # Transmission (torrenting) daemon (and CLI and web-UI)
     install_package transmission-cli
     transmission-remote-cli --create-config   # Make transmission detect config file
+# Solaar: Logitech devices manager
+    install_package solaar

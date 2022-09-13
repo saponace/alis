@@ -25,11 +25,13 @@
     # Conky: System informations on the desktop
         conky &
 
-#----- Tray icons
-    # Network manager with tray icon
+#----- Tray applications
+    # Network manager
         nm-applet 2>&1 /dev/null &
-    # Pulse audio tray icon
+    # Pulse audio
         pasystray &
+    # Solaar: Logitech devices manager
+        solaar --window hide &
 
 #----- Settings
     # Keybinding
