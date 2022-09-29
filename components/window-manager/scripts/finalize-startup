@@ -1,14 +1,9 @@
 #!/bin/bash
 # Execute all commands and daemons after X session started
 
-# Turn off screen (and lock screen) after 10 min of inactivity
-    xset dpms 0 0 600
 
 # Keybinding
     # Remap caps lock key to escape
         setxkbmap -option caps:escape
     # Kill (and restart) X11 with Ctrl+Alt+Backspace
         setxkbmap -option terminate:ctrl_alt_bksp
-# Disable screen blanking when inactive
-    xset -dpms & xset s noblank & xset s off
-

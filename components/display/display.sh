@@ -13,3 +13,7 @@
     install_package redshift
     create_link components/display/config/redshift.conf ${USER_HOME}/.config
     create_finalize_startup_entry "Adjust blue levels in screen output at night (Redshift needs a running geoclue agent to be able to query geoclue)" "/usr/lib/geoclue-2.0/demos/agent & redshift-gtk &"
+
+# Configure monitor behaviour
+    create_finalize_startup_entry "Turn off screen (and lock screen) after 10 min of inactivity" "xset dpms 0 0 600"
+    create_finalize_startup_entry "Disable screen blanking when inactive" "xset -dpms & xset s noblank & xset s off"
