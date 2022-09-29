@@ -1,46 +1,16 @@
 #!/bin/bash
 # Execute all commands and daemons after X session started
 
-#----- Daemons
-    # Auto USB mounter
-        udiskie -s &
-    # Disale touchpad while typing on keyboard
-        syndaemon -i 0.2 -d &
-    # Redshift
-        # Redshift needs a running geoclue agent to be able to query geoclue
-            /usr/lib/geoclue-2.0/demos/agent &
-        redshift-gtk &
-    # Use i3lock as screen saver
-        xss-lock --transfer-sleep-lock -- i3exit lock &
-    # Turn off screen (and lock screen) after 10 min of inactivity
-        xset dpms 0 0 600
-    # Restore previously set monitor layout on this hardware. Warning: causes screen to turn black for a second after it
-    # initially turns on, to then set the appropriate layout
-        autorandr --change
-    # Restore wallpaper configuration and start windows compositor
-    # Needs to be after autorandr
-        nitrogen --restore; sleep 1; picom -b
-    # Bluetooth
-        dbus-update-activation-environment DISPLAY; blueman-applet &
-    # Conky: System informations on the desktop
-        conky &
+# Disale touchpad while typing on keyboard
+    syndaemon -i 0.2 -d &
+# Turn off screen (and lock screen) after 10 min of inactivity
+    xset dpms 0 0 600
 
-#----- Tray applications
-    # Network manager
-        nm-applet 2>&1 /dev/null &
-    # Pulse audio
-        pasystray &
-    # Solaar: Logitech devices manager
-        solaar --window hide &
-
-#----- Settings
-    # Keybinding
-        # Remap caps lock key to escape
-            setxkbmap -option caps:escape
-        # Kill (and restart) X11 with Ctrl+Alt+Backspace
-            setxkbmap -option terminate:ctrl_alt_bksp
-    # Disable screen blanking when inactive
-        xset -dpms & xset s noblank & xset s off
-    # Enable numpad
-        numlockx
+# Keybinding
+    # Remap caps lock key to escape
+        setxkbmap -option caps:escape
+    # Kill (and restart) X11 with Ctrl+Alt+Backspace
+        setxkbmap -option terminate:ctrl_alt_bksp
+# Disable screen blanking when inactive
+    xset -dpms & xset s noblank & xset s off
 

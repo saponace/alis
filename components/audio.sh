@@ -10,6 +10,7 @@
     # Pulseaudio (used as a controller for pipewire)
     # Tray icon
         install_package pasystray
+        create_finalize_startup_entry "Pulse audio tray icon" "pasystray &"
     # Mixer
         install_package pavucontrol
 # Alsa connector

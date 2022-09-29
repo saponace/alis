@@ -31,3 +31,11 @@ function create_manual_todo (){
 
     echo "$1: $2" >> ${output_file}
 }
+
+# Append entry for the script "finalize_startup" in a temp file.
+# After alis is done executing, content of the temp file will be appended to finalize_startup
+# $1: Entry comment
+# $2: Entry command
+function create_finalize_startup_entry (){
+    echo -e "# $1\n    $2\n" >> ${FINALIZE_STARTUP_ENTRIES_TEMP_FILE}
+}

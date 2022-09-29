@@ -5,6 +5,5 @@
 
 # Solaar: Logitech devices manager
     install_package solaar
-    # Link configuration
-        create_link components/hardware-specific/logitech-mouse-keyboard/config/solaar ${USER_HOME}/.config
-
+    create_link components/hardware-specific/logitech-mouse-keyboard/config/solaar ${USER_HOME}/.config
+    create_finalize_startup_entry "Solaar (logitech devices manager) tray icon" "solaar --window hide &"

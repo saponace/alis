@@ -23,6 +23,7 @@ DOTFILES_SOURCE="dotfiles"
 USER_HOME="/home/${USERNAME}"
 ROOT_HOME="/root"
 SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
+FINALIZE_STARTUP_ENTRIES_TEMP_FILE="/tmp/finalize-startup-entries.sh"
 
 
 
@@ -73,7 +74,23 @@ function install_hardware_specific_components (){
   done
 }
 
+# Append all component-specific finalize_startup entries into a final script that will be linked and called from
+# .Xinitrc to initialize user session
+function deploy_finalize_startup_script (){
+  finalize_startup_base="${COMPONENTS_PATH}/window-manager/scripts/finalize-startup"
+  finalize_startup_result="/tmp/finalize-startup-result-dynamic.sh"
+  cat ${finalize_startup_base} > ${finalize_startup_result}
+  if [ -f "${FINALIZE_STARTUP_ENTRIES_TEMP_FILE}" ]; then
+    echo -e "\n" >> ${finalize_startup_result}
+    cat ${FINALIZE_STARTUP_ENTRIES_TEMP_FILE} >> ${finalize_startup_result}
+  fi
+  sudo mv ${finalize_startup_result} /usr/local/bin/finalize-startup
+}
 
+
+
+# Empty file collecting finalize-startup entries in case alis is executed multiple times (ensure no duplicates from previous runs)
+echo -n "" > ${FINALIZE_STARTUP_ENTRIES_TEMP_FILE}
 
 check_target_hardwares_exist
 
@@ -101,6 +118,8 @@ install_component music-production
 install_component gaming
 
 install_hardware_specific_components
+
+deploy_finalize_startup_script
 
 sync
 sudo reboot

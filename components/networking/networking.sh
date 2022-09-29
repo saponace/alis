@@ -12,3 +12,6 @@
 
 # Allow DNS resolution by Systemd sevices (or else services wouldn't be able to resolve domain names)
     sudo systemctl enable systemd-resolved.service
+
+# auto-start NetworkManager applet
+    create_finalize_startup_entry "Network manager applet tray icon" "nm-applet 2>&1 /dev/null &"

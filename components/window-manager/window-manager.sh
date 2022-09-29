@@ -34,19 +34,26 @@
                 install_package pamixer
     # Set background wallpaper
         install_package nitrogen
+        # Warning: nitrogen should be started AFTER autorandr. Make sure it is after autorandr in finalize-startup
+        # (autaorandr is injected in finalize-startup by component "display")
+        create_finalize_startup_entry "Restore wallpaper configuration and start windows compositor" "nitrogen --restore; sleep 1; picom -b"
     # Windows compositor
         install_package picom
         create_link components/window-manager/config/picom.conf ${USER_HOME}/.config
     # Conky: System information on the desktop
         install_package conky
         create_link components/window-manager/config/conky ${USER_HOME}/.config
+        create_finalize_startup_entry "Show system informations on the desktop" "conky &"
 
 
-# Used in script finalize-startup to enable numpad at startup
+# Enable numpad at startup
     install_package numlockx
+    create_finalize_startup_entry "Enable numpad" "numlockx"
+
 
 # Handle screen lock after timeout, sleep, hibernate, etc.
     install_package xss-lock
+    create_finalize_startup_entry "Use i3lock as a screen saver" "xss-lock --transfer-sleep-lock -- i3exit lock &"
 
 
 # Display manager (assume LightDM installed and configured by manjaro-i3)
@@ -58,6 +65,4 @@
 # System initialisation
     create_link components/window-manager/config/.xinitrc ${USER_HOME}
     create_link components/window-manager/config/.Xresources ${USER_HOME}
-    # Link script to initialize user session (called from .xinitrc)
-        create_link components/window-manager/scripts/finalize-startup /usr/local/bin
 

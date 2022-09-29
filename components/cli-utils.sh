@@ -28,6 +28,7 @@
         install_package jmtpfs
     # Auto-mounting media disks daemon
         install_package udiskie
+        create_finalize_startup_entry "Auto mount connected USB devices" "udiskie -s &"
     # NTFS filesystems management
         install_package ntfs-3g
 
