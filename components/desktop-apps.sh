@@ -22,5 +22,4 @@
     install_package skypeforlinux-stable-bin
     create_manual_todo 'Skype' 'Log in with Skype account in app "Skype"'
 # Transmission (torrenting) daemon (and CLI and web-UI)
-    install_package transmission-cli
-    transmission-remote-cli --create-config   # Make transmission detect config file
+    install_package transmission-cli transmission-remote-gtk
