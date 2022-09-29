@@ -21,7 +21,7 @@ Make sure the machine is connected to the internet via a wired connection, and r
 ```
 Where `_h1_, _h2_` are specific hardware components that need to be executed. Available hardwares:
 * `t550`: Thinkpad T550 laptop
-* `logitech-mouse-keyboard`: Logitech peripherals
+* `logitech-devices`: Logitech peripherals
 
 The system will reboot into the fresh install.
 
