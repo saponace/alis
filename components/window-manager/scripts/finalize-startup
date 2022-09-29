@@ -1,8 +1,6 @@
 #!/bin/bash
 # Execute all commands and daemons after X session started
 
-# Disale touchpad while typing on keyboard
-    syndaemon -i 0.2 -d &
 # Turn off screen (and lock screen) after 10 min of inactivity
     xset dpms 0 0 600
 
