@@ -85,6 +85,7 @@ function deploy_finalize_startup_script (){
     cat ${FINALIZE_STARTUP_ENTRIES_TEMP_FILE} >> ${finalize_startup_result}
   fi
   sudo mv ${finalize_startup_result} /usr/local/bin/finalize-startup
+  sudo chmod +x /usr/local/bin/finalize-startup
 }
 
 
