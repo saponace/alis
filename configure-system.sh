@@ -77,14 +77,13 @@ function install_hardware_specific_components (){
 # Append all component-specific finalize_startup entries into a final script that will be linked and called from
 # .Xinitrc to initialize user session
 function deploy_finalize_startup_script (){
-  finalize_startup_base="${COMPONENTS_PATH}/window-manager/scripts/finalize-startup"
-  finalize_startup_result="/tmp/finalize-startup-result-dynamic.sh"
-  cat ${finalize_startup_base} > ${finalize_startup_result}
+  finalize_startup_file="/tmp/finalize-startup.sh"
+  echo "#!/bin/bash" > ${finalize_startup_file}
   if [ -f "${FINALIZE_STARTUP_ENTRIES_TEMP_FILE}" ]; then
-    echo -e "\n" >> ${finalize_startup_result}
-    cat ${FINALIZE_STARTUP_ENTRIES_TEMP_FILE} >> ${finalize_startup_result}
+    echo -e "\n" >> ${finalize_startup_file}
+    cat ${FINALIZE_STARTUP_ENTRIES_TEMP_FILE} >> ${finalize_startup_file}
   fi
-  sudo mv ${finalize_startup_result} /usr/local/bin/finalize-startup
+  sudo mv ${finalize_startup_file} /usr/local/bin/finalize-startup
   sudo chmod +x /usr/local/bin/finalize-startup
 }
 

@@ -1,9 +1,0 @@
-#!/bin/bash
-# Execute all commands and daemons after X session started
-
-
-# Keybinding
-    # Remap caps lock key to escape
-        setxkbmap -option caps:escape
-    # Kill (and restart) X11 with Ctrl+Alt+Backspace
-        setxkbmap -option terminate:ctrl_alt_bksp
