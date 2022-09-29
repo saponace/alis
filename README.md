@@ -17,11 +17,11 @@ It is recommended to use BTRFS and enable filesystem encryption
 Make sure the machine is connected to the internet via a wired connection, and run the following:
 ```
 # cd alis
-# ./configure-system.sh HARDWARE
+# ./configure-system.sh _h1_ _h2_ ...
 ```
-Where `HARDWARE` is one of the following:
-* `generic` (default value): does not configure anything specific
+Where `_h1_, _h2_` are specific hardware components that need to be executed. Available hardwares:
 * `t550`: Thinkpad T550 laptop
+* `logitech-mouse-keyboard`: Logitech peripherals
 
 The system will reboot into the fresh install.
 

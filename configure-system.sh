@@ -16,8 +16,7 @@ while true; do
 done &
 
 
-target_hardware=${1:-"generic"}
-hardware_specific_script_partial_path="hardware-specific/${target_hardware}/${target_hardware}"
+target_hardwares=$@
 
 USERNAME=$(whoami)
 DOTFILES_SOURCE="dotfiles"
@@ -26,26 +25,8 @@ ROOT_HOME="/root"
 SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
 
 
-# Check if target hardware is "generic". Retuns true if it is, false otherway
-function is_target_hardware_generic (){
-  if [ "${target_hardware}" == "generic" ]; then
-    return 0
-  else
-    return 1
-  fi
-}
 
-
-
-# Check if the target hardware has a configuration script and exit the script if it does not exist
-function check_target_hardware_exists (){
-  if ! is_target_hardware_generic && [ ! -f "${COMPONENTS_PATH}/${hardware_specific_script_partial_path}.sh" ]; then
-    echo "Specified hardware \"${target_hardware}\" is not handled. Please use one of the hardwares in ${COMPONENTS_PATH}/hardware-specific"
-    exit -1
-  fi
-}
-
-# Execute a component file
+# Execute a component script
 # $1: The name of the component (without the ending ".sh")
 function install_component (){
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
@@ -67,8 +48,34 @@ function install_component (){
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
 
+# Get partial path of a hardware-specific script from its hardware name
+# $1: Name of the hardware
+function get_target_hardware_partial_path (){
+  echo "hardware-specific/$1/$1"
+}
 
-check_target_hardware_exists
+# Check if all specified target hardwares have a configuration script and exit the script if at least one does not exist
+function check_target_hardwares_exist (){
+  for target_hardware in ${target_hardwares}
+  do
+    if [ ! -f "${COMPONENTS_PATH}/$(get_target_hardware_partial_path ${target_hardware}).sh" ]; then
+      echo "Specified hardware \"${target_hardware}\" is not handled. Please use only the hardwares in ${COMPONENTS_PATH}/hardware-specific"
+      exit -1
+    fi
+  done
+}
+
+# Execute all hardware specific scripts
+function install_hardware_specific_components (){
+  for target_hardware in ${target_hardwares}
+  do
+    install_component $(get_target_hardware_partial_path ${target_hardware})
+  done
+}
+
+
+
+check_target_hardwares_exist
 
 source ./common-functions.sh
 
@@ -93,9 +100,7 @@ install_component gdrive-sync
 install_component music-production
 install_component gaming
 
-if ! is_target_hardware_generic; then
-  install_component ${hardware_specific_script_partial_path}
-fi
+install_hardware_specific_components
 
 sync
 sudo reboot
