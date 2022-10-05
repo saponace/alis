@@ -19,7 +19,7 @@
     disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
     sidetone, equalizer]
   _modelId: B03400000000
-  _sensitive: {dpi: false, smart-shift: false, thumb-scroll-mode: false}
+  _sensitive: {thumb-scroll-invert: false, thumb-scroll-mode: false}
   _serial: 8189A9E1
   _unitId: 8189A9E1
   _wpid: B034
@@ -32,6 +32,6 @@
   hires-smooth-resolution: false
   mouse-gestures: 0
   reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 195: 195, 196: 196}
-  smart-shift: 18
+  smart-shift: 10
   thumb-scroll-invert: false
-  thumb-scroll-mode: false
+  thumb-scroll-mode: true
