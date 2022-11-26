@@ -23,3 +23,6 @@
     create_manual_todo 'Skype' 'Log in with Skype account in app "Skype"'
 # Transmission (torrenting) daemon (and CLI and web-UI)
     install_package transmission-cli transmission-remote-gtk
+# Screenshot tool
+    install_package flameshot
+    create_finalize_startup_entry "Flameshot (screenshot tool) tray icon" "flameshot &"
