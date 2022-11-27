@@ -2,7 +2,6 @@ general {
   interval = 1
 }
 
-order += "static_string screenshot"
 order += 'group wifi'
 order += 'whatismyip'
 order += 'arch_updates'
@@ -14,11 +13,6 @@ order += 'external_script date'
 order += 'clock'
 order += 'keyboard_locks'
 
-
-static_string screenshot {
-  format = ""
-  on_click 1 = "exec --no-startup-id screenshot_path=/tmp/screenshot-$(date +%Y-%m-%d)-${RANDOM}.png && echo ${screenshot_path} | xargs -I '{}' scrot '{}' && notify-send 'Screenshot saved' ${screenshot_path} && unset screenshot_path"
-}
 
 group wifi {
   color_good = deeppink
