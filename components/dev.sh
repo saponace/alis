@@ -23,3 +23,10 @@
     create_manual_todo 'Git' 'Log into github.com and add a new SSH key (get the public key with `cat  ~/.ssh/id_rsa.pub | xclip`)'
     create_manual_todo 'Git' 'Set default git default user name and email address with `git config --global user.email "EMAIL_ADDRESS"` and `git config --global user.name "FIRST_NAME LAST_NAME"`'
 
+
+# Game dev environment
+    ${install} rider  # Csharp IDE
+    ${install} unityhub
+    ${install} mono mono-tools msbuild
+    create_manual_todo 'Development' 'Open "Unity hub" and install unity through it'
+
