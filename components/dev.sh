@@ -6,9 +6,9 @@
 # Java Development Kit
     install_package jdk-openjdk openjdk-doc openjdk-src
     install_package jdk11-openjdk openjdk11-doc openjdk11-src
-    install_package jdk8-openjdk openjdk8-doc openjdk8-src
+    install_package jdk17-openjdk openjdk11-doc openjdk11-src
     # Set default Java version to 11
-        sudo archlinux-java set java-11-openjdk
+        sudo archlinux-java set java-17-openjdk
 # Java build tools
     install_package maven
 # IDEs
