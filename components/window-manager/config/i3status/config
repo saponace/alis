@@ -10,7 +10,7 @@ order += 'volume_status'
 order += 'do_not_disturb'
 # order += 'battery_level' # This line may be un-commented depending on the target hardware
 order += 'external_script date'
-order += 'clock'
+order += 'time'
 order += 'keyboard_locks'
 
 
@@ -41,9 +41,9 @@ group wifi {
 
 whatismyip {
   button_toggle = false
-  color_good = rebeccapurple
-  color_degraded = rebeccapurple
-  color_bad = rebeccapurple
+  color_good = plum
+  color_degraded = plum
+  color_bad = plum
   icon2 = ''
   format = '{icon2}  {ip}'
   url_geo = 'https://ifconfig.co/json'
@@ -99,10 +99,9 @@ external_script date {
   on_click 1 = 'exec gsimplecal'
 }
 
-clock {
-  color = slateblue
-  icon2 = ''
-  format_time = '{icon2}  {name} - %H:%M   '
+time {
+  color =deepskyblue
+  format = "  %H:%M"
 }
 
 keyboard_locks {
