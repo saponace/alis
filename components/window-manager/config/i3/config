@@ -53,7 +53,7 @@
 
 
 # Set shut down, restart and locking features
-    bindsym Control+$mod+l exec --no-startup-id i3exit lock
+    bindsym Control+Mod1+l exec --no-startup-id i3exit lock
 
     bindsym $mod+Shift+q mode "$mode_system"
     set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
