@@ -2,8 +2,6 @@
 # Synchronize files between Google drive and this local machine
 #-------------------------------------------------
 
-# TODO: When rclone version 1.58 is released, use `rclone bisync` instead of `rclone mount`
-
 
 # Install sync utility
     install_package rclone
@@ -12,7 +10,7 @@
     sudo chown ${USERNAME}:${USERNAME} /mnt
     mkdir -p /mnt/google-drive
     create_link ${USER_HOME}/.config/rclone /etc  # Systemd unit file looks for configuration in /etc/rclone
-    sudo cp components/gdrive-sync/systemd-units/gdrive-sync.service ${SYSTEMD_UNITS_DIRECTORY}  # Copy instead of link since Systemd cannot read uints which are symbolic links accross partitions at startup
+    sudo cp components/gdrive-sync/systemd-units/gdrive-sync.service ${SYSTEMD_UNITS_DIRECTORY}  # Copy instead of link since Systemd cannot read units which are symbolic links accross partitions at startup
     sudo systemctl enable gdrive-sync.service
 
 # Configuation
