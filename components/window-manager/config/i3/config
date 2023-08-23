@@ -22,13 +22,15 @@
         position top
         modifier $mod
         colors{
-            background #222D31
+            set $bg_color #222D31
+            set $focused_bg_color #727272
+            set $fg_color #CECECE
 
-            focused_workspace  #F9FAF9 #16a085 #292F34
-            active_workspace   #595B5B #353836 #FDF6E3
-            inactive_workspace #595B5B #222D31 #EEE8D5
-            binding_mode       #16a085 #2C2C2C #F9FAF9
-            urgent_workspace   #16a085 #FDF6E3 #E5201D
+            background $bg_color
+            focused_workspace  $bg_color $focused_bg_color $bg_color
+            active_workspace   $bg_color $bg_color $fg_color
+            inactive_workspace $bg_color $bg_color $fg_color
+            urgent_workspace   $bg_color $fg_color $bg_color
         }
     }
 
