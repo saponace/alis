@@ -17,7 +17,7 @@
 # Configure status bar
     bar {
         tray_output primary
-        font pango: DejaVu Sans, FontAwesome5Free 9
+        font pango: DejaVu Sans, FontAwesome6Free 9
         status_command py3status --dbus-notify
         position top
         modifier $mod

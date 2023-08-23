@@ -31,7 +31,7 @@ prompt {
     padding: 0.30% 1% 0% -0.5%;
     background-color: @background-alt;
     text-color: @foreground;
-    font: "FontAwesome5Free 12";
+    font: "FontAwesome6Free 12";
 }
 
 entry {
