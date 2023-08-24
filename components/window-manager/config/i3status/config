@@ -3,7 +3,6 @@ general {
 }
 
 order += 'group wifi'
-order += 'whatismyip'
 order += 'arch_updates'
 # order += 'backlight' # This line may be un-commented depending on the target hardware
 order += 'volume_status'
@@ -15,9 +14,9 @@ order += 'keyboard_locks'
 
 
 group wifi {
-  color_good = deeppink
-  color_degraded = deeppink
-  color_bad = deeppink
+  color_good = '#7A8B8B'
+  color_degraded = '#7A8B8B'
+  color_bad = '#7A8B8B'
   button_next = 1
   button_prev = 0
 
@@ -39,24 +38,14 @@ group wifi {
   }
 }
 
-whatismyip {
-  button_toggle = false
-  color_good = plum
-  color_degraded = plum
-  color_bad = plum
-  icon2 = ''
-  format = '{icon2}  {ip}'
-  url_geo = 'https://ifconfig.co/json'
-}
-
 arch_updates {
-  color = thistle
+  color = '#AA4687'
   icon2 = ''
   format = '{icon2} {pacman} (AUR: {aur})'
 }
 
 backlight {
-  color = orchid
+  color = '#A2B5CD'
   icon2 = '☼'
   brightness_delta = 10
   low_tune_threshold = 10
@@ -69,19 +58,19 @@ volume_status {
   icon_volume = ''
   icon_mute = ''
   command = 'pamixer'
-  format = '{icon_volume} {percentage}%'
-  format_muted = '{icon_mute} 0%'
+  format = '\?color=#CD950C {icon_volume} {percentage}%'
+  format_muted = '\?color=#8B6508 {icon_mute} 0%'
   thresholds = [(0, 'bad'), (1, 'good'), (101, 'degraded')]
   on_udev_sound = 'refresh'
 }
 
 do_not_disturb {
-  color = lightgreen
-  format = '[\?if=state&color=firebrick |]'
+  color = '#2E8B57'
+  format = '[\?if=state&color=#CD6839 |]'
 }
 
 battery_level{
-  color = orange
+  color = '#EE9A00'
   blocks = ""
   charging_character = ""
   format = " {percent} {icon} {time_remaining}"
@@ -91,7 +80,7 @@ battery_level{
 }
 
 external_script date {
-  color = skyblue
+  color = '#8968CD'
   icon2 = ''
   cache_timeout = 60
   script_path = 'date +"%a, %d %b"'
@@ -100,11 +89,10 @@ external_script date {
 }
 
 time {
-  color =deepskyblue
+  color = '#009ACD'
   format = "  %H:%M"
 }
 
 keyboard_locks {
-  color = blue
-  format = '[\?if=num_lock&color=yellowgreen NUM|\?color=firebrick NUM]'
+  format = '[\?if=num_lock&color=#2E8B57 NUM|\?color=#CD6839 NUM]'
 }
