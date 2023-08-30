@@ -39,13 +39,17 @@
 #----- Apps shortcuts
     # Start a terminal
         bindsym $mod+Return exec --no-startup-id uxterm
-    # Start chrome
+    # Start Web browser
         bindsym $mod+x exec --no-startup-id brave
 
     # Show application launcher
         bindsym $mod+w exec --no-startup-id rofi -show window -theme window
     # Show window switcher
         bindsym $mod+space exec --no-startup-id rofi -show drun -theme drun
+
+
+#----- Apps default workspaces
+    assign [instance="com.bitwig.BitwigStudio"] 3
 
 
 
