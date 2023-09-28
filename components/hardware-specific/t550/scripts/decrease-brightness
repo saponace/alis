@@ -1,0 +1,3 @@
+#! /bin/bash
+
+brightnessctl --exponent=5 set 10%- \&\& killall -SIGUSR1 py3status

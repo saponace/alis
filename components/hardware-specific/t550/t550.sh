@@ -21,7 +21,7 @@
             install_package brightnessctl
         # Allow user to set brightness
             sudo usermod -a -G video ${USERNAME}
-    # Enable laptop-only configuration configurations
+    # Enable laptop-only configurations
         sed -i "s/# order += 'backlight'.*/order += 'backlight'/g" ${USER_HOME}/.config/i3status/config
         sed -i "s/# order += 'battery_level'.*/order += 'battery_level'/g" ${USER_HOME}/.config/i3status/config
 
@@ -33,6 +33,9 @@
 # Specific to laptops with two batteries (get combined battery level and notify if it is too low)
     # Get battery level script
         create_link components/hardware-specific/t550/scripts/battery-level /usr/local/bin
+    # Manipulte brightness
+        create_link components/hardware-specific/t550/scripts/increase-brightness /usr/local/bin
+        create_link components/hardware-specific/t550/scripts/decrease-brightness /usr/local/bin
     # Link systemd service and timer units
         sudo cp components/hardware-specific/t550/systemd-units/battery-level.service ${SYSTEMD_UNITS_DIRECTORY}  # Copy instead of link since Systemd cannot read uints which are symbolic links accross partitions at startup
         sudo cp components/hardware-specific/t550/systemd-units/battery-level.timer ${SYSTEMD_UNITS_DIRECTORY}  # Copy instead of link since Systemd cannot read uints which are symbolic links accross partitions at startup

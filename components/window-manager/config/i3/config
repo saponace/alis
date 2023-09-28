@@ -83,11 +83,9 @@
         bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q -D pulse set Master 5%+ unmute && killall -SIGUSR1 py3status"
         bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q -D pulse set Master 5%- unmute && killall -SIGUSR1 py3status"
         bindsym XF86AudioMute exec --no-startup-id "amixer -q set Master toggle && killall -SIGUSR1 py3status"
-    # Brightness control (killall force reloading the status bar)
-    # These should only be enabled for laptops, but it doesn't hurt to keep them when not on a laptop
-    # (most usb keyboards don't have such keys, and even if they do, well pressing them will just do nothing)
-        bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl --exponent=5 set +10% && killall -SIGUSR1 py3status"
-        bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl --exponent=5 set 10%- && killall -SIGUSR1 py3status"
+    # Brightness control
+        bindsym XF86_MonBrightnessUp exec --no-startup-id "increase-brightness"
+        bindsym XF86_MonBrightnessDown exec --no-startup-id "decrease-brightness"
     # Caps lock and verr num
         bindsym --release Num_Lock exec --no-startup-id killall -SIGUSR1 py3status
         bindsym --release Caps_Lock exec --no-startup-id killall -SIGUSR1 py3status

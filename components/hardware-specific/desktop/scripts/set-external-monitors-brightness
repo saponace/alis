@@ -1,0 +1,23 @@
+#! /bin/bash
+
+# Function to adjust brightness of all connected monitors by a specified increment
+# increment can be positive (ex: 20), or negative (ex: -15) and is expressed in percents of max brightness
+# Usage: adjust_brightness <increment>
+main() {
+    local increment="$1"
+    local ddcutil_options="--noverify --sleep-multiplier .1"
+
+    # Get a list of connected monitors
+    monitors=($(ddcutil ${ddcutil_options} detect | awk '/Display/ {print $2}'))
+
+    # Loop through each monitor and adjust the brightness
+    for monitor in "${monitors[@]}"; do
+        if (( increment >= 0 )); then
+            ddcutil ${ddcutil_options} setvcp 10 + "${increment}" -d "${monitor}"&
+        else
+            ddcutil ${ddcutil_options} setvcp 10 - "${increment#-}" -d "${monitor}"&
+        fi
+    done
+}
+
+main $1
