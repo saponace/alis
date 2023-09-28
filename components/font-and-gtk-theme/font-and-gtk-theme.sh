@@ -5,9 +5,7 @@
 
 # Install fonts
     install_package ttf-dejavu
-    # Icons fonts
-        install_package otf-font-awesome
-        install_package ttf-hack-nerd
+    install_package ttf-hack-nerd  #icons
 
 # Install arc gtk theme
     install_package arc-gtk-theme

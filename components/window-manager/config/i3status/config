@@ -29,7 +29,7 @@ group wifi {
     format = '{icon2}  {ssid}'
   }
   wifi detailed {
-    icon2 = ''
+    icon2 = ' '
     cache_timeout = -1
     signal_bad = 0
     bitrate_bad = 0
@@ -40,13 +40,13 @@ group wifi {
 
 arch_updates {
   color = '#AA4687'
-  icon2 = ''
+  icon2 = '󰏔'
   format = '{icon2} {pacman} (AUR: {aur})'
 }
 
 backlight {
   color = '#A2B5CD'
-  icon2 = '☼'
+  icon2 = '󰃞'
   brightness_delta = 10
   low_tune_threshold = 10
   command = 'light'
@@ -55,8 +55,8 @@ backlight {
 }
 
 volume_status {
-  icon_volume = ''
-  icon_mute = ''
+  icon_volume = '󰕾'
+  icon_mute = '󰝟'
   command = 'pamixer'
   format = '\?color=#CD950C {icon_volume} {percentage}%'
   format_muted = '\?color=#8B6508 {icon_mute} 0%'
@@ -66,14 +66,14 @@ volume_status {
 
 do_not_disturb {
   color = '#2E8B57'
-  format = '[\?if=state&color=#CD6839 |]'
+  format = '[\?if=state&color=#CD6839  | ]'
 }
 
 battery_level{
   color = '#EE9A00'
   blocks = ""
-  charging_character = ""
-  format = " {percent} {icon} {time_remaining}"
+  charging_character = " "
+  format = "  {percent} {icon} {time_remaining}"
   measurement_mode = 'acpi'
   cache_timeout = 5
   battery_id = 'all'
@@ -90,7 +90,7 @@ external_script date {
 
 time {
   color = '#009ACD'
-  format = "  %H:%M"
+  format = "󰥔  %H:%M"
 }
 
 keyboard_locks {
