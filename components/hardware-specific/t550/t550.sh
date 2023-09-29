@@ -12,7 +12,7 @@
         install_package laptop-mode-tools
         sudo systemctl enable laptop-mode.service
     # Touchpad drivers
-        install_package xf86-input-synaptics
+        install_package libinput
         create_finalize_startup_entry "Disale touchpad while typing on keyboard" "syndaemon -i 0.2 -d &"
     # Brightness control (backlight)
         # Used to get brightness percenage from i3status
