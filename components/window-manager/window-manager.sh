@@ -64,5 +64,4 @@
 
 # System initialisation
     create_link components/window-manager/config/.xinitrc ${USER_HOME}
-    create_link components/window-manager/config/.Xresources ${USER_HOME}
 
