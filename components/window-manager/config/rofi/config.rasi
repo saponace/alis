@@ -14,5 +14,5 @@ configuration {
     disable-history: false;
     sidebar-mode: false;
 
-    terminal: "uxterm";
+    terminal: "alacritty";
 }

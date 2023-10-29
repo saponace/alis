@@ -38,7 +38,7 @@
 
 #----- Apps shortcuts
     # Start a terminal
-        bindsym $mod+Return exec --no-startup-id uxterm
+        bindsym $mod+Return exec --no-startup-id alacritty
     # Start Web browser
         bindsym $mod+x exec --no-startup-id brave
 
