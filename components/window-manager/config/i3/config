@@ -1,225 +1,230 @@
 #----- Super key as mod key
-    set $mod Mod4
+set $mod Mod4
 
 #----- Font
-    font pango:DejaVu Sans 9
+font pango: Dejavu 10
 
 # Hide titlebars and windows borders
-    default_border pixel 1
-    default_floating_border normal
+default_border pixel 1
+default_floating_border normal
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-    floating_modifier $mod
+floating_modifier $mod
 
 # Focus workspace 1 at session load
-    exec --no-startup-id i3-msg -- workspace 1
+exec --no-startup-id i3-msg -- workspace 1r
 
 # Configure status bar
-    bar {
-        tray_output primary
-        font pango: DejaVu Sans, HackNerdFont 9
-        status_command py3status --dbus-notify
-        position top
-        modifier $mod
-        colors{
-            set $bg_color #222D31
-            set $focused_bg_color #727272
-            set $fg_color #CECECE
+bar {
+    i3bar_command i3bar --transparency
+    status_command py3status --dbus-notify
+    position top
+    tray_output primary
+    tray_padding 6
+    padding 3
+    font pango: Dejavu 10
+    modifier $mod
+    separator_symbol "      "
+    colors{
+        set $bg_color #1B1D1EAA
+        set $focused_bg_color #727272AA
+        set $fg_color #CECECE
 
-            background $bg_color
-            focused_workspace  $bg_color $focused_bg_color $bg_color
-            active_workspace   $bg_color $bg_color $fg_color
-            inactive_workspace $bg_color $bg_color $fg_color
-            urgent_workspace   $bg_color $fg_color $bg_color
-        }
+        background $bg_color
+        focused_workspace  $bg_color $focused_bg_color $bg_color
+        active_workspace   $bg_color $bg_color $fg_color
+        inactive_workspace $bg_color $bg_color $fg_color
+        urgent_workspace   $bg_color $fg_color $bg_color
+        statusline #0000FF
     }
+}
 
 
 
 #----- Apps shortcuts
-    # Start a terminal
-        bindsym $mod+Return exec --no-startup-id alacritty
-    # Start Web browser
-        bindsym $mod+x exec --no-startup-id brave
+# Start a terminal
+    bindsym $mod+Return exec --no-startup-id alacritty
+# Start Web browser
+    bindsym $mod+x exec --no-startup-id brave
 
-    # Show application launcher
-        bindsym $mod+w exec --no-startup-id rofi -show window -theme window
-    # Show window switcher
-        bindsym $mod+space exec --no-startup-id rofi -show drun -theme drun
+# Show application launcher
+    bindsym $mod+w exec --no-startup-id rofi -show window -theme window
+# Show window switcher
+    bindsym $mod+space exec --no-startup-id rofi -show drun -theme drun
 
 
 #----- Apps default workspaces
-    assign [instance="com.bitwig.BitwigStudio"] 3
+assign [instance="com.bitwig.BitwigStudio"] 3
 
 
 
 #----- i3 management
-    # restart i3
-        bindsym $mod+Shift+r restart
+# restart i3
+    bindsym $mod+Shift+r restart
 
 
 # Set shut down, restart and locking features
-    bindsym Control+Mod1+l exec --no-startup-id i3exit lock
+bindsym Control+Mod1+l exec --no-startup-id i3exit lock
 
-    bindsym $mod+Shift+q mode "$mode_system"
-    set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-    mode "$mode_system" {
-        bindsym l exec --no-startup-id i3exit lock, mode "default"
-        bindsym s exec --no-startup-id i3exit suspend, mode "default"
-        bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-        bindsym e exec --no-startup-id i3exit logout, mode "default"
-        bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-        bindsym r exec --no-startup-id i3exit reboot, mode "default"
-        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+bindsym $mod+Shift+q mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-        # exit system mode: "Enter" or "Escape"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-    }
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 
 #----- Send signals
-    # Volume control (killall force reloading the status bar)
-        bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q -D pulse set Master 5%+ unmute && killall -SIGUSR1 py3status"
-        bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q -D pulse set Master 5%- unmute && killall -SIGUSR1 py3status"
-        bindsym XF86AudioMute exec --no-startup-id "amixer -q set Master toggle && killall -SIGUSR1 py3status"
-    # Brightness control
-        bindsym XF86_MonBrightnessUp exec --no-startup-id "increase-brightness"
-        bindsym XF86_MonBrightnessDown exec --no-startup-id "decrease-brightness"
-    # Caps lock and verr num
-        bindsym --release Num_Lock exec --no-startup-id killall -SIGUSR1 py3status
-        bindsym --release Caps_Lock exec --no-startup-id killall -SIGUSR1 py3status
+# Volume control (killall force reloading the status bar)
+    bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q -D pulse set Master 5%+ unmute && killall -SIGUSR1 py3status"
+    bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q -D pulse set Master 5%- unmute && killall -SIGUSR1 py3status"
+    bindsym XF86AudioMute exec --no-startup-id "amixer -q set Master toggle && killall -SIGUSR1 py3status"
+# Brightness control
+    bindsym XF86_MonBrightnessUp exec --no-startup-id "increase-brightness"
+    bindsym XF86_MonBrightnessDown exec --no-startup-id "decrease-brightness"
+# Caps lock and verr num
+    bindsym --release Num_Lock exec --no-startup-id killall -SIGUSR1 py3status
+    bindsym --release Caps_Lock exec --no-startup-id killall -SIGUSR1 py3status
 
 
 
 #----- Colors
-    client.focused          #556064 #556064 #80FFF9 #FDF6E3
-    client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-    client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-    client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-    client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.focused          #556064 #556064 #80FFF9 #FDF6E3
+client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000
 
-    client.background       #2B2C2B
+client.background       #2B2C2B
 
 
 #----- Window resising
-    # Resize focused window
-    bindsym $mod+r mode "resize"
+# Resize focused window
+bindsym $mod+r mode "resize"
 
-    mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # Exit resize mode
-            bindsym Return mode "default"
-            bindsym Escape mode "default"
-    }
+    # Exit resize mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
 
 
 #----- i3-gaps configuration
-    gaps inner 8
-    gaps outer -2
-    smart_gaps on
-    smart_borders on
+gaps inner 8
+gaps outer -2
+smart_gaps on
+smart_borders on
 
 
 
 #----- Window navigation
-    # Change windows focus
-        bindsym $mod+h focus left
-        bindsym $mod+j focus down
-        bindsym $mod+k focus up
-        bindsym $mod+l focus right
-    # Focus the parent container
-        bindsym $mod+p focus parent
-    # Move focused window
-        bindsym $mod+Shift+h move left
-        bindsym $mod+Shift+j move down
-        bindsym $mod+Shift+k move up
-        bindsym $mod+Shift+l move right
-    # Change container layout (stacked, tabbed, toggle split)
-        bindsym $mod+s layout stacking
-        bindsym $mod+t layout tabbed
-        bindsym $mod+e layout toggle split
-    # Kill focused window
-        bindsym $mod+q kill
-    # Split in horizontal orientation
-        bindsym $mod+v split h
-    # Split in vertical orientation
-        bindsym $mod+c split v
-    # Enter fullscreen mode for the focused container
-        bindsym $mod+f fullscreen
-    # Toggle tiling / floating
-        bindsym $mod+Shift+space floating toggle
+# Change windows focus
+    bindsym $mod+h focus left
+    bindsym $mod+j focus down
+    bindsym $mod+k focus up
+    bindsym $mod+l focus right
+# Focus the parent container
+    bindsym $mod+p focus parent
+# Move focused window
+    bindsym $mod+Shift+h move left
+    bindsym $mod+Shift+j move down
+    bindsym $mod+Shift+k move up
+    bindsym $mod+Shift+l move right
+# Change container layout (stacked, tabbed, toggle split)
+    bindsym $mod+s layout stacking
+    bindsym $mod+t layout tabbed
+    bindsym $mod+e layout toggle split
+# Kill focused window
+    bindsym $mod+q kill
+# Split in horizontal orientation
+    bindsym $mod+v split h
+# Split in vertical orientation
+    bindsym $mod+c split v
+# Enter fullscreen mode for the focused container
+    bindsym $mod+f fullscreen
+# Toggle tiling / floating
+    bindsym $mod+Shift+space floating toggle
 
 
 
 #----- workspaces
-    # Move workspace to adjacent monitors
-        bindsym $mod+Up move workspace to output up
-        bindsym $mod+Down move workspace to output down
-        bindsym $mod+Left move workspace to output left
-        bindsym $mod+Right move workspace to output right
-    # switch to workspace
-        bindsym $mod+1 workspace 1
-        bindsym $mod+KP_1 workspace 1
+# Move workspace to adjacent monitors
+    bindsym $mod+Up move workspace to output up
+    bindsym $mod+Down move workspace to output down
+    bindsym $mod+Left move workspace to output left
+    bindsym $mod+Right move workspace to output right
+# switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+KP_1 workspace 1
 
-        bindsym $mod+2 workspace 2
-        bindsym $mod+KP_2 workspace 2
+    bindsym $mod+2 workspace 2
+    bindsym $mod+KP_2 workspace 2
 
-        bindsym $mod+3 workspace 3
-        bindsym $mod+KP_3 workspace 3
+    bindsym $mod+3 workspace 3
+    bindsym $mod+KP_3 workspace 3
 
-        bindsym $mod+4 workspace 4
-        bindsym $mod+KP_4 workspace 4
+    bindsym $mod+4 workspace 4
+    bindsym $mod+KP_4 workspace 4
 
-        bindsym $mod+5 workspace 5
-        bindsym $mod+KP_5 workspace 5
+    bindsym $mod+5 workspace 5
+    bindsym $mod+KP_5 workspace 5
 
-        bindsym $mod+6 workspace 6
-        bindsym $mod+KP_6 workspace 6
+    bindsym $mod+6 workspace 6
+    bindsym $mod+KP_6 workspace 6
 
-        bindsym $mod+7 workspace 7
-        bindsym $mod+KP_7 workspace 7
+    bindsym $mod+7 workspace 7
+    bindsym $mod+KP_7 workspace 7
 
-        bindsym $mod+8 workspace 8
-        bindsym $mod+KP_8 workspace 8
+    bindsym $mod+8 workspace 8
+    bindsym $mod+KP_8 workspace 8
 
-        bindsym $mod+9 workspace 9
-        bindsym $mod+KP_9 workspace 9
+    bindsym $mod+9 workspace 9
+    bindsym $mod+KP_9 workspace 9
 
-        bindsym $mod+0 workspace 10
-        bindsym $mod+KP_0 workspace 10
-    # move focused container to workspace
-        bindsym $mod+Shift+1 move container to workspace 1
-        bindsym $mod+Shift+KP_1 move container to workspace 1
+    bindsym $mod+0 workspace 10
+    bindsym $mod+KP_0 workspace 10
+# move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+KP_1 move container to workspace 1
 
-        bindsym $mod+Shift+2 move container to workspace 2
-        bindsym $mod+Shift+KP_2 move container to workspace 2
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+KP_2 move container to workspace 2
 
-        bindsym $mod+Shift+3 move container to workspace 3
-        bindsym $mod+Shift+KP_3 move container to workspace 3
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+KP_3 move container to workspace 3
 
-        bindsym $mod+Shift+4 move container to workspace 4
-        bindsym $mod+Shift+KP_4 move container to workspace 4
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+KP_4 move container to workspace 4
 
-        bindsym $mod+Shift+5 move container to workspace 5
-        bindsym $mod+Shift+KP_5 move container to workspace 5
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+KP_5 move container to workspace 5
 
-        bindsym $mod+Shift+6 move container to workspace 6
-        bindsym $mod+Shift+KP_6 move container to workspace 6
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+KP_6 move container to workspace 6
 
-        bindsym $mod+Shift+7 move container to workspace 7
-        bindsym $mod+Shift+KP_7 move container to workspace 7
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+KP_7 move container to workspace 7
 
-        bindsym $mod+Shift+8 move container to workspace 8
-        bindsym $mod+Shift+KP_8 move container to workspace 8
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+KP_8 move container to workspace 8
 
-        bindsym $mod+Shift+9 move container to workspace 9
-        bindsym $mod+Shift+KP_9 move container to workspace 9
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+KP_9 move container to workspace 9
 
-        bindsym $mod+Shift+0 move container to workspace 10
-        bindsym $mod+Shift+KP_0 move container to workspace 10
+    bindsym $mod+Shift+0 move container to workspace 10
+    bindsym $mod+Shift+KP_0 move container to workspace 10

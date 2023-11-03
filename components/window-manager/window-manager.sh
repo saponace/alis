@@ -16,7 +16,7 @@
         install_package py3status
     # py3status
         # py3status configuration files
-            create_link components/window-manager/config/i3status ${USER_HOME}/.config
+            create_link components/window-manager/config/py3status ${USER_HOME}/.config
         # py3status dependencies
             # Communication interprotocoles i3wm, dependence de config py3status
                 install_package i3ipc-python
@@ -64,4 +64,3 @@
 
 # System initialisation
     create_link components/window-manager/config/.xinitrc ${USER_HOME}
-
