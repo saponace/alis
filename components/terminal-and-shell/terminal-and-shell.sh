@@ -6,6 +6,7 @@
 # Terminal emulator
     install_package alacritty
     create_link components/terminal-and-shell/config/alacritty ${USER_HOME}/.config
+    create_link components/terminal-and-shell/config/alacritty ${ROOT_HOME}/.config
 
 # Shell
     install_package zsh
