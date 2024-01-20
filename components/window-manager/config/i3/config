@@ -1,5 +1,5 @@
 #----- Super key as mod key
-set $mod Mod4
+set $mod Mod1
 
 #----- Font
 font pango: Dejavu 10
@@ -144,20 +144,21 @@ smart_borders on
     bindsym $mod+Shift+j move down
     bindsym $mod+Shift+k move up
     bindsym $mod+Shift+l move right
-# Change container layout (stacked, tabbed, toggle split)
-    bindsym $mod+s layout stacking
+
+# Set container layout (stacked, tabbed, toggle split)
     bindsym $mod+t layout tabbed
-    bindsym $mod+e layout toggle split
-# Kill focused window
-    bindsym $mod+q kill
-# Split in horizontal orientation
-    bindsym $mod+v split h
-# Split in vertical orientation
-    bindsym $mod+c split v
-# Enter fullscreen mode for the focused container
-    bindsym $mod+f fullscreen
+    bindsym $mod+y layout stacking
+    bindsym $mod+u layout toggle split
+# Set split orientation
+    bindsym $mod+i split h
+    bindsym $mod+o split v
 # Toggle tiling / floating
     bindsym $mod+Shift+space floating toggle
+
+# Kill focused window
+    bindsym $mod+q kill
+# Enter fullscreen mode for the focused container
+    bindsym $mod+f fullscreen
 
 
 
