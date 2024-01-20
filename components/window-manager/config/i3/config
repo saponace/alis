@@ -45,41 +45,19 @@ bar {
     bindsym $mod+Return exec --no-startup-id alacritty
 # Start Web browser
     bindsym $mod+x exec --no-startup-id brave
+# Lockscreen
+    bindsym Control+Mod1+l exec --no-startup-id i3exit lock
 
 # Show application launcher
     bindsym $mod+w exec --no-startup-id rofi -show window -theme window
 # Show window switcher
     bindsym $mod+space exec --no-startup-id rofi -show drun -theme drun
-
-
-#----- Apps default workspaces
-assign [instance="com.bitwig.BitwigStudio"] 3
-
-
-
-#----- i3 management
 # restart i3
     bindsym $mod+Shift+r restart
 
 
-# Set shut down, restart and locking features
-bindsym Control+Mod1+l exec --no-startup-id i3exit lock
-
-bindsym $mod+Shift+q mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+#----- Apps default workspaces
+assign [instance="com.bitwig.BitwigStudio"] 3
 
 
 #----- Send signals
@@ -170,61 +148,24 @@ smart_borders on
     bindsym $mod+Right move workspace to output right
 # switch to workspace
     bindsym $mod+1 workspace 1
-    bindsym $mod+KP_1 workspace 1
-
     bindsym $mod+2 workspace 2
-    bindsym $mod+KP_2 workspace 2
-
     bindsym $mod+3 workspace 3
-    bindsym $mod+KP_3 workspace 3
-
     bindsym $mod+4 workspace 4
-    bindsym $mod+KP_4 workspace 4
-
     bindsym $mod+5 workspace 5
-    bindsym $mod+KP_5 workspace 5
-
     bindsym $mod+6 workspace 6
-    bindsym $mod+KP_6 workspace 6
-
     bindsym $mod+7 workspace 7
-    bindsym $mod+KP_7 workspace 7
-
     bindsym $mod+8 workspace 8
-    bindsym $mod+KP_8 workspace 8
-
     bindsym $mod+9 workspace 9
-    bindsym $mod+KP_9 workspace 9
-
     bindsym $mod+0 workspace 10
     bindsym $mod+KP_0 workspace 10
 # move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+KP_1 move container to workspace 1
-
     bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+KP_2 move container to workspace 2
-
     bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+KP_3 move container to workspace 3
-
     bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+KP_4 move container to workspace 4
-
     bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+KP_5 move container to workspace 5
-
     bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+KP_6 move container to workspace 6
-
     bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+KP_7 move container to workspace 7
-
     bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+KP_8 move container to workspace 8
-
     bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+KP_9 move container to workspace 9
-
     bindsym $mod+Shift+0 move container to workspace 10
-    bindsym $mod+Shift+KP_0 move container to workspace 10
