@@ -28,18 +28,14 @@
     # Link configuration files
        create_link ${DOTFILES_SOURCE}/homedir/.tmux.conf ${USER_HOME}
        create_link ${DOTFILES_SOURCE}/homedir/.tmux.conf ${ROOT_HOME}
-# Text editor
-    install_package vim
-# Neovim, improved version of vim
+# Neovim, improved vim
     install_package neovim
-    install_package python-neovim
-    # Ctags, tags index generating. Used by nvim plugin Tagbar
-        install_package ctags
-   # Link configuration files
-      create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${USER_HOME}/.config
-      create_link ${DOTFILES_SOURCE}/homedir/.config/nvim ${ROOT_HOME}/.config
-   # Install nvim plugins
-      echo "Installling neovim plugins ..."
-      nvim -E +PlugInstall +qall > /dev/null
-      sudo nvim -E +PlugInstall +qall > /dev/null
-      echo "Neovim plugins installed !"
+    # Install LazyVim distribution
+      rm -rf ${USER_HOME}/.config/nvim
+      git clone https://github.com/LazyVim/starter ${USER_HOME}/.config/nvim
+      sudo rm -rf ${ROOT_HOME}/.config/nvim
+      sudo git clone https://github.com/LazyVim/starter ${ROOT_HOME}/.config/nvim
+      
+    # Link configuration files
+      create_link ${DOTFILES_SOURCE}/homedir/.config/nvim/lua ${USER_HOME}/.config/nvim
+      create_link ${DOTFILES_SOURCE}/homedir/.config/nvim/lua ${ROOT_HOME}/.config/nvim
