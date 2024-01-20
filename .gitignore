@@ -1,2 +1,4 @@
+alis.log
+
 dotfiles/homedir/.config/ranger/*
 !dotfiles/homedir/.config/ranger/rc.conf
