@@ -1,5 +1,5 @@
 #----- Super key as mod key
-set $mod Mod1
+set $mod Mod4
 
 #----- Font
 font pango: Dejavu 10
