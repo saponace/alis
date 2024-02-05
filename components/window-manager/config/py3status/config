@@ -67,6 +67,7 @@ volume_status {
 do_not_disturb {
   color = '#2E8B57'
   format = '[\?if=state&color=#CD6839  | ]'
+  server = 'xfce4-notifyd'
 }
 
 battery_level{
