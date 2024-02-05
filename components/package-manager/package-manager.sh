@@ -18,5 +18,4 @@
     sudo sed -i 's/#EnableAUR/EnableAUR/g' /etc/pamac.conf
 
 # Prevent yay from exceding sudo timeout during long builds
-    create_link components/package-manager/config/yay ${USER_HOME}/.config
-    create_link components/package-manager/config/yay ${ROOT_HOME}/.config
+    create_homedir_link components/package-manager/config/yay  .config

@@ -11,8 +11,5 @@
     install_package arc-gtk-theme
 
     # Link GTK configuration files
-        create_link components/font-and-gtk-theme/config/gtk-3.0 ${USER_HOME}/.config
-        create_link components/font-and-gtk-theme/config/gtk-3.0 ${ROOT_HOME}/.config
-
-        create_link components/font-and-gtk-theme/config/.gtkrc-2.0 ${USER_HOME}
-        create_link components/font-and-gtk-theme/config/.gtkrc-2.0 ${ROOT_HOME}
+        create_homedir_link components/font-and-gtk-theme/config/gtk-3.0 .config
+        create_homedir_link components/font-and-gtk-theme/config/.gtkrc-2.0 .

@@ -8,8 +8,8 @@ function install_package() {
     yay -S --noconfirm --needed $@
 }
 
-# Link a file and make sur the directory of the link exists
-# $1: The source file/directory
+# Link a file and make sure the directory of the link exists
+# $1: The source file/directory from this repo's root (ex: components/package-manager/config/yay)
 # $2: The target directory
 function create_link (){
     source_path=$(readlink -f "$1")
@@ -17,6 +17,14 @@ function create_link (){
     sudo rm -rf "$2/${source_file_name}"  # Remove existing file/directory with source name in the target (if it exists)
     sudo mkdir -p $2  # Create the dir structure (if it does not exist)
     sudo ln -snf ${source_path} $2/  # Create the link
+}
+
+# Link a file in both /home/$USER/ and /root/
+# $1: The source file/directory from this repo's root (ex: components/package-manager/config/yay)
+# $2: The target directory from /home/$USER and /root
+function create_homedir_link (){
+    create_link $1 ${USER_HOME}/${2}
+    create_link $1 ${ROOT_HOME}/${2}
 }
 
 
