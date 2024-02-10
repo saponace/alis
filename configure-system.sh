@@ -100,7 +100,7 @@ function main() {
 	install_component hardware-drivers
 	install_component gui-apps
 	install_component virtualisation
-	install_component font-and-gtk-theme
+	install_component appearance
 	install_component audio
 	install_component file-manager
 	install_component terminal-and-shell
