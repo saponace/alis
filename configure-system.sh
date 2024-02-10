@@ -98,7 +98,7 @@ function main() {
 	install_component display
 	install_component window-manager
 	install_component hardware-drivers
-	install_component desktop-apps
+	install_component gui-apps
 	install_component virtualisation
 	install_component font-and-gtk-theme
 	install_component audio
