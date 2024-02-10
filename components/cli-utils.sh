@@ -2,6 +2,15 @@
 # Command line tools
 #-------------------------------------------------
 
+## Text editor
+install_package neovim
+create_homedir_link ${DOTFILES_SOURCE}/homedir/.config/nvim/lua .config/nvim
+# Install LazyVim distribution
+rm -rf ${USER_HOME}/.config/nvim
+git clone https://github.com/LazyVim/starter ${USER_HOME}/.config/nvim
+sudo rm -rf ${ROOT_HOME}/.config/nvim
+sudo git clone https://github.com/LazyVim/starter ${ROOT_HOME}/.config/nvim
+
 # Files management
 install_package rsync
 install_package rmlint # Delete duplicates files
@@ -26,3 +35,4 @@ create_finalize_startup_entry "Auto mount connected USB devices" "udiskie -s &"
 install_package git
 install_package openssh
 install_package xclip # Access X clipboard from shell
+install_package lsd   # ls improved
