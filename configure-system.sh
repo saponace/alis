@@ -94,7 +94,7 @@ function main() {
 	install_component networking
 	install_component vpn-client
 	install_component dev
-	install_component cli-utils
+	install_component cli-tools
 	install_component display
 	install_component window-manager
 	install_component hardware-drivers
