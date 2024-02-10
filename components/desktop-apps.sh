@@ -1,28 +1,19 @@
 #-------------------------------------------------
-# Install various desktop programs with GUI
+# Misc GUI programs
 #-------------------------------------------------
 
+install_package brave-browser # Web browser
+install_package vlc
+install_package gnome-disk-utility # Disks management (useful for S.M.A.R.T. tests)
+install_package sxiv               # Image viewer
+install_package evince             # PDF viewer
+install_package spotify
+create_manual_todo 'Music streaming' 'Log in with Spotify account in app "Spotify"'
+install_package homebank # Budget manager
+install_package skypeforlinux-stable-bin
+create_manual_todo 'Skype' 'Log in with Skype account in app "Skype"'
+install_package transmission-cli transmission-remote-gtk # BitTorrent daemon (and CLI and web-UI)
 
-# Web browsers
-    install_package brave-browser
-# Media player
-    install_package vlc
-# Disks management (useful for S.M.A.R.T. tests)
-    install_package gnome-disk-utility
-# Image viewer
-    install_package sxiv
-# PDF viewer
-    install_package evince
-# Music streaming
-    install_package spotify
-    create_manual_todo 'Music streaming' 'Log in with Spotify account in app "Spotify"'
-# Budget manager
-    install_package homebank
-# Skype
-    install_package skypeforlinux-stable-bin
-    create_manual_todo 'Skype' 'Log in with Skype account in app "Skype"'
-# Transmission (torrenting) daemon (and CLI and web-UI)
-    install_package transmission-cli transmission-remote-gtk
-# Screenshot tool
-    install_package flameshot
-    create_finalize_startup_entry "Flameshot (screenshot tool) tray icon" "flameshot &"
+# Screenshots
+install_package flameshot
+create_finalize_startup_entry "Flameshot (screenshot tool) tray icon" "flameshot &"

@@ -1,43 +1,28 @@
 #-------------------------------------------------
-# Command line utilities
+# Command line tools
 #-------------------------------------------------
 
-
 # Files management
-    # Distant and local copy
-        install_package rsync
-    # Delete duplicates files
-        install_package rmlint
-    # Downloads from the web
-        install_package wget
-    # Zip
-        install_package zip unzip
-    # Rar
-        install_package unrar
+install_package rsync
+install_package rmlint # Delete duplicates files
+install_package wget
+install_package zip unzip
+install_package unrar
 
 # Monitoring and discovery
-    # Network discovery tool
-        install_package nmap
-    # List open files by given process
-        install_package lsof
-    # System monitor tool
-        install_package bashtop
+install_package nmap    # Network discovery tool
+install_package lsof    # List open files by given process
+install_package bashtop # System monitor tool
 
-# Filesystems and mounting
-    # Android metia transfert protocol
-        install_package jmtpfs
-    # Auto-mounting media disks daemon
-        install_package udiskie
-        create_finalize_startup_entry "Auto mount connected USB devices" "udiskie -s &"
-    # NTFS filesystems management
-        install_package ntfs-3g
+# Filesystem stuff
+install_package jmtpfs  # Android metia transfert protocol filesystem
+install_package ntfs-3g # NTFS filesystem
+install_package sshfs   # Mount distant directories over ssh
+
+install_package udiskie # Auto-mounting media disks daemon
+create_finalize_startup_entry "Auto mount connected USB devices" "udiskie -s &"
 
 # Misc
-    # Git
-        install_package git
-    # SSH client and server
-        install_package openssh
-    # Mount distant directories over ssh
-        install_package sshfs
-    # Access X clipboard from shell
-        install_package xclip
+install_package git
+install_package openssh
+install_package xclip # Access X clipboard from shell

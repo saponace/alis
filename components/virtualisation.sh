@@ -1,11 +1,8 @@
 #-------------------------------------------------
-# Install and configure virtualisation engine virtualbox
+# Virtualisation with Virtualbox
 #-------------------------------------------------
 
+install_package virtualbox
 
-# Install virtualbox
-    install_package virtualbox
-# Install required modules for virtualbox
-    install_package virtualbox-host-dkms
-# Enable virtualbox driver module
-    sudo modprobe vboxdrv
+install_package virtualbox-host-dkms # Install required modules for virtualbox
+sudo modprobe vboxdrv                # Enable virtualbox driver module
