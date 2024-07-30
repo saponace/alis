@@ -2,14 +2,14 @@
 
 ## Install Manjaro-i3
 Boot from a Manjaro-i3 live drive and run the installer.
+If running in VirtualBox, make sure to enable 3D acceleration
 
-It is recommended to use BTRFS and enable filesystem encryption
+It is recommended to use ext4
 
 
 ## Install git and clone this repo
 ```
-# pacman -Syy git
-# git clone --recursive https://github.com/saponace/alis.git
+# git clone --recursive https://github.com/saponace/alis
 ```
 
 
