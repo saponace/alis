@@ -8,8 +8,6 @@
 create_homedir_link components/package-manager/config/yay .config
 
 # Non-AUR Package manager
-sudo pacman -Syy # Sync packages and force refresh of package database
-sudo pacman -Syu # Update all installed packages
 sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads.*/ParallelDownloads = 5/g' /etc/pacman.conf
 

@@ -83,6 +83,10 @@ function main() {
 		kill -0 $$ 2>/dev/null || exit # Exit when the parent process is not running any more
 	done &
 
+	# Full system upgrade
+	sudo pacman --noconfirm -Syy # Refresh of package database
+	sudo pacman --noconfirm -Syu # Update all installed packages
+
 	# Empty file collecting finalize-startup entries in case alis is executed multiple times (ensure no duplicates from previous runs)
 	echo -n "" >${FINALIZE_STARTUP_ENTRIES_TEMP_FILE}
 
