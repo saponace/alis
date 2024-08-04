@@ -22,12 +22,6 @@ install_package pacman-contrib             # Pacman checkupdates tool
 install_package iw                         # Get WiFi status
 install_package pamixer                    # Show current volume status
 
-## Set background wallpaper
-# Nitrogen should be started AFTER autorandr. Make sure it is after autorandr in finalize-startup
-# (autaorandr is injected in finalize-startup by component "display")
-install_package nitrogen
-create_finalize_startup_entry "Restore wallpaper configuration and start windows compositor" "nitrogen --restore; sleep 1; picom -b"
-
 # Windows compositor
 install_package picom
 create_link components/window-manager/config/picom.conf ${USER_HOME}/.config
@@ -52,9 +46,21 @@ create_finalize_startup_entry "Enable numpad" "numlockx"
 install_package xss-lock
 create_finalize_startup_entry "Use i3lock as a screen saver" "xss-lock --transfer-sleep-lock -- i3exit lock &"
 
+# Deploy wallpaper (used by LightDM and Nitrogen)
+# Copy instead of symlink because lightDM does not handle symlinks for some reason
+sudo cp components/window-manager/image/wallpaper.jpg /usr/share/backgrounds/
+
 # Display manager (assume LightDM installed and configured by live USB Installer)
 install_package xinit-xsession
 sudo sed -i "s/user-session=i3/user-session=xinitrc/g" /etc/lightdm/lightdm.conf # Configure LightDM to start .xinitrc instead of i3
+# Copy instead of symlink because lightDM does not handle symlinks for some reason
+sudo cp components/window-manager/config/lightdm/slick-greeter.conf /etc/lightdm/
+
+# Nitrogen should be started AFTER autorandr. Make sure it is after autorandr in finalize-startup
+# (autaorandr is injected in finalize-startup by component "display")
+install_package nitrogen
+create_finalize_startup_entry "Restore wallpaper configuration and start windows compositor" "nitrogen --restore; sleep 1; picom -b"
+nitrogen --save --set-scaled /usr/share/backgrounds/wallpaper.jpg
 
 # System initialisation
 create_link components/window-manager/config/.xinitrc ${USER_HOME}
