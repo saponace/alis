@@ -4,12 +4,10 @@
 
 ## Text editor
 install_package neovim
-create_homedir_link ${DOTFILES_SOURCE}/homedir/.config/nvim/lua .config/nvim
 # Install LazyVim distribution
-rm -rf ${USER_HOME}/.config/nvim
 git clone https://github.com/LazyVim/starter ${USER_HOME}/.config/nvim
-sudo rm -rf ${ROOT_HOME}/.config/nvim
 sudo git clone https://github.com/LazyVim/starter ${ROOT_HOME}/.config/nvim
+create_homedir_link ${DOTFILES_SOURCE}/homedir/.config/nvim/lua .config/nvim
 
 # Files management
 install_package rsync
