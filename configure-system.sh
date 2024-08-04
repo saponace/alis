@@ -90,7 +90,6 @@ function main() {
 
 	install_component package-manager
 	install_component system
-	install_component filesystem
 	install_component networking
 	install_component vpn-client
 	install_component dev
