@@ -51,8 +51,6 @@ create_finalize_startup_entry "Use i3lock as a screen saver" "xss-lock --transfe
 sudo cp components/window-manager/image/wallpaper.jpg /usr/share/backgrounds/
 
 # Display manager (assume LightDM installed and configured by live USB Installer)
-install_package xinit-xsession
-sudo sed -i "s/user-session=i3/user-session=xinitrc/g" /etc/lightdm/lightdm.conf # Configure LightDM to start .xinitrc instead of i3
 # Copy instead of symlink because lightDM does not handle symlinks for some reason
 sudo cp components/window-manager/config/lightdm/slick-greeter.conf /etc/lightdm/
 
