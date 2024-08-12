@@ -4,6 +4,7 @@
 
 # Multi-monitor layout management
 install_package arandr autorandr
+create_manual_todo 'Multi-monitor setup' 'Setup multi-monitor config with arandr, then save this configuration with autorandr: `autorandr -s main`'
 
 # Warning: autostarting this causes screen to turn black for a second after it initially turns on, to then set the appropriate layout
 create_finalize_startup_entry "Restore previously set monitor layout on this hardware" "autorandr --change"
