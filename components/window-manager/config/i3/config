@@ -73,7 +73,6 @@ assign [instance="com.bitwig.BitwigStudio"] 3
     bindsym XF86_MonBrightnessDown exec --no-startup-id "decrease-brightness"
 # Caps lock and verr num
     bindsym --release Num_Lock exec --no-startup-id killall -SIGUSR1 py3status
-    bindsym --release Caps_Lock exec --no-startup-id killall -SIGUSR1 py3status
 
 
 
