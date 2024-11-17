@@ -19,3 +19,6 @@ create_homedir_link ${DOTFILES_SOURCE}/homedir/.tmux.conf .
 
 # fzf: fuzzy search in shell history, and files
 install_package fzf
+
+# zoxide: better cd
+yay zoxide
