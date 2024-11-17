@@ -16,3 +16,6 @@ create_homedir_link ${DOTFILES_SOURCE}/homedir/.config/zsh .config
 # Terminal multiplexer
 install_package tmux
 create_homedir_link ${DOTFILES_SOURCE}/homedir/.tmux.conf .
+
+# fzf: fuzzy search in shell history, and files
+install_package fzf
