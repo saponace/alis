@@ -117,21 +117,15 @@ smart_borders on
     bindsym $mod+k focus down
     bindsym $mod+l focus up
     bindsym $mod+semicolon focus right
-# Focus the parent container
-    bindsym $mod+p focus parent
-# Move focused window
-    bindsym $mod+Shift+j move left
-    bindsym $mod+Shift+k move down
-    bindsym $mod+Shift+l move up
-    bindsym $mod+Shift+semicolon move right
-
 # Set container layout (stacked, tabbed, toggle split)
-    bindsym $mod+t layout tabbed
-    bindsym $mod+y layout stacking
-    bindsym $mod+u layout toggle split
+    bindsym $mod+y layout toggle split
+    bindsym $mod+u layout tabbed
+    bindsym $mod+i layout stacking
 # Set split orientation
-    bindsym $mod+i split h
-    bindsym $mod+o split v
+    bindsym $mod+o split h
+    bindsym $mod+p split v
+# Focus the parent container
+    bindsym $mod+BackSpace focus parent
 # Toggle tiling / floating
     bindsym $mod+Shift+space floating toggle
 
