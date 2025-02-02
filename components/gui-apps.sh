@@ -7,7 +7,6 @@ install_package vlc
 install_package gnome-disk-utility # Disks management (useful for S.M.A.R.T. tests)
 install_package sxiv               # Image viewer
 install_package evince             # PDF viewer
-install_package spotify
 create_manual_todo 'Music streaming' 'Log in with Spotify account in app "Spotify"'
 install_package homebank # Budget manager
 install_package skypeforlinux-stable-bin
