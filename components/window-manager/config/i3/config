@@ -47,7 +47,7 @@ bar {
 # Start a terminal
     bindsym $mod+Return exec --no-startup-id alacritty
 # Start Web browser
-    bindsym $mod+b exec --no-startup-id brave
+    bindsym $mod+b exec --no-startup-id firefox
 # Lockscreen
     bindsym Control+Mod1+l exec --no-startup-id i3exit lock
 

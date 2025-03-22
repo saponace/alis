@@ -2,7 +2,7 @@
 # Misc GUI programs
 #-------------------------------------------------
 
-install_package brave-browser # Web browser
+install_package firefox
 install_package vlc
 install_package gnome-disk-utility # Disks management (useful for S.M.A.R.T. tests)
 install_package sxiv               # Image viewer
