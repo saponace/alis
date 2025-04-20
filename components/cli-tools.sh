@@ -11,7 +11,6 @@ create_homedir_link ${DOTFILES_SOURCE}/homedir/.config/nvim/lua .config/nvim
 
 # Files management
 install_package rsync
-install_package rmlint # Delete duplicates files
 install_package wget
 install_package zip unzip
 install_package unrar
