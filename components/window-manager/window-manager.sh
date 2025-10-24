@@ -29,7 +29,8 @@ create_link components/window-manager/config/picom.conf ${USER_HOME}/.config
 # Show system information on the desktop
 install_package conky
 create_link components/window-manager/config/conky ${USER_HOME}/.config
-create_finalize_startup_entry "Show system informations on the desktop" "conky &"
+## Conky disabled
+# create_finalize_startup_entry "Show system informations on the desktop" "conky &"
 
 ## Notifications
 # Disable dunst notification daemon
