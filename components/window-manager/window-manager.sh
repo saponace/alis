@@ -60,6 +60,3 @@ sudo cp components/window-manager/config/lightdm/slick-greeter.conf /etc/lightdm
 install_package nitrogen
 create_finalize_startup_entry "Restore wallpaper configuration and start windows compositor" "nitrogen --restore; sleep 1; picom -b"
 nitrogen --save --set-scaled /usr/share/backgrounds/wallpaper.jpg
-
-# System initialisation
-create_link components/window-manager/config/.xinitrc ${USER_HOME}
