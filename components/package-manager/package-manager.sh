@@ -2,7 +2,7 @@
 # Package managers
 #-------------------------------------------------
 
-sudo pacman -S yay
+sudo pacman --noconfirm -S yay
 
 # Prevent yay from exceding sudo timeout during long builds
 create_homedir_link components/package-manager/config/yay .config
