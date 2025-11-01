@@ -21,4 +21,4 @@ create_homedir_link ${DOTFILES_SOURCE}/homedir/.tmux.conf .
 install_package fzf
 
 # zoxide: better cd
-yay zoxide
+install_package zoxide
