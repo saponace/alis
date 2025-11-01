@@ -8,9 +8,7 @@ install_package gnome-disk-utility # Disks management (useful for S.M.A.R.T. tes
 install_package sxiv               # Image viewer
 install_package evince             # PDF viewer
 create_manual_todo 'Music streaming' 'Log in with Spotify account in app "Spotify"'
-install_package homebank # Budget manager
-install_package skypeforlinux-stable-bin
-create_manual_todo 'Skype' 'Log in with Skype account in app "Skype"'
+install_package homebank                                 # Budget manager
 install_package transmission-cli transmission-remote-gtk # BitTorrent daemon (and CLI and web-UI)
 
 # Screenshots
