@@ -2,7 +2,7 @@
 # Package managers
 #-------------------------------------------------
 
-# Yay AUR helper should be pre-intalle. No need to install another AUR helper
+sudo pacman -S yay
 
 # Prevent yay from exceding sudo timeout during long builds
 create_homedir_link components/package-manager/config/yay .config
