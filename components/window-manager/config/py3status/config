@@ -21,7 +21,7 @@ group wifi {
   button_prev = 0
 
   wifi brief {
-    icon2 = ''
+    icon2 = ' '
     cache_timeout = -1
     signal_bad = 0
     bitrate_bad = 0
