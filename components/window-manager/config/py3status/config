@@ -10,7 +10,8 @@ order += 'volume_status'
 # order += 'battery_level' # This line may be un-commented depending on the target hardware
 order += 'external_script date'
 order += 'time'
-order += 'keyboard_locks'
+order += 'external_script caps_lock'
+order += 'external_script num_lock'
 
 
 group wifi {
@@ -110,11 +111,22 @@ time {
   separator_block_width = 12
 }
 
-keyboard_locks {
+external_script caps_lock {
+  cache_timeout = 1
   markup = 'pango'
-  color_good = '#A56F55'
-  color_bad = '#7E9687'
-  format = '[\?if=caps_lock&color=bad <b>C</b>|\?color=good <b>C</b>] [\?if=num_lock&color=bad <b>N</b>|\?color=good <b>N</b>]'
+  script_path = "sh -c 'if xset q 2>/dev/null | grep -q \"Caps Lock:[[:space:]]*on\"; then printf \"C\\n#7E9687\\n\"; else printf \"C\\n#A56F55\\n\"; fi'"
+  format = '<b>{output}</b>'
+  on_click 1 = 'exec --no-startup-id xdotool key Caps_Lock'
+  separator = false
+  separator_block_width = 12
+}
+
+external_script num_lock {
+  cache_timeout = 1
+  markup = 'pango'
+  script_path = "sh -c 'if xset q 2>/dev/null | grep -q \"Num Lock:[[:space:]]*on\"; then printf \"N\\n#7E9687\\n\"; else printf \"N\\n#A56F55\\n\"; fi'"
+  format = '<b>{output}</b>'
+  on_click 1 = 'exec --no-startup-id xdotool key Num_Lock'
   separator = false
   separator_block_width = 12
 }
