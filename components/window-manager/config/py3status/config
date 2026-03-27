@@ -2,11 +2,11 @@ general {
   interval = 1
 }
 
+order += 'do_not_disturb'
 order += 'group wifi'
 order += 'arch_updates'
 # order += 'backlight' # This line may be un-commented depending on the target hardware
 order += 'volume_status'
-order += 'do_not_disturb'
 # order += 'battery_level' # This line may be un-commented depending on the target hardware
 order += 'external_script date'
 order += 'time'
@@ -14,43 +14,49 @@ order += 'keyboard_locks'
 
 
 group wifi {
-  color_good = '#7A8B8B'
-  color_degraded = '#7A8B8B'
-  color_bad = '#7A8B8B'
+  color_good = '#5B7F97'
+  color_degraded = '#7392A4'
+  color_bad = '#A86F55'
+  separator = false
+  separator_block_width = 12
   button_next = 1
   button_prev = 0
 
   wifi brief {
-    icon2 = ' '
+    icon2 = ''
     cache_timeout = -1
     signal_bad = 0
     bitrate_bad = 0
     bitrate_degraded = 0
-    format = '{icon2}  {ssid}'
+    format = '{icon2}   {ssid}'
   }
   wifi detailed {
-    icon2 = ' '
+    icon2 = ''
     cache_timeout = -1
     signal_bad = 0
     bitrate_bad = 0
     bitrate_degraded = 0
-    format = '{icon2}  {signal_percent}  -  {ip}'
+    format = '{icon2}   {signal_percent}% - {ip}'
   }
 }
 
 arch_updates {
-  color = '#AA4687'
+  color = '#6C8799'
+  separator = false
+  separator_block_width = 12
   icon2 = '󰏔'
-  format = '{icon2} {pacman} (AUR: {aur})'
+  format = '{icon2} {pacman}/{aur}'
 }
 
 backlight {
-  color = '#A2B5CD'
+  color = '#5A84A0'
+  separator = false
+  separator_block_width = 12
   icon2 = '󰃞'
   brightness_delta = 10
   low_tune_threshold = 10
   command = 'light'
-  format = '\?color=#ef9bd5 {icon2}  {level}%'
+  format = '\?color=#5A84A0 {icon2} {level}%'
   on_udev_backlight = 'refresh_and_freeze'
 }
 
@@ -58,42 +64,57 @@ volume_status {
   icon_volume = '󰕾'
   icon_mute = '󰝟'
   command = 'pamixer'
-  format = '\?color=#CD950C {icon_volume} {percentage}%'
-  format_muted = '\?color=#8B6508 {icon_mute} 0%'
+  format = '\?color=#857F7B {icon_volume} {percentage}%'
+  format_muted = '\?color=#A86F55 {icon_mute} 0%'
+  separator = false
+  separator_block_width = 12
   thresholds = [(0, 'bad'), (1, 'good'), (101, 'degraded')]
   on_udev_sound = 'refresh'
 }
 
 do_not_disturb {
-  color = '#2E8B57'
-  format = '[\?if=state&color=#CD6839  | ]'
+  color = '#4E7392'
+  format = '\?if=state&color=#A86F55 |\?color=#4E7392 '
   server = 'xfce4-notifyd'
+  separator = false
+  separator_block_width = 12
 }
 
 battery_level{
-  color = '#EE9A00'
+  color = '#9A8A7E'
   blocks = ""
-  charging_character = " "
-  format = "  {percent} {icon} {time_remaining}"
+  charging_character = ""
+  format = "{icon} {percent}% {time_remaining}"
   measurement_mode = 'acpi'
   cache_timeout = 5
   battery_id = 'all'
+  separator = false
+  separator_block_width = 12
 }
 
 external_script date {
-  color = '#8968CD'
+  color = '#9F806D'
   icon2 = ''
   cache_timeout = 60
   script_path = 'date +"%a, %d %b"'
-  format = '{icon2}  {output}'
+  format = '{icon2} {output}'
   on_click 1 = 'exec gsimplecal'
+  separator = false
+  separator_block_width = 12
 }
 
 time {
-  color = '#009ACD'
-  format = "󰥔  %H:%M"
+  color = '#A56F55'
+  format = "󰥔 %H:%M"
+  separator = false
+  separator_block_width = 12
 }
 
 keyboard_locks {
-  format = '[\?if=num_lock&color=#2E8B57 NUM|\?color=#CD6839 NUM]'
+  markup = 'pango'
+  color_good = '#A56F55'
+  color_bad = '#7E9687'
+  format = '[\?if=caps_lock&color=bad <b>C</b>|\?color=good <b>C</b>] [\?if=num_lock&color=bad <b>N</b>|\?color=good <b>N</b>]'
+  separator = false
+  separator_block_width = 12
 }

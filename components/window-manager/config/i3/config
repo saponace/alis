@@ -8,11 +8,11 @@ exec --no-startup-id i3-msg -- workspace 1
 set $mod Mod4
 
 #----- Font
-font pango: Dejavu 10
+font pango: Inter 10
 
 # Hide titlebars and windows borders
 default_border pixel 1
-default_floating_border normal
+default_floating_border pixel 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -25,19 +25,24 @@ bar {
     tray_output primary
     tray_padding 6
     padding 3
-    font pango: Dejavu 10
+    font pango: Inter 10
     modifier $mod
-    separator_symbol "      "
+    separator_symbol " "
     colors {
-        set $bg_color #1B1D1EAA
-        set $focused_bg_color #727272AA
-        set $fg_color #CECECE
+        set $bg_color #1B1D1ECC
+        set $focused_bg_color #3D444BCC
+        set $active_bg_color #2D3238CC
+        set $fg_color #D6D6D6
+        set $inactive_fg #8C939A
+        set $workspace_blue #6A8394
+        set $workspace_blue_muted #8295A1
+        set $urgent_bg #A64B4BCC
 
         background $bg_color
-        focused_workspace  $bg_color $focused_bg_color $bg_color
-        active_workspace   $bg_color $bg_color $fg_color
-        inactive_workspace $bg_color $bg_color $fg_color
-        urgent_workspace   $bg_color $fg_color $bg_color
+        focused_workspace  $focused_bg_color $focused_bg_color $workspace_blue
+        active_workspace   $active_bg_color $active_bg_color $workspace_blue_muted
+        inactive_workspace $bg_color $bg_color $workspace_blue_muted
+        urgent_workspace   $urgent_bg $urgent_bg #F5F5F5
     }
 }
 
@@ -51,9 +56,9 @@ bar {
 # Lockscreen
     bindsym Control+Mod1+l exec --no-startup-id i3exit lock
 
-# Show application launcher
-    bindsym $mod+w exec --no-startup-id rofi -show window -theme window
 # Show window switcher
+    bindsym $mod+w exec --no-startup-id rofi -show window -theme window
+# Show application launcher
     bindsym $mod+space exec --no-startup-id rofi -show drun -theme drun
 # restart i3
     bindsym $mod+Shift+r restart
@@ -73,17 +78,18 @@ assign [instance="com.bitwig.BitwigStudio"] 3
     bindsym XF86_MonBrightnessDown exec --no-startup-id "decrease-brightness"
 # Caps lock and verr num
     bindsym --release Num_Lock exec --no-startup-id killall -SIGUSR1 py3status
+    bindsym --release Caps_Lock exec --no-startup-id killall -SIGUSR1 py3status
 
 
 
 #----- Colors
-client.focused          #556064 #556064 #80FFF9 #FDF6E3
-client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.focused          #5F6B73 #5F6B73 #D8DEE9 #88C0D0
+client.focused_inactive #2B3035 #2B3035 #AEB8C2 #4C566A
+client.unfocused        #2B3035 #2B3035 #7F8A96 #3B4252
+client.urgent           #8F3D3D #8F3D3D #F2F2F2 #D08770
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000
 
-client.background       #2B2C2B
+client.background       #1F2123
 
 
 #----- Window resising
@@ -104,8 +110,8 @@ mode "resize" {
 
 
 #----- i3-gaps configuration
-gaps inner 8
-gaps outer -2
+gaps inner 4
+gaps outer 4
 smart_gaps on
 smart_borders on
 
