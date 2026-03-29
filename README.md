@@ -1,7 +1,7 @@
 # Follow these steps to install a new Manjaro linux system
 
-## Install Manjaro-i3
-Boot from a Manjaro-i3 live drive and run the installer.
+## Install Manjaro-Sway
+Boot from a Manjaro-Sway live drive and run the installer.
 If running in VirtualBox, make sure to enable 3D acceleration
 
 It is recommended to use ext4
