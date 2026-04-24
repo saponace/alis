@@ -34,13 +34,15 @@ The first harness scripts are:
 
 Required environment variables:
 
-- `ALIS_NSPAWN_ROOTFS=/path/to/rootfs`: container root filesystem used by `systemd-nspawn`
+- `ALIS_NSPAWN_BASE_ROOTFS=/path/to/rootfs`: clean base rootfs used to create disposable test runs
 
 Optional environment variables:
 
 - `ALIS_NSPAWN_MACHINE=alis-test`: machine name passed to `systemd-nspawn`
 - `ALIS_NSPAWN_USER=alis`: non-root container user that runs the installer
 - `ALIS_NSPAWN_WORKDIR=/home/alis/alis`: writable repo path inside the container
+- `ALIS_NSPAWN_RUN_ROOTFS=/path/to/run-rootfs`: explicit path for the disposable rootfs copy
+- `ALIS_NSPAWN_KEEP_RUN_ROOTFS=1`: keep the disposable rootfs after the run for manual inspection
 - `ALIS_TARGET_HARDWARES="t550 desktop"`: pass hardware-specific CLI arguments to `configure-system.sh`
 
 ## Bootstrapping a rootfs
@@ -61,9 +63,9 @@ This script:
 Example:
 
 ```bash
-sudo ALIS_NSPAWN_ROOTFS=/var/lib/machines/alis \
+sudo ALIS_NSPAWN_BASE_ROOTFS=/var/lib/machines/alis \
   ALIS_COMPONENTS="package-manager system" \
   ./tests/nspawn/run_case.sh
 ```
 
-The repo is mounted read-only at `/mnt/alis-src`, copied into the container workdir, and then executed from there as the non-root container user so the installer behaves more like a normal workstation setup.
+Each run starts from a disposable copy of the base rootfs, so the base remains clean across runs. The repo is mounted read-only at `/mnt/alis-src`, copied into the container workdir, and then executed from there as the non-root container user so the installer behaves more like a normal workstation setup.
