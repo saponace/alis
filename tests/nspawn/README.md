@@ -37,11 +37,15 @@ Required environment variables:
 
 - `ALIS_NSPAWN_BASE_ROOTFS=/path/to/rootfs`: clean base rootfs used to create disposable test runs
 
+Optional environment variables:
+
 - `ALIS_NSPAWN_MACHINE=alis-test`: machine name passed to `systemd-nspawn`
 - `ALIS_NSPAWN_USER=alis`: non-root container user that runs the installer
 - `ALIS_NSPAWN_WORKDIR=/home/alis/alis`: writable repo path inside the container
 - `ALIS_NSPAWN_RUN_ROOTFS=/path/to/run-rootfs`: explicit path for the disposable rootfs copy
 - `ALIS_NSPAWN_KEEP_RUN_ROOTFS=1`: keep the disposable rootfs after the run for manual inspection
+- `ALIS_NSPAWN_PACMAN_CACHE_DIR=/var/cache/pacman/pkg`: host package cache bind-mounted into the container
+- `ALIS_NSPAWN_YAY_CACHE_DIR=/var/cache/alis-nspawn/yay`: host yay cache bind-mounted into the container user cache
 - `ALIS_TARGET_HARDWARES="t550 desktop"`: pass hardware-specific CLI arguments to `configure-system.sh`
 
 ## Bootstrapping a rootfs
@@ -80,3 +84,5 @@ sudo ALIS_NSPAWN_BASE_ROOTFS=/var/lib/machines/alis \
 ```
 
 Each run starts from a disposable copy of the base rootfs, so the base remains clean across runs. The repo is mounted read-only at `/mnt/alis-src`, copied into the container workdir, and then executed from there as the non-root container user so the installer behaves more like a normal workstation setup.
+
+`run_case.sh` also reuses host-side package caches by default, so repeated test runs do not need to redownload pacman and yay artifacts every time.

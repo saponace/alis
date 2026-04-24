@@ -10,6 +10,8 @@ ALIS_NSPAWN_USER=${ALIS_NSPAWN_USER:-"alis"}
 ALIS_NSPAWN_WORKDIR=${ALIS_NSPAWN_WORKDIR:-"/home/${ALIS_NSPAWN_USER}/alis"}
 ALIS_NSPAWN_RUN_ROOTFS=${ALIS_NSPAWN_RUN_ROOTFS:-""}
 ALIS_NSPAWN_KEEP_RUN_ROOTFS=${ALIS_NSPAWN_KEEP_RUN_ROOTFS:-0}
+ALIS_NSPAWN_PACMAN_CACHE_DIR=${ALIS_NSPAWN_PACMAN_CACHE_DIR:-"/var/cache/pacman/pkg"}
+ALIS_NSPAWN_YAY_CACHE_DIR=${ALIS_NSPAWN_YAY_CACHE_DIR:-"/var/cache/alis-nspawn/yay"}
 ALIS_SKIP_REBOOT=${ALIS_SKIP_REBOOT:-1}
 ALIS_SKIP_FULL_UPGRADE=${ALIS_SKIP_FULL_UPGRADE:-1}
 ALIS_LOG_FILE=${ALIS_LOG_FILE:-"/tmp/alis.log"}
@@ -30,6 +32,13 @@ if [ ! -d "${ALIS_NSPAWN_BASE_ROOTFS}" ]; then
 	exit 1
 fi
 
+CONTAINER_USER_IDS=$(awk -F: -v username="${ALIS_NSPAWN_USER}" '$1 == username { print $3 ":" $4 }' "${ALIS_NSPAWN_BASE_ROOTFS}/etc/passwd")
+
+if [ -z "${CONTAINER_USER_IDS}" ]; then
+	echo "Could not determine uid/gid for ${ALIS_NSPAWN_USER} in ${ALIS_NSPAWN_BASE_ROOTFS}" >&2
+	exit 1
+fi
+
 if [ -z "${ALIS_NSPAWN_RUN_ROOTFS}" ]; then
 	ALIS_NSPAWN_RUN_ROOTFS=$(mktemp -d --tmpdir alis-nspawn-rootfs.XXXXXX)
 fi
@@ -46,11 +55,19 @@ trap cleanup EXIT
 
 mkdir -p "${ALIS_NSPAWN_RUN_ROOTFS}"
 sudo cp -a "${ALIS_NSPAWN_BASE_ROOTFS}/." "${ALIS_NSPAWN_RUN_ROOTFS}"
+sudo mkdir -p "${ALIS_NSPAWN_PACMAN_CACHE_DIR}"
+sudo mkdir -p "${ALIS_NSPAWN_YAY_CACHE_DIR}"
+sudo chown "${CONTAINER_USER_IDS}" "${ALIS_NSPAWN_YAY_CACHE_DIR}"
+sudo mkdir -p "${ALIS_NSPAWN_RUN_ROOTFS}/var/cache/pacman/pkg"
+sudo mkdir -p "${ALIS_NSPAWN_RUN_ROOTFS}/home/${ALIS_NSPAWN_USER}/.cache"
+sudo chown "${CONTAINER_USER_IDS}" "${ALIS_NSPAWN_RUN_ROOTFS}/home/${ALIS_NSPAWN_USER}/.cache"
 
 nspawn_args=(
 	"--directory=${ALIS_NSPAWN_RUN_ROOTFS}"
 	"--machine=${ALIS_NSPAWN_MACHINE}"
 	"--bind-ro=${REPO_ROOT}:/mnt/alis-src"
+	"--bind=${ALIS_NSPAWN_PACMAN_CACHE_DIR}:/var/cache/pacman/pkg"
+	"--bind=${ALIS_NSPAWN_YAY_CACHE_DIR}:/home/${ALIS_NSPAWN_USER}/.cache/yay"
 )
 
 systemd-nspawn "${nspawn_args[@]}" \
