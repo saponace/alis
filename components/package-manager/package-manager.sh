@@ -12,4 +12,8 @@ sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads.*/ParallelDownloads = 5/g' /etc/pacman.conf
 
 # GUI package manager
-sudo sed -i 's/#EnableAUR/EnableAUR/g' /etc/pamac.conf
+if [ -f /etc/pamac.conf ]; then
+	sudo sed -i 's/#EnableAUR/EnableAUR/g' /etc/pamac.conf
+else
+	echo "Skipping pamac configuration because /etc/pamac.conf is missing"
+fi

@@ -5,7 +5,7 @@
 
 function install_package() {
 	echo "Installing package(s): $@"
-	yay -S --noconfirm --needed $@
+	yay -S --noconfirm --needed --noremovemake --answerclean None --answerdiff None --answeredit None $@
 }
 
 ## Link a file and make sure the directory of the link exists
@@ -15,16 +15,27 @@ function create_link() {
 	source_path=$(readlink -f "$1")
 	source_file_name=$(basename ${source_path})
 	sudo rm -rf "$2/${source_file_name}" # Remove existing file/directory with source name in the target (if it exists)
-	sudo mkdir -p $2                     # Create the dir structure (if it does not exist)
-	sudo ln -snf ${source_path} $2/      # Create the link
+	sudo mkdir -p "$2" # Create the dir structure (if it does not exist)
+	sudo ln -snf "${source_path}" "$2/"
+}
+
+## Link a file in a user-owned directory
+# $1: The source file/directory from this repo's root (ex: components/package-manager/config/yay)
+# $2: The target directory
+function create_user_link() {
+	source_path=$(readlink -f "$1")
+	source_file_name=$(basename ${source_path})
+	sudo -u "${USERNAME}" rm -rf "$2/${source_file_name}"
+	sudo -u "${USERNAME}" mkdir -p "$2"
+	sudo -u "${USERNAME}" ln -snf "${source_path}" "$2/"
 }
 
 ## Link a file in both /home/$USER/ and /root/
 # $1: The source file/directory from this repo's root (ex: components/package-manager/config/yay)
 # $2: The target directory from /home/$USER and /root
 function create_homedir_link() {
-	create_link $1 ${USER_HOME}/${2}
-	create_link $1 ${ROOT_HOME}/${2}
+	create_user_link "$1" "${USER_HOME}/$2"
+	create_link "$1" "${ROOT_HOME}/$2"
 }
 
 ## Append instructions that the user should follow (after reboot) to finalize setup

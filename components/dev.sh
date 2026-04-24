@@ -3,15 +3,13 @@
 #-------------------------------------------------
 
 # Java stuff
-install_package jdk-openjdk openjdk-doc openjdk-src
-install_package jdk11-openjdk openjdk11-doc openjdk11-src
-install_package jdk17-openjdk openjdk11-doc openjdk11-src
-sudo archlinux-java set java-17-openjdk # Set default Java version to 11
+install_package jdk-openjdk
 install_package maven
+install_package openssh
 
 # IDE
-install_package intellij-idea-ultimate-edition
-create_manual_todo 'Development' 'Log in with Jetbrains account in app "Intellij IDEA"'
+# install_package intellij-idea-ultimate-edition
+# create_manual_todo 'Development' 'Log in with Jetbrains account in app "Intellij IDEA"'
 
 # Git stuff
 ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa # Generate ssh keypair

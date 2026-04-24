@@ -2,6 +2,9 @@
 # configure window manager and desktop environment
 #-------------------------------------------------
 
+# Install a concrete font provider to avoid pacman provider prompts.
+install_package ttf-dejavu
+
 # Window manager
 install_package i3-gaps
 create_link components/window-manager/config/i3 ${USER_HOME}/.config
@@ -34,7 +37,9 @@ create_link components/window-manager/config/conky ${USER_HOME}/.config
 
 ## Notifications
 # Disable dunst notification daemon
-sudo mv /usr/share/dbus-1/services/org.knopwob.dunst.service{,.disabled}
+if [ -f /usr/share/dbus-1/services/org.knopwob.dunst.service ]; then
+	sudo mv /usr/share/dbus-1/services/org.knopwob.dunst.service{,.disabled}
+fi
 # Use xfce4-notifyd instead
 install_package xfce4-notifyd
 create_link components/window-manager/config/xfce4-notifyd/xfce4-notifyd.xml ${USER_HOME}/.config/xfce4/xfconf/xfce-perchannel-xml
@@ -49,14 +54,25 @@ create_finalize_startup_entry "Use i3lock as a screen saver" "xss-lock --transfe
 
 # Deploy wallpaper (used by LightDM and Nitrogen)
 # Copy instead of symlink because lightDM does not handle symlinks for some reason
+sudo mkdir -p /usr/share/backgrounds
 sudo cp components/window-manager/image/wallpaper.jpg /usr/share/backgrounds/
 
 # Display manager (assume LightDM installed and configured by live USB Installer)
 # Copy instead of symlink because lightDM does not handle symlinks for some reason
-sudo cp components/window-manager/config/lightdm/slick-greeter.conf /etc/lightdm/
+if [ -d /etc/lightdm ]; then
+	sudo cp components/window-manager/config/lightdm/slick-greeter.conf /etc/lightdm/
+else
+	echo "Skipping LightDM configuration because /etc/lightdm is missing"
+fi
 
 # Nitrogen should be started AFTER autorandr. Make sure it is after autorandr in finalize-startup
 # (autaorandr is injected in finalize-startup by component "display")
 install_package nitrogen
 create_finalize_startup_entry "Restore wallpaper configuration and start windows compositor" "nitrogen --restore; sleep 1; picom -b"
-nitrogen --save --set-scaled /usr/share/backgrounds/wallpaper.jpg
+
+# Setting a wallpaper requires an X display; skip in headless/container test runs.
+if [ -n "${DISPLAY:-}" ] && command -v xdpyinfo >/dev/null 2>&1 && xdpyinfo >/dev/null 2>&1; then
+	nitrogen --save --set-scaled /usr/share/backgrounds/wallpaper.jpg
+else
+	echo "Skipping nitrogen wallpaper set (no X display)"
+fi

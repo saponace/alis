@@ -6,34 +6,38 @@
 target_hardwares=$@
 
 COMPONENTS_PATH="./components"
-LOG_FILE="./alis.log"
+ALL_COMPONENTS="package-manager system networking vpn-client dev cli-tools display window-manager hardware-drivers gui-apps virtualisation appearance audio file-manager terminal-and-shell gdrive-sync music-production gaming"
+LOG_FILE=${ALIS_LOG_FILE:-"./alis.log"}
 USERNAME=$(whoami)
 DOTFILES_SOURCE="dotfiles"
 USER_HOME="/home/${USERNAME}"
 ROOT_HOME="/root"
 SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
-FINALIZE_STARTUP_ENTRIES_TEMP_FILE="/tmp/finalize-startup-entries.sh"
+FINALIZE_STARTUP_ENTRIES_TEMP_FILE=${ALIS_FINALIZE_STARTUP_ENTRIES_TEMP_FILE:-"/tmp/finalize-startup-entries.sh"}
+ALIS_SKIP_REBOOT=${ALIS_SKIP_REBOOT:-0}
+ALIS_SKIP_FULL_UPGRADE=${ALIS_SKIP_FULL_UPGRADE:-0}
+ALIS_COMPONENTS=${ALIS_COMPONENTS:-"${ALL_COMPONENTS}"}
 
 ## Execute a component script
 # $1: The name of the component (without the ending ".sh")
 function install_component() {
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-	echo "Starting installation of component $1" 2>&1 | tee -a ${LOG_FILE}
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+	echo "========================================"
+	echo "Starting installation of component $1"
+	echo "========================================"
 	# Case components/core/core.sh
 	if [ -f "${COMPONENTS_PATH}/$1/$1.sh" ]; then
-		source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+		source "${COMPONENTS_PATH}/$1/$1.sh"
 	# Case components/core.sh
 	elif [ -f "${COMPONENTS_PATH}/$1.sh" ]; then
-		source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+		source "${COMPONENTS_PATH}/$1.sh"
 	else
 		echo "Error: Component $1 not found"
 	fi
-	echo "" 2>&1 | tee -a ${LOG_FILE}
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-	echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-	echo "" 2>&1 | tee -a ${LOG_FILE}
+	echo ""
+	echo "========================================"
+	echo "Finished installing component $1"
+	echo "========================================"
+	echo ""
 }
 
 ## Get partial path of a hardware-specific script from its hardware name
@@ -59,6 +63,12 @@ function install_hardware_specific_components() {
 	done
 }
 
+function install_components() {
+	for component in ${ALIS_COMPONENTS}; do
+		install_component ${component}
+	done
+}
+
 ## Append all component-specific finalize_startup entries into a final script that will be linked and called from
 # .Xinitrc to initialize user session
 function deploy_finalize_startup_script() {
@@ -74,6 +84,9 @@ function deploy_finalize_startup_script() {
 
 function main() {
 	check_target_hardwares_exist
+	# Mirror all subsequent stdout/stderr to both the console and the log file.
+	exec > >(tee -a "${LOG_FILE}")
+	exec 2>&1
 
 	# Prevent sudo timeout
 	sudo -v
@@ -84,39 +97,30 @@ function main() {
 	done &
 
 	# Full system upgrade
-	sudo pacman --noconfirm -Syy # Refresh of package database
-	sudo pacman --noconfirm -Syu # Update all installed packages
+	if [ "${ALIS_SKIP_FULL_UPGRADE}" = "1" ]; then
+		echo "Skipping full system upgrade because ALIS_SKIP_FULL_UPGRADE=1"
+	else
+		sudo pacman --noconfirm -Syy # Refresh of package database
+		sudo pacman --noconfirm -Syu # Update all installed packages
+	fi
 
 	# Empty file collecting finalize-startup entries in case alis is executed multiple times (ensure no duplicates from previous runs)
 	echo -n "" >${FINALIZE_STARTUP_ENTRIES_TEMP_FILE}
 
 	source ./common-functions.sh
 
-	install_component package-manager
-	install_component system
-	install_component networking
-	install_component vpn-client
-	install_component dev
-	install_component cli-tools
-	install_component display
-	install_component window-manager
-	install_component hardware-drivers
-	install_component gui-apps
-	install_component virtualisation
-	install_component appearance
-	install_component audio
-	install_component file-manager
-	install_component terminal-and-shell
-	install_component gdrive-sync
-	install_component music-production
-	install_component gaming
+	install_components
 
 	install_hardware_specific_components
 
 	deploy_finalize_startup_script
 
 	sync
-	sudo reboot
+	if [ "${ALIS_SKIP_REBOOT}" = "1" ]; then
+		echo "Skipping reboot because ALIS_SKIP_REBOOT=1"
+	else
+		sudo reboot
+	fi
 }
 
 main
