@@ -13,6 +13,7 @@ USER_HOME="/home/${USERNAME}"
 ROOT_HOME="/root"
 SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
 FINALIZE_STARTUP_ENTRIES_TEMP_FILE="/tmp/finalize-startup-entries.sh"
+ALIS_SKIP_REBOOT=${ALIS_SKIP_REBOOT:-0}
 
 ## Execute a component script
 # $1: The name of the component (without the ending ".sh")
@@ -116,7 +117,11 @@ function main() {
 	deploy_finalize_startup_script
 
 	sync
-	sudo reboot
+	if [ "${ALIS_SKIP_REBOOT}" = "1" ]; then
+		echo "Skipping reboot because ALIS_SKIP_REBOOT=1" 2>&1 | tee -a ${LOG_FILE}
+	else
+		sudo reboot
+	fi
 }
 
 main
