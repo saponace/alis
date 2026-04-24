@@ -26,6 +26,7 @@ The first harness scripts are:
 
 - `tests/nspawn/create_rootfs.sh`: host-side bootstrap script that creates a rootfs and test user for `systemd-nspawn`
 - `tests/nspawn/run_case.sh`: host-side wrapper that launches `systemd-nspawn`
+- `tests/nspawn/test.sh`: convenience wrapper that creates the base rootfs if needed and then runs a disposable test case
 - `tests/nspawn/inside_container_run.sh`: container-side entrypoint that copies the repo into the container and runs `configure-system.sh`
 
 ## Current workflow
@@ -35,8 +36,6 @@ The first harness scripts are:
 Required environment variables:
 
 - `ALIS_NSPAWN_BASE_ROOTFS=/path/to/rootfs`: clean base rootfs used to create disposable test runs
-
-Optional environment variables:
 
 - `ALIS_NSPAWN_MACHINE=alis-test`: machine name passed to `systemd-nspawn`
 - `ALIS_NSPAWN_USER=alis`: non-root container user that runs the installer
@@ -50,7 +49,7 @@ Optional environment variables:
 Create a rootfs and the default `alis` test user with:
 
 ```bash
-ALIS_NSPAWN_ROOTFS=/var/lib/machines/alis ./tests/nspawn/create_rootfs.sh
+ALIS_NSPAWN_BASE_ROOTFS=/var/lib/machines/alis ./tests/nspawn/create_rootfs.sh
 ```
 
 This script:
@@ -59,6 +58,18 @@ This script:
 - copies `pacman` config and DNS resolver config into it
 - installs a minimal package set needed to run `alis`
 - creates a passwordless-sudo test user inside the rootfs
+
+## One-shot test command
+
+If you want a single command that ensures the base rootfs exists and then runs a disposable test case, use:
+
+```bash
+sudo ALIS_NSPAWN_BASE_ROOTFS=/var/lib/machines/alis \
+  ALIS_COMPONENTS="package-manager system" \
+  ./tests/nspawn/test.sh
+```
+
+This will create the base rootfs on first use and reuse it on later runs.
 
 Example:
 
