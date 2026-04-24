@@ -14,6 +14,7 @@ ROOT_HOME="/root"
 SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
 FINALIZE_STARTUP_ENTRIES_TEMP_FILE="/tmp/finalize-startup-entries.sh"
 ALIS_SKIP_REBOOT=${ALIS_SKIP_REBOOT:-0}
+ALIS_SKIP_FULL_UPGRADE=${ALIS_SKIP_FULL_UPGRADE:-0}
 
 ## Execute a component script
 # $1: The name of the component (without the ending ".sh")
@@ -85,8 +86,12 @@ function main() {
 	done &
 
 	# Full system upgrade
-	sudo pacman --noconfirm -Syy # Refresh of package database
-	sudo pacman --noconfirm -Syu # Update all installed packages
+	if [ "${ALIS_SKIP_FULL_UPGRADE}" = "1" ]; then
+		echo "Skipping full system upgrade because ALIS_SKIP_FULL_UPGRADE=1" 2>&1 | tee -a ${LOG_FILE}
+	else
+		sudo pacman --noconfirm -Syy # Refresh of package database
+		sudo pacman --noconfirm -Syu # Update all installed packages
+	fi
 
 	# Empty file collecting finalize-startup entries in case alis is executed multiple times (ensure no duplicates from previous runs)
 	echo -n "" >${FINALIZE_STARTUP_ENTRIES_TEMP_FILE}
