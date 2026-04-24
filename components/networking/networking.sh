@@ -2,11 +2,15 @@
 # Configure networking
 #-------------------------------------------------
 
+install_package networkmanager network-manager-applet
+
 # Disable ipv6 in dhcpcd.conf
 sudo su -c "echo -e 'noipv6rs\nnoipv6' >> /etc/dhcpcd.conf"
 
 # Disable NetworkManager /etc/resolv.conf DNS automatic updates and manually set custom DNS servers
 # If not disabled, NetworkManager will set arbitrary DNS (notably ISP DNS)
+sudo mkdir -p /etc/NetworkManager
+sudo touch /etc/NetworkManager/NetworkManager.conf
 sudo su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
 create_link components/networking/config/resolv.conf /etc
 

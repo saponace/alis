@@ -5,6 +5,7 @@
 # Java stuff
 install_package jdk-openjdk
 install_package maven
+install_package openssh
 
 # IDE
 # install_package intellij-idea-ultimate-edition

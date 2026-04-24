@@ -34,7 +34,9 @@ create_link components/window-manager/config/conky ${USER_HOME}/.config
 
 ## Notifications
 # Disable dunst notification daemon
-sudo mv /usr/share/dbus-1/services/org.knopwob.dunst.service{,.disabled}
+if [ -f /usr/share/dbus-1/services/org.knopwob.dunst.service ]; then
+	sudo mv /usr/share/dbus-1/services/org.knopwob.dunst.service{,.disabled}
+fi
 # Use xfce4-notifyd instead
 install_package xfce4-notifyd
 create_link components/window-manager/config/xfce4-notifyd/xfce4-notifyd.xml ${USER_HOME}/.config/xfce4/xfconf/xfce-perchannel-xml
