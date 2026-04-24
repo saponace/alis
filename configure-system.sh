@@ -6,13 +6,13 @@
 target_hardwares=$@
 
 COMPONENTS_PATH="./components"
-LOG_FILE="./alis.log"
+LOG_FILE=${ALIS_LOG_FILE:-"./alis.log"}
 USERNAME=$(whoami)
 DOTFILES_SOURCE="dotfiles"
 USER_HOME="/home/${USERNAME}"
 ROOT_HOME="/root"
 SYSTEMD_UNITS_DIRECTORY="/etc/systemd/system"
-FINALIZE_STARTUP_ENTRIES_TEMP_FILE="/tmp/finalize-startup-entries.sh"
+FINALIZE_STARTUP_ENTRIES_TEMP_FILE=${ALIS_FINALIZE_STARTUP_ENTRIES_TEMP_FILE:-"/tmp/finalize-startup-entries.sh"}
 ALIS_SKIP_REBOOT=${ALIS_SKIP_REBOOT:-0}
 ALIS_SKIP_FULL_UPGRADE=${ALIS_SKIP_FULL_UPGRADE:-0}
 
