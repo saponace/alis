@@ -3,10 +3,7 @@
 #-------------------------------------------------
 
 # Java stuff
-install_package jdk-openjdk openjdk-doc openjdk-src
-install_package jdk11-openjdk openjdk11-doc openjdk11-src
-install_package jdk17-openjdk openjdk11-doc openjdk11-src
-sudo archlinux-java set java-17-openjdk # Set default Java version to 11
+install_package jdk-openjdk
 install_package maven
 
 # IDE
