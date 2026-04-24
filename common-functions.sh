@@ -5,7 +5,7 @@
 
 function install_package() {
 	echo "Installing package(s): $@"
-	yay -S --noconfirm --needed $@
+	yay -S --noconfirm --needed --nocleanmenu --nodiffmenu --noremovemake $@
 }
 
 ## Link a file and make sure the directory of the link exists

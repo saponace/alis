@@ -12,7 +12,13 @@ sudo su -c "echo -e 'noipv6rs\nnoipv6' >> /etc/dhcpcd.conf"
 sudo mkdir -p /etc/NetworkManager
 sudo touch /etc/NetworkManager/NetworkManager.conf
 sudo su -c "echo -e '[main]\ndns=none' >> /etc/NetworkManager/NetworkManager.conf"
-create_link components/networking/config/resolv.conf /etc
+
+# In container-based tests we may bind-mount /etc/resolv.conf; don't fight it.
+if command -v findmnt >/dev/null 2>&1 && findmnt -T /etc/resolv.conf >/dev/null 2>&1; then
+	echo "Skipping resolv.conf link because /etc/resolv.conf is a mount"
+else
+	create_link components/networking/config/resolv.conf /etc
+fi
 
 # Allow DNS resolution by systemd sevices (to give services ability to resolve domain names)
 sudo systemctl enable systemd-resolved.service

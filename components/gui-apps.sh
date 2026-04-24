@@ -2,6 +2,9 @@
 # Misc GUI programs
 #-------------------------------------------------
 
+# Install a concrete jack provider to avoid pacman provider prompts.
+install_package jack2
+
 install_package firefox
 install_package vlc
 install_package gnome-disk-utility # Disks management (useful for S.M.A.R.T. tests)
