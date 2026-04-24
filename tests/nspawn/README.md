@@ -64,12 +64,12 @@ This script:
 If you want a single command that ensures the base rootfs exists and then runs a disposable test case, use:
 
 ```bash
-sudo ALIS_NSPAWN_BASE_ROOTFS=/var/lib/machines/alis \
+sudo ALIS_NSPAWN_BASE_ROOTFS="$HOME/.local/share/alis/nspawn/base" \
   ALIS_COMPONENTS="package-manager system" \
   ./tests/nspawn/test.sh
 ```
 
-This will create the base rootfs on first use and reuse it on later runs.
+This will create the base rootfs on first use and reuse it on later runs. If `ALIS_NSPAWN_BASE_ROOTFS` is unset, `tests/nspawn/test.sh` defaults to `$HOME/.local/share/alis/nspawn/base`.
 
 Example:
 

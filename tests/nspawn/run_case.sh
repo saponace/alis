@@ -15,6 +15,11 @@ ALIS_SKIP_FULL_UPGRADE=${ALIS_SKIP_FULL_UPGRADE:-1}
 ALIS_LOG_FILE=${ALIS_LOG_FILE:-"/tmp/alis.log"}
 ALIS_FINALIZE_STARTUP_ENTRIES_TEMP_FILE=${ALIS_FINALIZE_STARTUP_ENTRIES_TEMP_FILE:-"/tmp/finalize-startup-entries.sh"}
 
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Run tests/nspawn/run_case.sh with sudo so systemd-nspawn can start the container" >&2
+	exit 1
+fi
+
 if [ -z "${ALIS_NSPAWN_BASE_ROOTFS}" ]; then
 	echo "ALIS_NSPAWN_BASE_ROOTFS must point to an existing container rootfs" >&2
 	exit 1
@@ -33,14 +38,14 @@ cleanup() {
 	if [ "${ALIS_NSPAWN_KEEP_RUN_ROOTFS}" = "1" ]; then
 		echo "Keeping run rootfs at ${ALIS_NSPAWN_RUN_ROOTFS}"
 	else
-		rm -rf "${ALIS_NSPAWN_RUN_ROOTFS}"
+		sudo rm -rf "${ALIS_NSPAWN_RUN_ROOTFS}"
 	fi
 }
 
 trap cleanup EXIT
 
 mkdir -p "${ALIS_NSPAWN_RUN_ROOTFS}"
-cp -a "${ALIS_NSPAWN_BASE_ROOTFS}/." "${ALIS_NSPAWN_RUN_ROOTFS}"
+sudo cp -a "${ALIS_NSPAWN_BASE_ROOTFS}/." "${ALIS_NSPAWN_RUN_ROOTFS}"
 
 nspawn_args=(
 	"--directory=${ALIS_NSPAWN_RUN_ROOTFS}"

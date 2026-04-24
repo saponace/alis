@@ -3,7 +3,15 @@
 set -euo pipefail
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
-ALIS_NSPAWN_BASE_ROOTFS=${ALIS_NSPAWN_BASE_ROOTFS:-"/var/lib/machines/alis"}
+
+DEFAULT_BASE_ROOTFS=$(getent passwd "${SUDO_USER:-$(id -un)}" | cut -d: -f6)/.local/share/alis/nspawn/base
+
+ALIS_NSPAWN_BASE_ROOTFS=${ALIS_NSPAWN_BASE_ROOTFS:-"${DEFAULT_BASE_ROOTFS}"}
+
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Run tests/nspawn/test.sh with sudo so systemd-nspawn can start the container" >&2
+	exit 1
+fi
 
 if [ ! -d "${ALIS_NSPAWN_BASE_ROOTFS}" ]; then
 	echo "Base rootfs not found at ${ALIS_NSPAWN_BASE_ROOTFS}; creating it first"
