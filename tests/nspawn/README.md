@@ -24,6 +24,7 @@ The installer now exposes the controls needed for a container-based test harness
 
 The first harness scripts are:
 
+- `tests/nspawn/create_rootfs.sh`: host-side bootstrap script that creates a rootfs and test user for `systemd-nspawn`
 - `tests/nspawn/run_case.sh`: host-side wrapper that launches `systemd-nspawn`
 - `tests/nspawn/inside_container_run.sh`: container-side entrypoint that copies the repo into the container and runs `configure-system.sh`
 
@@ -38,8 +39,24 @@ Required environment variables:
 Optional environment variables:
 
 - `ALIS_NSPAWN_MACHINE=alis-test`: machine name passed to `systemd-nspawn`
-- `ALIS_NSPAWN_WORKDIR=/opt/alis`: writable repo path inside the container
+- `ALIS_NSPAWN_USER=alis`: non-root container user that runs the installer
+- `ALIS_NSPAWN_WORKDIR=/home/alis/alis`: writable repo path inside the container
 - `ALIS_TARGET_HARDWARES="t550 desktop"`: pass hardware-specific CLI arguments to `configure-system.sh`
+
+## Bootstrapping a rootfs
+
+Create a rootfs and the default `alis` test user with:
+
+```bash
+ALIS_NSPAWN_ROOTFS=/var/lib/machines/alis ./tests/nspawn/create_rootfs.sh
+```
+
+This script:
+
+- creates the rootfs directory
+- copies `pacman` config and DNS resolver config into it
+- installs a minimal package set needed to run `alis`
+- creates a passwordless-sudo test user inside the rootfs
 
 Example:
 
@@ -49,4 +66,4 @@ sudo ALIS_NSPAWN_ROOTFS=/var/lib/machines/alis \
   ./tests/nspawn/run_case.sh
 ```
 
-The repo is mounted read-only at `/mnt/alis-src`, copied into the container workdir, and then executed from there so the container can write local artifacts such as `manual-configuration-instructions.txt`.
+The repo is mounted read-only at `/mnt/alis-src`, copied into the container workdir, and then executed from there as the non-root container user so the installer behaves more like a normal workstation setup.
