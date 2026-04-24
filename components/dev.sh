@@ -7,8 +7,8 @@ install_package jdk-openjdk
 install_package maven
 
 # IDE
-install_package intellij-idea-ultimate-edition
-create_manual_todo 'Development' 'Log in with Jetbrains account in app "Intellij IDEA"'
+# install_package intellij-idea-ultimate-edition
+# create_manual_todo 'Development' 'Log in with Jetbrains account in app "Intellij IDEA"'
 
 # Git stuff
 ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa # Generate ssh keypair
