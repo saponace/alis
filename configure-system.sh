@@ -19,23 +19,23 @@ ALIS_SKIP_FULL_UPGRADE=${ALIS_SKIP_FULL_UPGRADE:-0}
 ## Execute a component script
 # $1: The name of the component (without the ending ".sh")
 function install_component() {
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-	echo "Starting installation of component $1" 2>&1 | tee -a ${LOG_FILE}
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+	echo "========================================"
+	echo "Starting installation of component $1"
+	echo "========================================"
 	# Case components/core/core.sh
 	if [ -f "${COMPONENTS_PATH}/$1/$1.sh" ]; then
-		source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+		source "${COMPONENTS_PATH}/$1/$1.sh"
 	# Case components/core.sh
 	elif [ -f "${COMPONENTS_PATH}/$1.sh" ]; then
-		source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+		source "${COMPONENTS_PATH}/$1.sh"
 	else
 		echo "Error: Component $1 not found"
 	fi
-	echo "" 2>&1 | tee -a ${LOG_FILE}
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-	echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
-	echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-	echo "" 2>&1 | tee -a ${LOG_FILE}
+	echo ""
+	echo "========================================"
+	echo "Finished installing component $1"
+	echo "========================================"
+	echo ""
 }
 
 ## Get partial path of a hardware-specific script from its hardware name
@@ -76,6 +76,9 @@ function deploy_finalize_startup_script() {
 
 function main() {
 	check_target_hardwares_exist
+	# Mirror all subsequent stdout/stderr to both the console and the log file.
+	exec > >(tee -a "${LOG_FILE}")
+	exec 2>&1
 
 	# Prevent sudo timeout
 	sudo -v
@@ -87,7 +90,7 @@ function main() {
 
 	# Full system upgrade
 	if [ "${ALIS_SKIP_FULL_UPGRADE}" = "1" ]; then
-		echo "Skipping full system upgrade because ALIS_SKIP_FULL_UPGRADE=1" 2>&1 | tee -a ${LOG_FILE}
+		echo "Skipping full system upgrade because ALIS_SKIP_FULL_UPGRADE=1"
 	else
 		sudo pacman --noconfirm -Syy # Refresh of package database
 		sudo pacman --noconfirm -Syu # Update all installed packages
@@ -123,7 +126,7 @@ function main() {
 
 	sync
 	if [ "${ALIS_SKIP_REBOOT}" = "1" ]; then
-		echo "Skipping reboot because ALIS_SKIP_REBOOT=1" 2>&1 | tee -a ${LOG_FILE}
+		echo "Skipping reboot because ALIS_SKIP_REBOOT=1"
 	else
 		sudo reboot
 	fi
