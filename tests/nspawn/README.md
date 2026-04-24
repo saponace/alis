@@ -14,7 +14,6 @@ The installer supports the following environment variables:
 
 - `ALIS_SKIP_REBOOT=1`: do not reboot at the end of the run
 - `ALIS_SKIP_FULL_UPGRADE=1`: skip `pacman -Syy` and `pacman -Syu`
-- `ALIS_LOG_FILE=/path/to/logfile`: write installer output to a custom log file
 - `ALIS_FINALIZE_STARTUP_ENTRIES_TEMP_FILE=/path/to/file`: use a custom temporary file for `finalize-startup` entries
 - `ALIS_COMPONENTS="component-a component-b"`: run only the specified components, in the specified order
 
@@ -32,6 +31,11 @@ The first harness scripts are:
 ## Current workflow
 
 `run_case.sh` expects a pre-existing rootfs and launches a disposable test run against it.
+
+Notes:
+
+- These scripts expect a pacman-based host (Arch/Manjaro) since `create_rootfs.sh` uses the host `pacman` to install packages into the container rootfs.
+- `run_case.sh` / `test.sh` / `create_rootfs.sh` must run as root (typically via `sudo`) to use `systemd-nspawn` and to create the rootfs.
 
 Required environment variables:
 
@@ -53,7 +57,7 @@ Optional environment variables:
 Create a rootfs and the default `alis` test user with:
 
 ```bash
-ALIS_NSPAWN_BASE_ROOTFS=/var/lib/machines/alis ./tests/nspawn/create_rootfs.sh
+sudo ALIS_NSPAWN_BASE_ROOTFS=/var/lib/machines/alis ./tests/nspawn/create_rootfs.sh
 ```
 
 This script:

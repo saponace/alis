@@ -6,7 +6,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 ALIS_NSPAWN_BASE_ROOTFS=${ALIS_NSPAWN_BASE_ROOTFS:-"/var/lib/machines/alis"}
 
 if [ "$(id -u)" -ne 0 ]; then
-	echo "Run tests/nspawn/test.sh with sudo so systemd-nspawn can start the container" >&2
+	echo "Run tests/nspawn/test.sh as root (e.g. with sudo) so systemd-nspawn can start the container" >&2
 	exit 1
 fi
 
